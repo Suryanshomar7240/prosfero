@@ -15,10 +15,10 @@ const Nav = () => {
       <nav>
         <div className="nav_org_logo">Prosfero</div>
         <ul className="nav-bar">
-          <li className="nav-item"><a href="#">Home</a></li>
-          <li className="nav-item"><a href="#">Explore</a></li>
-          <li className="nav-item"><a href="#">Create<small> Donation</small></a></li>
-          <li className="nav-item"><a href="#">Login/Signup <MdOutlineAccountCircle /></a></li>
+          <li className="nav-item"><a href="https://www.google.com">Home</a></li>
+          <li className="nav-item"><a href="https://www.google.com">Explore</a></li>
+          <li className="nav-item"><a href="https://www.google.com">Create<small> Donation</small></a></li>
+          <li className="nav-item"><a href="https://www.google.com">Login/Signup <MdOutlineAccountCircle /></a></li>
         </ul>
       </nav>
     </>
