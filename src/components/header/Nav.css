@@ -1,2 +1,39 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800');
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@700;700&display=swap');
+body{
+  width:100%;
+  margin: 0%;
+  padding: 0%;
+}
+nav{
+  display: flex;
+  width:80%;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding-top:3vh;
+}
+.nav_org_logo{
+  justify-self:flex-start;
+  font-family: 'Corinthia', cursive;
+  font-size: 1.5em !important;
+  font-weight:500 !important;
+  color:cyan;
+
+}
+.nav-bar{
+  display:flex;
+  justify-self: flex-end;
+  list-style-type: none;
+  padding: 0 2vw !important;
+  color:#7ff5f5;
+  font-size: 1.3em;
+  font-weight:500;
+}
+.nav-item{
+  padding: 0 2vw;
+  text-decoration: none;
+  color:#7ff5f5;
+}
+.nav-bar a{
+  text-decoration: none;
+  color: #7ff5f5;
+}

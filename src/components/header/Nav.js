@@ -1,19 +1,28 @@
-// "" tro torp
-import { useEffect } from "react";
+import React, { useState } from "react";
 import "./Nav.css";
-const Nav = () => {
-	return(
-		<>
-		<nav>
-			<ul className="nav-list">
-				<li className="nav-item"><a href="#">Home</a></li>
-				<li className="nav-item"><a href="#">Exploer</a></li>
-				<li className="nav-item"><a href="#">Contact us</a></li>
-				<li className="nav-item"><a href="#">Login/SignUp</a></li>
-			</ul>
-		</nav>
+// import {
+//   FaFacebookSquare,
+//   FaInstagramSquare,
+//   FaYoutubeSquare,
+// } from "react-icons/fa";
+// import { GiHamburgerMenu } from "react-icons/gi";
+import {MdOutlineAccountCircle} from "react-icons/md";
+// import { NavLink } from "react-router-dom";
 
-		</>
-	)
-}
-export default Nav;	
+const Nav = () => {
+  return (
+    <>
+      <nav>
+        <div className="nav_org_logo">Prosfero</div>
+        <ul className="nav-bar">
+          <li className="nav-item"><a href="#">Home</a></li>
+          <li className="nav-item"><a href="#">Explore</a></li>
+          <li className="nav-item"><a href="#">Create<small> Donation</small></a></li>
+          <li className="nav-item"><a href="#">Login/Signup <MdOutlineAccountCircle /></a></li>
+        </ul>
+      </nav>
+    </>
+  );
+};
+
+export default Nav;
