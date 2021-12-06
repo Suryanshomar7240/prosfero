@@ -1,13 +1,12 @@
 import React from 'react';
 import './homepage.css';
 import donate_image from '../../assets/donate.png';
+import DonationCard from '../donationCards/DonationCard';
 
 const Homepage = () => {
   return (
-    <div id="home">
-      <section className='intro'
-      //  style={{backgroundImage:`url(${donate_image})`}}
-       >
+    <div id='home'>
+      <section className='intro'>
         <div className='intro_left'>
           <img src={donate_image} alt='Donate' />
         </div>
@@ -21,10 +20,19 @@ const Homepage = () => {
           </div>
 
           <h2 className='home_subhead_sm'>
-              We believe in complete transparency. Get a tab of every transaction made with your money.
+            We believe in complete transparency. Get a tab of every transaction
+            made with your money.
           </h2>
         </div>
       </section>
+      <DonationCard
+        imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+        userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+        userName='yash'
+        orgName = "Gareeb Foundation"
+        progress = "90000"
+        required = "100000"
+      />
     </div>
   );
 };

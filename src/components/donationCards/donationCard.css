@@ -1,0 +1,71 @@
+.card_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+}
+
+.card_wrapper h5 {
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
+.img_container,
+.userDetail {
+  width: 100%;
+}
+
+.img_container img {
+  width: inherit;
+  height: 150px;
+}
+
+.card_title{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.userDetail img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.userDetail {
+  margin-bottom: 20px;
+}
+
+.userName {
+  margin-left: 10px;
+}
+.collection {
+  margin-bottom: 8px;
+}
+.blue {
+  color: #7ff5f5;
+  font-size: 15px;
+}
+
+.donate_button {
+  border: none;
+  width: 90%;
+  align-self: center;
+  background-color: #bffcfc;
+  font-size: 20px;
+  border-radius: 5px 5px 5px 5px;
+  padding: 5px 10px 5px 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.donate_button:hover {
+  background-color: #2ee59d;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-5px);
+}

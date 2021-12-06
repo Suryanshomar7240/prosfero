@@ -1,69 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@700;700&display=swap');
-body{
-  width:100%;
+body {
+  width: 100%;
   margin: 0%;
   padding: 0%;
 }
-.display_none{
+.display_none {
   display: none !important;
 }
-nav{
+nav {
   display: flex;
-  width:80%;
+  width: 80%;
   margin: 0 auto;
   justify-content: space-between;
+  height:10vh;
 }
-.hamburger-menu{
+.hamburger-menu {
   display: none;
 }
-.navigation
-{
-  display:absolute;
-}
-.nav_org_logo{
-  justify-self:flex-start;
-  font-family: 'Corinthia', cursive;
-  font-size: 1.5em !important;
-  font-weight:500 !important;
-  color:cyan;
-  z-index:1;
+.nav_org_logo {
+  justify-self: flex-start;
+  z-index: 1;
   align-self: center !important;
-  
 }
-.nav_org_logo img{
-  width:25%;
+.nav_org_logo img {
+  width: 120px;
   object-fit: contain;
+  padding-top: 2vh;
 }
-.nav-bar{
-  display:flex;
+.nav-bar {
+  display: flex;
   justify-self: flex-end;
   list-style-type: none;
-  padding: 0 2vw !important;
-  color:#7ff5f5;
+  padding: 4vh 2vw !important;
+  color: #7ff5f5;
   font-size: 1.3em;
-  font-weight:500;
-  margin-top: 30px;
+  font-weight: 500;
+  /* margin-top: 30px; */
+  margin: 0% !important;
+  align-items: center;
 }
-.nav-item{
-  padding: 0 2vw;
-  text-decoration: none;
-  color:#7ff5f5;
-}
-.nav-bar a{
+.nav-item {
+  margin: 0 2vw;
   text-decoration: none;
   color: #7ff5f5;
+  width: fit-content;
 }
-@media screen and (max-width: 768px){
-  .nav_org_logo{
+.nav-item:hover {
+  border-bottom: 2px solid #7ff5f5;
+}
+.nav-bar a {
+  text-decoration: none;
+  color: #7ff5f5;
+  white-space: nowrap;
+}
+.nav_scroll {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+}
+@media screen and (max-width: 768px) {
+  .nav_org_logo {
     font-size: 1.5em !important;
   }
-  .nav-bar{
-    display:none;
+  .nav-bar {
+    display: none;
   }
-  .hamburger-menu{
+  .hamburger-menu {
     display: block;
+    align-self: center;
+    margin-top: -3vh;
+    font-size: 200%;
   }
-  .nav-item{
+  .nav-item {
     display: none;
   }
 }

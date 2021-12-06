@@ -1,77 +1,75 @@
 /* import donate from {../../assets/images/donate.png}; */
 .home_head {
-    /* font-size: 20px; */
+    font-size: 30px;
     color: #363636;
-    margin: 13px;
+    margin: 20px;
 }
 
 .home_subhead{
     color: #7ff5f5;
-    margin: 13px;
+    margin: 20px;
+    font-size: 28px;
 }
 
 .home_subhead_sm{
     color: #363636;
     margin: 13px;
-    font-size: 18px;
+    font-size: 17px;
     width: 80%;
 }
-/* #home{
-    position: absolute;
-    top:0;
-    left:0;
-} */
+
 .intro {
     display: flex; 
     justify-content:space-between;
-    /* /* align-items: center; */
     min-height: 60vh;
-    width:100vw;
-    padding:0%;
-    /* background-repeat: no-repeat; */
-    /* background-size: 30% 100%; */
-    /* position:absolute ; */
-    /* opacity: 0.5; */
+    height:400px;
+    padding-top:3vh;
 }
 
-/* .intro_left {
+.intro_left {
     display: flex;
     justify-content: center;
     width: 45%;
 }
 
 .intro_left img {
-    width: auto;
-    border-radius: 1%; */
-/* } */
+    width: 100%;
+    border-radius: 1%;
+    margin-top: -50px;
+}
 
 .intro_right {
-    float:right;
-    padding-top: 5vh;
-    padding-right:5vw;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    justify-content: flex-start;
     width: 45%;
-    align-self: right;
-    justify-self: flex-end;
-    opacity:unset;
-    height: 100%;
+    height: inherit;
+}
+
+.button_wrapper {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .to_donate_page {
     border: none;
     background-color: #dcf7f7;
-    font-size: 20px;
+    font-size: 25px;
     border-radius: 5px 5px 5px 5px;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 13px 5px 13px;
     margin: 13px;
+    cursor: pointer;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .to_donate_page:hover{
     background-color:#bffcfc;
-    font-size: 23px;
+    font-size: 27px;
     transition: all 400ms;
 }
 
-@media (max-width: 726px) {
+@media (max-width: 768px) {
     .intro_left {
         display: none;
     }
