@@ -4,8 +4,10 @@ import donate_image from '../../assets/donate.png';
 
 const Homepage = () => {
   return (
-    <div>
-      <section className='intro'>
+    <div id="home">
+      <section className='intro'
+      //  style={{backgroundImage:`url(${donate_image})`}}
+       >
         <div className='intro_left'>
           <img src={donate_image} alt='Donate' />
         </div>
