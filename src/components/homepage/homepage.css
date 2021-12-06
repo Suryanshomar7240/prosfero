@@ -16,11 +16,11 @@
     font-size: 18px;
     width: 80%;
 }
-#home{
+/* #home{
     position: absolute;
     top:0;
     left:0;
-}
+} */
 .intro {
     display: flex; 
     justify-content:space-between;
@@ -47,7 +47,7 @@
 
 .intro_right {
     float:right;
-    padding-top: 15vh;
+    padding-top: 5vh;
     padding-right:5vw;
     width: 45%;
     align-self: right;
