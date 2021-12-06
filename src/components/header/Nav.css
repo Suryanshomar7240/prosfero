@@ -14,13 +14,26 @@ nav{
   justify-content: space-between;
   padding-top:3vh;
 }
+.hamburger-menu{
+  display: none;
+}
+.navigation
+{
+  display:absolute;
+}
 .nav_org_logo{
   justify-self:flex-start;
   font-family: 'Corinthia', cursive;
   font-size: 1.5em !important;
   font-weight:500 !important;
   color:cyan;
-
+  z-index:1;
+  align-self: center !important;
+  
+}
+.nav_org_logo img{
+  width:25%;
+  object-fit: contain;
 }
 .nav-bar{
   display:flex;
@@ -39,4 +52,18 @@ nav{
 .nav-bar a{
   text-decoration: none;
   color: #7ff5f5;
+}
+@media screen and (max-width: 768px){
+  .nav_org_logo{
+    font-size: 1.5em !important;
+  }
+  .nav-bar{
+    display:none;
+  }
+  .hamburger-menu{
+    display: block;
+  }
+  .nav-item{
+    display: none;
+  }
 }
