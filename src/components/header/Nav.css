@@ -31,23 +31,29 @@ nav {
   display: flex;
   justify-self: flex-end;
   list-style-type: none;
-  padding: 4vh 2vw !important;
+  padding: 3vh 2vw 0vh 2vw !important;
+  
   color: #7ff5f5;
   font-size: 1.3em;
   font-weight: 500;
   /* margin-top: 30px; */
-  margin: 0% !important;
-  align-items: center;
+  /* margin: 0% !important; */
+  align-items: center; 
 }
-.nav-item {
-  margin: 0 2vw;
-  text-decoration: none;
-  color: #7ff5f5;
-  width: fit-content;
+.nav-item{
+  padding:0 1.8vw;
+  margin:0 0.2vw;
 }
-.nav-item:hover {
-  border-bottom: 2px solid #7ff5f5;
+.nav-item:after {
+  display:block;
+  content: '';
+  border-bottom: solid 3px #7ff5f5;
+  transform: scaleX(0);  
+  transition:all 250ms ease-in-out;
 }
+.nav-item:hover:after { transform: scaleX(1); }
+/* .nav-item.fromRight:after{ transform-origin:100% 50%; } */
+/* .nav-item.fromLeft:after{  transform-origin:  0% 50%; } */
 .nav-bar a {
   text-decoration: none;
   color: #7ff5f5;
