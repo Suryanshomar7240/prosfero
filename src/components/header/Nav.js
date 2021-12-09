@@ -3,6 +3,9 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import React, { useState} from 'react';
 import logo from '../../assets/logo.png';
+// import { Link } from 'react-router-dom'
+
+
 const Nav = () => {
   const [ScrollDown, setIsScrollDown] = useState(false);
   const handleScrollDown = () => {
@@ -22,14 +25,14 @@ const Nav = () => {
   window.addEventListener("scroll", handleScrollDown);
 
   return (
-    <div className='navigation'>
+    <div className='navigation' id="nav_link">
       <nav>
         <div className='nav_org_logo'>
           <img src={logo} alt='logo' />
         </div>
         <ul className='nav-bar'>
           <li className='nav-item'>
-            <a href='#home'>Home</a>
+            <a href='/'>Home</a>
           </li>
           <li className='nav-item'>
             <a href='www.google.com'>Explore</a>
@@ -38,7 +41,7 @@ const Nav = () => {
             <a href='www.google.com'>Create Donation</a>
           </li>
           <li className='nav-item'>
-            <a href='www.google.com'>Contact Us</a>
+            <a href='/contact'>Contact Us</a>
           </li>
           <li className='nav-item'>
             <a href='www.google.com'>

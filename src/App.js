@@ -3,14 +3,19 @@ import React from 'react';
 import Nav from './components/header/Nav';
 import Homepage from './components/homepage/Homepage';
 import Footer from './components/footer/Footer';
-
+import Contact from './components/contactPage/Contact';
+import UserDashBoard from './components/dashboard/UserDashBoard';
+import { Route, BrowserRouter } from 'react-router-dom';
 function App() {
   return (
-    <React.Fragment>
+    <BrowserRouter>
       <Nav />
-      <Homepage />
+      <Route path='/' exact component={Homepage} />
+      <Route path='/contact' exact component={Contact} />
+      <Route path='/user' exact component={UserDashBoard} />
+      {/* <Homepage /> */}
       <Footer />
-    </React.Fragment>
+    </BrowserRouter>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import './homepage.css';
 import donate_image from '../../assets/donate.png';
+// import rand from "../../assets/logo.png"
 import DonationCard from '../donationCards/DonationCard';
 
 const Homepage = () => {
@@ -25,14 +26,26 @@ const Homepage = () => {
           </h2>
         </div>
       </section>
+
       <DonationCard
         imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
         userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
         userName='yash'
-        orgName = "Gareeb Foundation"
-        progress = "90000"
-        required = "100000"
+        orgName='Gareeb Foundation'
+        progress='90000'
+        required='100000'
       />
+      <section className='funding_options_container'>
+        <div className='options_heading'>
+          <h2 className='head_one'>Raise funds for any of these causes</h2>
+          <div>
+            <h4 className='sub_head_one'>
+              We help you for your personal needs, enable you to work for a
+              social cause. You can rely on us for your fundraisers
+            </h4>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
