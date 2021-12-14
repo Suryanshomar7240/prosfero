@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="footer-left-text">Any Suggestion ?? <br /><Link to="/contact"> Contact Us </Link></div>
         </div>
         <div className="footer-right">
-          <h1>About us</h1>
+          <div className="about_us">About us</div>
           <p>
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
             eveniet eius culpa voluptates laboriosam, sit corrupti reprehenderit

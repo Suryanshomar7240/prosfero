@@ -1,0 +1,46 @@
+.dashboard{
+    width:70%;
+    margin:3vh auto;
+    background-color: rgb(252, 250, 243);
+    min-height:200vh;
+    border-radius: 5px;
+}
+.User_name
+{
+    height:60px;
+    color:white;
+    font-size:1.4em;
+    padding:15px 30px 10px 30px;
+    background-color: #7ff5f5;
+    border-radius: 5px;
+    box-shadow:inset 6px 8px 4px 0px;
+}
+.User_funds_carasoul
+{
+   display:flex;
+    width:100%;
+    padding-top:5vh;
+    justify-content: space-between;
+    padding:2vh 2vw;
+}
+.User_funds_next_arrow,.User_funds_prev_arrow{
+    align-self: center;
+    font-size: 3em;
+    color: #bcffff;
+    cursor:pointer;
+    /* box-shadow:inset 6px 8px 4px 0px; */
+}
+.User_funds_head{
+    width:100%;
+    color:#7ff5f5;
+    font-size:2em;
+    font-weight:500;
+    font-family: 'PT Serif', serif;
+    padding:40px 50px 10px 30px;
+}
+.User_funds_donationCards{
+    display: flex;
+
+    
+    justify-content: space-between;
+}
