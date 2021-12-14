@@ -1,7 +1,7 @@
 .footer{
     /* height:10vh; */
     margin:0% !important;
-    width:100%;
+    /* width:100% !important; */
     background-color: rgba(4, 133, 133, 0.822);
     padding: 2vh 10vw 0vh 10vw;
 }
@@ -32,6 +32,9 @@
 .footer-left-text a{
     color:White;
     text-decoration: none;
+}
+.footer-right .about_us{
+    font-size:2em;
 }
 .footer-right p{
     color:rgb(202, 210, 211);

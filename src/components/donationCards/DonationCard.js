@@ -4,7 +4,7 @@ import './donationCard.css';
 const DonationCard = (props) => {
   return (
     <React.Fragment>
-      <div className='card_wrapper'>
+      <div className={'card_wrapper '+props.width}>
         <div className='img_container'>
           <img src={props.imgLink} alt='donation' />{' '}
         </div>
