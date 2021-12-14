@@ -3,6 +3,15 @@ import './homepage.css';
 import donate_image from '../../assets/donate.png';
 // import rand from "../../assets/logo.png"
 import DonationCard from '../donationCards/DonationCard';
+import Options from './options/Options';
+import Carousel from 'react-elastic-carousel';
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 4 },
+];
 
 const Homepage = () => {
   return (
@@ -27,15 +36,60 @@ const Homepage = () => {
         </div>
       </section>
 
-      <DonationCard
-        imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-        userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-        userName='yash'
-        orgName='Gareeb Foundation'
-        progress='90000'
-        required='100000'
-      />
-      <section className='funding_options_container'>
+      <section id='homepageDonationCards'>
+        <div className='options_heading'>
+          <h2 className='head_one'>Most Active Fundraisers</h2>
+        </div>
+        <h4 className='sub_head_one'>
+          Contribute today to someone who is in a dire need of your help
+        </h4>
+        {/* <div className='trendingDonationContainer'> */}
+        <Carousel breakPoints={breakPoints}>
+          <DonationCard
+            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userName='yash'
+            orgName='Gareeb Foundation'
+            progress='90000'
+            required='100000'
+          />
+          <DonationCard
+            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userName='yash'
+            orgName='Gareeb Foundation'
+            progress='90000'
+            required='100000'
+          />
+          <DonationCard
+            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userName='yash'
+            orgName='Gareeb Foundation'
+            progress='90000'
+            required='100000'
+          />
+          <DonationCard
+            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userName='yash'
+            orgName='Gareeb Foundation'
+            progress='90000'
+            required='100000'
+          />
+          <DonationCard
+            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            userName='yash'
+            orgName='Gareeb Foundation'
+            progress='90000'
+            required='100000'
+          />
+        </Carousel>
+        {/* </div> */}
+      </section>
+
+      <section id='funding_options_container'>
         <div className='options_heading'>
           <h2 className='head_one'>Raise funds for any of these causes</h2>
           <div>
@@ -44,8 +98,15 @@ const Homepage = () => {
               social cause. You can rely on us for your fundraisers
             </h4>
           </div>
+          <Options />
         </div>
       </section>
+
+    <section id="reviewsContainer">
+      
+    </section>
+
+
     </div>
   );
 };

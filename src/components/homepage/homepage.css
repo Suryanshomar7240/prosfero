@@ -24,6 +24,7 @@
   min-height: 60vh;
   height: 400px;
   padding-top: 3vh;
+  margin-bottom: 100px;
 }
 
 .intro_left {
@@ -67,6 +68,23 @@
   background-color: #bffcfc;
   font-size: 27px;
   transition: all 400ms;
+}
+
+#homepageDonationCards{
+  margin-bottom: 75px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.trendingDonationContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 25px;
+}
+
+#funding_options_container {
+  margin-bottom: 60px;
 }
 
 .options_heading {
