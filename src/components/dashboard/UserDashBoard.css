@@ -79,8 +79,10 @@ a:hover:after { transform: scaleX(1);}
 .userDetail{
     padding-top:2vh;
 }
-.userDetail img{
+/* .userDetail img{
     width:fit-content;
     object-fit: contain;
     border-radius: 50%;
-}
+} */
+
+/* suryansh isko comment kar de rahe hai homepage wale me dikkat aa rahi hai check it out later */

@@ -84,7 +84,8 @@
 }
 
 #funding_options_container {
-  margin-bottom: 60px;
+  margin-bottom: 160px;
+  margin-top: 120px;
 }
 
 .options_heading {
@@ -98,6 +99,20 @@
   margin: 10px auto;
   font-size: 17px;
   color: #949494;
+}
+
+#reviewsContainer {
+  margin: 10px;
+}
+
+.rec-arrow-left, .rec-arrow-right {
+  background-color: skyblue !important;
+  color: white !important;
+  border-color: #363636 !important;
+}
+
+.rec-dot {
+  background-color: white !important;
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,40 @@
+.reviewWrapper {
+  width: 380px;
+  height: 320px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 14px;
+  margin: 20px;
+}
+
+.reviewerDetailContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pfpContainer img {
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.username-1 {
+  font-size: 17px;
+  line-height: 30px;
+}
+
+.verified {
+  color: skyblue;
+}
+
+.stars {
+  color: #ffd700;
+  font-size: 23px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.reviewHead {
+  font-size: 20px;
+  margin-bottom: 10px;
+}

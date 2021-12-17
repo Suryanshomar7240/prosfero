@@ -11,10 +11,10 @@ const Options = () => {
         <div>
             <div className="optionsContainer">
             <div className="imageContainer"><img src={medical} alt="medical" /><br />Medical</div>
-            <div className="imageContainer"><img src={education} alt="education" /><br />Education</div>
+            <div className="imageContainer"><img src={education} alt="education" id='iw' /><br />Education</div>
             <div className="imageContainer"><img src={naturalDisaster} alt="naturalDisaster" /><br />Natural Disaster</div>
             <div className="imageContainer"><img src={animals} alt="animals" /><br />Animals</div>
-            <div className="imageContainer"><img src={donateHand} alt="donateHand" /><br />Other</div>
+            <div className="imageContainer"><img src={donateHand} alt="donateHand" /><br />Other Causes</div>
           </div>
         </div>
     )

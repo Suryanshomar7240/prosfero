@@ -1,17 +1,24 @@
 import React from 'react';
 import './homepage.css';
 import donate_image from '../../assets/donate.png';
-// import rand from "../../assets/logo.png"
 import DonationCard from '../donationCards/DonationCard';
 import Options from './options/Options';
 import Carousel from 'react-elastic-carousel';
+import Review from './reviews/Review';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
   { width: 550, itemsToShow: 2 },
   { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 4 },
+  { width: 1200, itemsToShow: 3 },
 ];
+
+// const breakPoints2 = [
+//   { width: 1, itemsToShow: 1 },
+//   { width: 550, itemsToShow: 2 },
+//   { width: 768, itemsToShow: 3 },
+//   { width: 1200, itemsToShow: 4 },
+// ];
 
 const Homepage = () => {
   return (
@@ -52,6 +59,7 @@ const Homepage = () => {
             orgName='Gareeb Foundation'
             progress='90000'
             required='100000'
+            width='primary'
           />
           <DonationCard
             imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
@@ -60,6 +68,7 @@ const Homepage = () => {
             orgName='Gareeb Foundation'
             progress='90000'
             required='100000'
+            width='primary'
           />
           <DonationCard
             imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
@@ -68,6 +77,7 @@ const Homepage = () => {
             orgName='Gareeb Foundation'
             progress='90000'
             required='100000'
+            width='primary'
           />
           <DonationCard
             imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
@@ -76,6 +86,7 @@ const Homepage = () => {
             orgName='Gareeb Foundation'
             progress='90000'
             required='100000'
+            width='primary'
           />
           <DonationCard
             imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
@@ -84,6 +95,7 @@ const Homepage = () => {
             orgName='Gareeb Foundation'
             progress='90000'
             required='100000'
+            width='primary'
           />
         </Carousel>
         {/* </div> */}
@@ -102,11 +114,49 @@ const Homepage = () => {
         </div>
       </section>
 
-    <section id="reviewsContainer">
-      
-    </section>
+      <section id='reviewsContainer'>
 
 
+        <div className='options_heading'>
+          <h2 className='head_one'>What people who used our platform say</h2>
+          <div>
+            <h4 className='sub_head_one'>
+              We value your reviews a lot. They help us improve our shortcomings so that we can make the application better for you
+            </h4>
+            <br />
+            <br />
+          </div>
+        </div>
+        <Carousel breakPoints={breakPoints}>
+          <Review
+            pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            username='Yash'
+            reviewHead='Top 10 qoutes by Yash'
+            reviewText='If you cant come in her come on her'
+          />
+          <Review
+            pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            username='Yash'
+            reviewHead='Top 10 qoutes by Yash'
+            reviewText='If you cant come in her come on her'
+          />
+          <Review
+            pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            username='Yash'
+            reviewHead='Top 10 qoutes by Yash'
+            reviewText='If you cant come in her come on her'
+          />
+          <Review
+            pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
+            username='Yash'
+            reviewHead='Top 10 qoutes by Yash'
+            reviewText='If you cant come in her come on her'
+          />
+        </Carousel>
+      </section>
+      <br />
+      <br />
+      <br />
     </div>
   );
 };
