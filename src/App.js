@@ -14,7 +14,9 @@ function App() {
       <Nav />
       <Route path='/' exact component={Homepage} />
       <Route path='/contact' exact component={Contact} />
-      <Route path='/user' exact component={UserDashBoard} />
+      <Route path='/user/overview' exact component={UserDashBoard} />
+      <Route path='/user/fundraiser' exact component={UserDashBoard} />
+
       <Route path='/explore' exact component={Explore} />
       {/* <Homepage /> */}
       <Footer />

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=PT+Serif&family=Poppins:wght@100&display=swap');
 .dashboard{
     width:70vw;
     margin:3vh auto;
@@ -12,7 +13,7 @@
 .Dashboard-navigation{
     min-width:15vw;
     height:200vh;
-    background-color: #7ff5f5;
+    background-color: #75e0e0;
     box-shadow:inset 6px -6px 4px 0px #fff;
 }
 .Dashboard-content{
@@ -25,7 +26,7 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
     /* padding:0 4vw; */
     font-size: 1.15em;
-    font-weight: 550;
+    /* font-weight: 550; */
     justify-content: space-between;
     /* border:2px solid black; */
 }
@@ -51,8 +52,9 @@
     color:white;
     font-size:1.4em;
     padding:15px 30px 10px 30px;
-    background-color: #7ff5f5;
+    background-color: #75e0e0;
     /* border-radius: 5px; */
+    /* font-family: 'Poppins', sans-serif; */
     box-shadow:inset 6px 8px 4px 0px;
 }
 .fund_Target,.fund_amount{
@@ -64,9 +66,9 @@
 .User_funds_head{
     width:inherit;
     margin:0 auto;
-    color:#7ff5f5;
+    color:#6ed3d3;
     font-size:2em;
-    font-weight:500;
+    /* font-weight:500; */
     /* font-family:serif; */
     text-align: center;
     padding:10px;
@@ -94,23 +96,27 @@ a:hover:after { transform: scaleX(1);}
 .Card_right{
     display: flex;
     height:inherit;
-    width:40%;
-    padding:3vh 5vw 3vh 0vw;
+    width:45%;
+    padding:3vh 6vw 3vh 0vw;
     font-size:1em;
-    color:#5bdbdb;
+    /* color:#5bdbdb; */
     justify-content:space-evenly;
     flex-direction: column;
 
 }
 .Card_right .progress
 {
-    width:70%;
-    margin-left: 1vw;
+    width:90%;
+    margin-left: 0.5vw;
+}
+.fund_progress{
+    font-weight: 550;
 }
 .Card_right img
 {
     width: 40px;
+    height:40px;
     border-radius: 50%;
-    object-fit: contain;
+    /* object-fit: contain; */
 }
 /* suryansh isko comment kar de rahe hai homepage wale me dikkat aa rahi hai check it out later */
