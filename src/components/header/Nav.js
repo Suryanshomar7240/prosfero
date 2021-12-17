@@ -44,7 +44,7 @@ const Nav = () => {
             <a href='/contact'>Contact Us</a>
           </li>
           <li className='nav-item'>
-            <a href='www.google.com'>
+            <a href='/user'>
               Login/Signup <MdOutlineAccountCircle />
             </a>
           </li>
