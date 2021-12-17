@@ -70,6 +70,13 @@
   transition: all 400ms;
 }
 
+.btn_container {
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 #homepageDonationCards{
   margin-bottom: 75px;
   margin-left: 10px;

@@ -1,0 +1,62 @@
+.exploreImgContainer {
+  height: 350px;
+  margin-bottom: 20px;
+  position: relative;
+  color: #fdfeff;
+}
+
+.exploreImgContainer img {
+  width: 100%;
+}
+
+.exploreImgText {
+  position: absolute;
+  font-size: 55px;
+  top: 130px;
+  left: 35px;
+}
+
+.mainBodyWrapper {
+    display: flex;
+}
+
+.leftNavbar {
+  width: 15vw;
+  height: 400px;
+  background-color: #f5f5f5;
+  border-radius: 5px 5px 5px 5px;
+  padding: 10px;
+  text-align: center;
+  margin-left: 7vw;
+  margin-top: 19px;
+}
+
+.categoriesHeading{
+    font-size: 20px;
+    border-bottom: 1px solid #141414;
+    padding: 10px;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left !important;
+  padding: 20px;
+}
+
+.leftNavbarElement {
+    margin-bottom: 11px;
+    font-size: 16px;
+    border: none;
+    background-color: inherit;
+    text-align: left;
+}
+
+.exploreCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 80vw;
+    margin-bottom: 100px;
+}
