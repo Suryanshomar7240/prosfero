@@ -13,10 +13,10 @@ const UserDashBoard = () => {
         <div className="Dashboard-navigation">
           <ul className="navigation-list">
             <li className="navigation-items">
-              <a href="/user">Overview</a>
+              <a href="/user/overview">Overview</a>
             </li>
             <li className="navigation-items">
-              <a href="/user">Fundraisers</a>
+              <a href="/user/fundraiser">Fundraisers</a>
             </li>
             <li className="navigation-items">
               <a href="/user">Donations</a>
@@ -46,18 +46,19 @@ const UserDashBoard = () => {
               <span className="userName">By Suryansh</span></div>
               <div className="fund_Target">Target : <span className="money">10000</span></div>
               <div className="fund_amount">Target acheived : <span className="money">5000</span></div>
+              <div className="fund_progress">Progress bar :</div>
               <div class="progress">
                 <div
                   class="progress-bar"
                   role="progressbar"
                   style={{
                     width: (5000 / 10000) * 100 + "%",
-                    backgroundColor: "#318CE7",
+                    backgroundColor: "#14fc52",
                   }}
                   aria-valuenow="25"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                ></div>
+                ><span style={{float:'right'}}>{(500/1000)*100}%</span></div>
               </div>
             </div>
           </div>
