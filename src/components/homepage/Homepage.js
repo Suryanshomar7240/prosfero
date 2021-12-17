@@ -13,13 +13,6 @@ const breakPoints = [
   { width: 1200, itemsToShow: 3 },
 ];
 
-// const breakPoints2 = [
-//   { width: 1, itemsToShow: 1 },
-//   { width: 550, itemsToShow: 2 },
-//   { width: 768, itemsToShow: 3 },
-//   { width: 1200, itemsToShow: 4 },
-// ];
-
 const Homepage = () => {
   return (
     <div id='home'>
@@ -98,7 +91,9 @@ const Homepage = () => {
             width='primary'
           />
         </Carousel>
-        {/* </div> */}
+        <div className='btn_container'>
+          <button className='to_donate_page'> &nbsp; Explore More &nbsp;</button>
+        </div>
       </section>
 
       <section id='funding_options_container'>
@@ -115,13 +110,12 @@ const Homepage = () => {
       </section>
 
       <section id='reviewsContainer'>
-
-
         <div className='options_heading'>
           <h2 className='head_one'>What people who used our platform say</h2>
           <div>
             <h4 className='sub_head_one'>
-              We value your reviews a lot. They help us improve our shortcomings so that we can make the application better for you
+              We value your reviews a lot. They help us improve our shortcomings
+              so that we can make the application better for you
             </h4>
             <br />
             <br />

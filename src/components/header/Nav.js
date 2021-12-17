@@ -35,10 +35,10 @@ const Nav = () => {
             <a href='/'>Home</a>
           </li>
           <li className='nav-item'>
-            <a href='www.google.com'>Explore</a>
+            <a href='/explore'>Explore</a>
           </li>
           <li className='nav-item'>
-            <a href='www.google.com'>Create Donation</a>
+            <a href='/explore'>Create Donation</a>
           </li>
           <li className='nav-item'>
             <a href='/contact'>Contact Us</a>
