@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import {MdOutlineContactPage} from 'react-icons/md'; 
 import "./footer.css"; 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
       <div className="footer-top">
         <div className="footer-left">
           <img src={logo} alt="logo" />
-          <div className="footer-left-text">Any Suggestion ?? <br /><Link to="/contact"> Contact Us </Link></div>
+          <div className="footer-left-text">Any Suggestion ?? <br /><Link to="/contact"><MdOutlineContactPage style={{paddingBottom:'2px'}}/> Contact Us </Link></div>
         </div>
         <div className="footer-right">
           <div className="about_us">About us</div>

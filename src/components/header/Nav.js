@@ -1,9 +1,9 @@
 import './Nav.css';
-import { MdOutlineAccountCircle } from 'react-icons/md';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import React, { useState} from 'react';
 import logo from '../../assets/logo.png';
-// import { Link } from 'react-router-dom'
+import {AiOutlineHome} from 'react-icons/ai';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdOutlineAccountCircle,MdTravelExplore,MdOutlineCreateNewFolder,MdOutlineContactPage} from 'react-icons/md';
 
 
 const Nav = () => {
@@ -32,16 +32,16 @@ const Nav = () => {
         </div>
         <ul className='nav-bar'>
           <li className='nav-item'>
-            <a href='/'>Home</a>
+            <a href='/'><AiOutlineHome style={{paddingBottom:'2px'}}/>Home</a>
           </li>
           <li className='nav-item'>
-            <a href='/explore'>Explore</a>
+            <a href='/explore'><MdTravelExplore />Explore</a>
           </li>
           <li className='nav-item'>
-            <a href='/explore'>Create Donation</a>
+            <a href='/explore'><MdOutlineCreateNewFolder />Create Donation</a>
           </li>
           <li className='nav-item'>
-            <a href='/contact'>Contact Us</a>
+            <a href='/contact'><MdOutlineContactPage style={{paddingBottom:'2px'}}/>Contact Us</a>
           </li>
           <li className='nav-item'>
             <a href='/user/overview'>
