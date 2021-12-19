@@ -26,7 +26,7 @@ const Homepage = () => {
             Donate to or start a fundraiser today.
           </h2>
           <div className='button_wrapper'>
-            <button className='to_donate_page'>Contribute Today</button>
+            <button className='to_donate_page' onClick={()=>{window.location='/explore'}}>Contribute Today</button>
           </div>
 
           <h2 className='home_subhead_sm'>
@@ -92,7 +92,7 @@ const Homepage = () => {
           />
         </Carousel>
         <div className='btn_container'>
-          <button className='to_donate_page'> &nbsp; Explore More &nbsp;</button>
+          <button className='to_donate_page' onClick={()=>{window.location='/explore'}}> &nbsp; Explore More &nbsp;</button>
         </div>
       </section>
 

@@ -1,0 +1,43 @@
+.User_recent_fund_card{
+    display: flex;
+    margin: 5vh 4vw 0 4vw;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    font-size: 1.15em;
+    justify-content: space-between;
+}
+.Card_left img{
+    width:250px;
+    height: 100%;
+
+}
+.Card_right{
+    display: flex;
+    height:inherit;
+    width:50%;
+    padding:3vh 6vw 4vh 0vw;
+    font-size:1em;
+    /* color:#5bdbdb; */
+    justify-content:space-evenly;
+    flex-direction: column;
+    color : #63c7c7;
+}
+.money{
+    color: #34dbdb;
+}
+.Fund_name{
+    justify-self: flex-start;
+    font-size:1.2em;
+    align-self: center;
+    padding-bottom: 2vh;
+}
+.Card_right .progress
+{
+    width:90%;
+    margin-left: 0.5vw;
+}
+.Card_right img
+{
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+}
