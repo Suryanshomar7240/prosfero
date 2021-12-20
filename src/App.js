@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer';
 import Contact from './components/contactPage/Contact';
 import UserDashBoard from './components/dashboard/UserDashBoard';
 import Explore from './components/explore/Explore';
+import CreateDonation from './components/createDonation/CreateDonation';
 
 import { Route, BrowserRouter } from 'react-router-dom';
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path='/user/fundraiser' exact component={UserDashBoard} />
 
       <Route path='/explore' exact component={Explore} />
+      <Route path='/donate' exact component={CreateDonation} />
       {/* <Homepage /> */}
       <Footer />
     </BrowserRouter>

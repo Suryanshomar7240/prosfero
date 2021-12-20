@@ -1,5 +1,5 @@
 .exploreImgContainer {
-  height: 350px;
+  height: fit-content;
   margin-bottom: 20px;
   position: relative;
   color: #fdfeff;
@@ -12,16 +12,40 @@
 .exploreImgText {
   position: absolute;
   font-size: 55px;
-  top: 130px;
-  left: 35px;
+  top: 40%;
+  left: 10%;
 }
 
 .mainBodyWrapper {
     display: flex;
 }
 
+.secondaryOptionsMenu {
+  display: none;
+  justify-content: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  align-self: center;
+  width: 85%;
+}
+
+.catHeading {
+  font-size: 23px;
+  font-weight: 300;
+  margin-right: 20px;
+}
+
+.selectOptions {
+  padding: 5px;
+  font-size: 18px;
+}
+
 .leftNavbar {
   width: 15vw;
+  min-width: fit-content;
   height: 400px;
   background-color: #f5f5f5;
   border-radius: 5px 5px 5px 5px;
@@ -59,4 +83,28 @@
     justify-content: space-evenly;
     width: 80vw;
     margin-bottom: 100px;
+}
+
+@media (max-width: 1060px) {
+  .exploreImgText{
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 550px) {
+  .leftNavbar{
+    display: none;
+  }
+  .exploreCardsContainer {
+    width: 100vw;
+  }
+  .exploreImgContainer img{
+    display: none !important;
+  }
+  .exploreImgText {
+    display: none;
+  }
+  .secondaryOptionsMenu{
+    display: flex;
+  }
 }

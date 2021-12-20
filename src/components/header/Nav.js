@@ -38,7 +38,7 @@ const Nav = () => {
             <a href='/explore'><MdTravelExplore />Explore</a>
           </li>
           <li className='nav-item'>
-            <a href='/explore'><MdOutlineCreateNewFolder />Create Donation</a>
+            <a href='/donate'><MdOutlineCreateNewFolder />Create Donation</a>
           </li>
           <li className='nav-item'>
             <a href='/contact'><MdOutlineContactPage style={{paddingBottom:'2px'}}/>Contact Us</a>

@@ -6,10 +6,10 @@ import "./footer.css";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="footer-top">
+      <div className="footerWrapper">
         <div className="footer-left">
           <img src={logo} alt="logo" />
-          <div className="footer-left-text">Any Suggestion ?? <br /><Link to="/contact"><MdOutlineContactPage style={{paddingBottom:'2px'}}/> Contact Us </Link></div>
+          <div className="footer-left-text"><Link to="/contact"><MdOutlineContactPage style={{paddingBottom:'2px'}}/> Contact Us </Link> For suggestions</div>
         </div>
         <div className="footer-right">
           <div className="about_us">About us</div>
