@@ -10,7 +10,7 @@ const Explore = () => {
   const handleChange = (e) => {
     setOptions(e.target.value);
   };
-  // console.log(options);
+  console.log(options);
 
   return (
     <div>
