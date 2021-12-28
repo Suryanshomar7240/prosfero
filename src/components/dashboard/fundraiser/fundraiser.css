@@ -7,8 +7,7 @@
 }
 .Card_left img{
     width:250px;
-    height: 100%;
-
+    height:100%;
 }
 .Card_right{
     display: flex;
@@ -40,4 +39,31 @@
     width: 40px;
     height:40px;
     border-radius: 50%;
+}
+@media screen and (max-width: 1100px) {
+    
+    .Card_left img{
+        width:200px;
+    }
+    .User_recent_fund_card{
+        font-size: 1em;
+        height:270px;
+    }
+    .Card_right{
+        width:70%;
+        padding:3vh 1vw 4vh 5vw;
+    }
+    .donate_button{
+        padding: 0%;
+        width: 80%;
+        margin-top:unset;
+    }
+}
+@media screen and (max-width:950px) {
+    .Card_left{
+        display: none;
+    }
+    .Card_right{
+        width:100%;
+    }
 }

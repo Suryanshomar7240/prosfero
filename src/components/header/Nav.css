@@ -12,10 +12,10 @@ nav {
   /* width: 80vw; */
   /* max-width:80vw; */
   /* padding:0% !important; */
-  padding-left:30px;
+  padding-left: 30px;
   margin: 0 auto;
   justify-content: space-between;
-  height:70px;
+  height: 70px;
 }
 .hamburger-menu {
   display: none;
@@ -38,20 +38,22 @@ nav {
   color: #7ff5f5;
   font-size: 1.3em;
   font-weight: 500;
-  align-items: center; 
+  align-items: center;
 }
-.nav-item{
-  padding:0 1.8vw;
-  margin:0 0.2vw;
+.nav-item {
+  padding: 0 1.8vw;
+  margin: 0 0.2vw;
 }
 .nav-item:after {
-  display:block;
-  content: '';
+  display: block;
+  content: "";
   border-bottom: solid 3px #7ff5f5;
-  transform: scaleX(0);  
-  transition:all 250ms ease-in-out;
+  transform: scaleX(0);
+  transition: all 250ms ease-in-out;
 }
-.nav-item:hover:after { transform: scaleX(1); }
+.nav-item:hover:after {
+  transform: scaleX(1);
+}
 /* .nav-item.fromRight:after{ transform-origin:100% 50%; } */
 /* .nav-item.fromLeft:after{  transform-origin:  0% 50%; } */
 .nav-bar a {
@@ -66,13 +68,13 @@ nav {
   z-index: 1;
   background-color: rgb(255, 255, 255);
 }
-@media screen and (max-width:1000px){
+@media screen and (max-width: 1000px) {
   .nav_org_logo img {
     width: 70px;
     object-fit: contain;
     padding-top: 2vh;
   }
-  .nav-bar{
+  .nav-bar {
     font-size: 1em;
   }
 }
@@ -80,32 +82,40 @@ nav {
   .nav_org_logo {
     font-size: 1.5em !important;
   }
-  .nav-bar {
-    display: none;
-  }
   .hamburger-menu {
     display: block;
     align-self: center;
     margin-top: -3vh;
     font-size: 200%;
   }
-  nav{
+  nav {
     padding: 0 40px;
   }
-  .hamburger-menu{
+  .hamburger-menu {
     cursor: pointer;
-    position:static;
-    top:0 !important;
-    /* padding-top:2vh; */
-    right:1px;
   }
-  .nav-item {
+  .nav_active {
+    height: 100vh;
+    background-color: #7ff5f5;
+    width: 100vw;
+    display: flex;
+    align-items: flex-start;
+  }
+  .nav-bar {
     display: none;
   }
-  .nav_active{
-    height:100vh;
-    background-color: #7ff5f5;
-    width:100vw;
-    margin: 0%;
+  a {
+    color: white !important;
+    z-index: 10;
+  }
+  .nav-bar_active {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    flex-direction: column;
+    min-height:100vh;
+    font-size: 2em;
+    font-weight: 500;
+    color: white;
   }
 }

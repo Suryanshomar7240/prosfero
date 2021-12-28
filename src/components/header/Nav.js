@@ -31,22 +31,13 @@ const Nav = () => {
     // return () => {
       const nav=document.querySelector("nav");
       const navBar=document.querySelector(".nav-bar");
-      const navItem=document.querySelector(".nav-item");
       const hamburger = document.querySelector(".hamburger-menu");
       hamburger.addEventListener("click", () => {
         hamburger.children[0].classList.toggle("display_none");
         hamburger.children[1].classList.toggle("display_none");
         nav.classList.toggle("nav_active");
-        navBar.classList.toggle("display_none");
-        navItem.classList.toggle("display_none");
-        console.log("click");
+        navBar.classList.toggle("nav-bar_active");
       });
-      // if(window.innerWidth<=768){
-      //   // nav.classList.add("nav_active");
-      //   navBar.classList.add("display-none");
-      //   console.log("nav_active");
-      // }
-    // };
   }, []);
   return (
     <div className="navigation" id="nav_link">
@@ -80,7 +71,7 @@ const Nav = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/user/overview">
+            <a href="/user">
               Login/Signup <MdOutlineAccountCircle />
             </a>
           </li>
