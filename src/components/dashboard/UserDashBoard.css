@@ -41,8 +41,6 @@
     padding:5vh 2vw;
 }
 
-
-
 /***************************************************************************************/
 /*                        CSS OF DONATION CARD                                         */
 /***************************************************************************************/
@@ -55,4 +53,48 @@
 }
 .User_donations .amt_user_donated,.percentage_user_donated,.collection,.progress{
     margin:5px 0;
+}
+
+@media (max-width:1200px) {
+    .User-fundraiser{
+        /* display: flex; */
+        width: 80vw;
+    }
+    .dashboard{
+        width:80vw;
+    }
+    .Dashboard-navigation{
+        min-width:20vw;
+    }
+    .Dashboard-content{
+        width:60vw;
+    }
+
+}
+@media (max-width:950px) {
+    .dashboard{
+        width:80vw;
+    }
+    .Dashboard-navigation{
+        min-width:25vw;
+    }
+    .Dashboard-content{
+        width:55vw;
+    }
+}
+@media (max-width:768px) {
+    .dashboard{
+        width:97vw;
+        margin: 0%;
+    }
+    .User-fundraiser{
+        width:97vw;
+        margin: 0%;
+    }
+    .Dashboard-navigation{
+        min-width:27vw;
+    }
+    .Dashboard-content{
+        width:70vw;
+    }
 }

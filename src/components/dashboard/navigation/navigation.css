@@ -23,3 +23,9 @@
     transition:all 250ms ease-in-out;
   }
 .navigation-items:hover:after { transform: scaleX(1);}
+@media (max-width:768px) {
+    .navigation-list{
+        font-size: 0.9em;
+        padding-left: 2.5vw;
+    }
+}
