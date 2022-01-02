@@ -1,17 +1,10 @@
 import React from "react";
 import "./UserDashBoard.css";
-import Carousel from "react-elastic-carousel";
 import Navigation from "./navigation/navigation";
-import Fundraiser from "./fundraiser/Fundraiser";
-import Donation from "./donations/donation";
-
-const breakPoints = [
-  { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2 },
-  { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 3 },
-];
-
+import Overview from "./overview/overview";
+import { Route, BrowserRouter } from 'react-router-dom';
+import Fundraisers from "./fundraiser/fundraiser";
+import Donations from "./donations/donation";
 const UserDashBoard = () => {
   return (
     <div className="dashboard">
@@ -20,7 +13,12 @@ const UserDashBoard = () => {
         <div className="Dashboard-navigation">
           <Navigation />
         </div>
-        <div className="Dashboard-content">
+        <BrowserRouter>
+          {/* <Route path='' exact component={Overview} /> */}
+          {/* <Route path='' exact component={Fundraisers} /> */}
+          <Route path='' exact component={Donations} />
+        </BrowserRouter>
+        {/* <div className="Dashboard-content">
           <div className="User_funds_head">
             Yours Recent Running Fundraisers
           </div>
@@ -112,7 +110,7 @@ const UserDashBoard = () => {
               />
             </Carousel>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

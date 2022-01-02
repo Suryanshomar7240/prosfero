@@ -31,7 +31,8 @@
 }
 .Card_right .progress
 {
-    width:90%;
+    /* width:90%; */
+    min-height:2vh;
     margin-left: 0.5vw;
 }
 .Card_right img
@@ -66,4 +67,13 @@
     .Card_right{
         width:100%;
     }
+}
+/********************************************************************************/
+/*********************************GRID CSS***************************************/
+/********************************************************************************/
+.fundraiser-grid{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 5vh;
 }
