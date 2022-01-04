@@ -41,9 +41,39 @@
     padding:5vh 2vw;
 }
 
+
+
+
+/***************************************************************************************/
+/*                        CSS OF Naavigation                                           */
+/***************************************************************************************/
+.navigation-list{
+    list-style-type:none;
+    display:flex;
+    flex-direction: column;
+    font-size:1.4em;
+    font-weight: 510;
+    justify-content: flex-start;
+    width:fit-content;
+}
+.navigation-items{
+    padding-top:3vh;
+    width:fit-content;
+    color:white;
+    cursor: pointer;
+}
+.navigation-items:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #ffffff;
+    transform: scaleX(0);
+    transition:all 250ms ease-in-out;
+  }
+.navigation-items:hover:after { transform: scaleX(1);}
 /***************************************************************************************/
 /*                        CSS OF DONATION CARD                                         */
 /***************************************************************************************/
+
 .User_donations{
     color : #63c7c7;
 }
@@ -88,13 +118,22 @@
         margin: 0%;
     }
     .User-fundraiser{
-        width:97vw;
-        margin: 0%;
+        flex-direction: column;
     }
     .Dashboard-navigation{
-        min-width:27vw;
+        width:97vw;
+    }
+    .User_name{
+        text-align: center;
+    }
+    .navigation-list{
+        flex-direction: row !important;
+        justify-content:space-around !important;
+        width:100% !important;
+        font-size: 0.9em;
+        flex-wrap: wrap;
     }
     .Dashboard-content{
-        width:70vw;
+        width:97vw;
     }
 }

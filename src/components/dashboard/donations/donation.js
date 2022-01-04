@@ -1,8 +1,9 @@
 import React from 'react';
 import Donation from './donationCard';
+import './donation.css';
 const Donations = () => {
     return (
-        <React.Fragment className='Donation_grid'>
+        <div className='Donation_grid Dashboard-content'>
             <Donation
                 imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
                 userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
@@ -63,7 +64,7 @@ const Donations = () => {
                 AmtDonated="100"
                 width="primary"
             />
-        </React.Fragment>
+        </div>
     );
 }
 

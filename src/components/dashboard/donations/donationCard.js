@@ -25,7 +25,7 @@ const Donation= (props) => {
             aria-valuenow='25'
             aria-valuemin='0'
             aria-valuemax='100'
-          ></div>
+          >{(props.progress / props.required) * 100 }%</div>
         </div>
         <button className="donate_button">Donate More</button>
       </div>
