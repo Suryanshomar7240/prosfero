@@ -1,6 +1,6 @@
-.Donation_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
+.Donation_grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px,auto));
+  padding:5vh 3vw;
+  gap:40px;
 }

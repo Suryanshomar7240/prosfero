@@ -2,7 +2,7 @@ import React from 'react';
 import Fundraiser from './FundraiserCard';
 const Fundraisers = () => {
     return (
-        <div className='fundraiser-grid'>
+        <div className='fundraiser-grid Dashboard-content'>
             <Fundraiser imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
                 userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
                 userName="yash"

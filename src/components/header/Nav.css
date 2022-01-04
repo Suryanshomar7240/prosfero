@@ -118,4 +118,7 @@ nav {
     font-weight: 500;
     color: white;
   }
+  .rec-arrow-left,.rec-arrow-right{
+    display: none;
+  }
 }
