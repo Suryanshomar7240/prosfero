@@ -1,0 +1,17 @@
+{
+  "name": "prosfero-backend",
+  "version": "1.0.0",
+  "description": "The backend dependencies for prosfero application",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5",
+    "nodemon": "^2.0.15"
+  }
+}
