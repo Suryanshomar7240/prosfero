@@ -40,7 +40,6 @@ router.route('/create').post((req, res) => {
     .then(() => res.send('New Fundraiser created successfully'))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
-
 // Get all the fundraiser for a given user (for the dashboard section)
 // We pass the userid through the url and query over this userid and return a json
 // that contains all the fundraisers created by a given user

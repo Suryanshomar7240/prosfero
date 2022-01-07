@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const fundraiserRouter = require('./routes/fundraisers');
-
 const app = express();
 app.use(express.json());
 

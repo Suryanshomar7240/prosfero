@@ -5,7 +5,8 @@ import "./UserDashBoard.css";
 import Overview from "./overview/overview";
 import Fundraisers from "./fundraiser/fundraiser";
 import Donations from "./donations/donation";
-const UserDashBoard = () => {
+import { withRouter} from "react-router-dom";
+const UserDashBoard = (props) => {
   useEffect(() => {
     const overview = document.querySelector(".nav-overview");
     const fundraiser = document.querySelector(".nav-fundraiser");
@@ -29,9 +30,10 @@ const UserDashBoard = () => {
       donationpage.classList.remove("display_none");
     });
   }, []);
+  console.log(props);
   return (
     <div className="dashboard">
-      <div className="User_name">Hello,Suryansh 👋🏻</div>
+      <div className="User_name">Hello,{props.match.params.username} 👋🏻</div>
       <div className="User-fundraiser">
         <div className="Dashboard-navigation">
           <ul className="navigation-list">
@@ -63,4 +65,4 @@ const UserDashBoard = () => {
     </div>
   );
 };
-export default UserDashBoard;
+export default withRouter(UserDashBoard);
