@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// Schema for the fundraiser model
+
 /*-> Fundraisers -> Money targeted
 
                  -> Photos ( get them from a service or mongo (tbd) )
@@ -22,10 +24,12 @@ const fundraiserSchema = new Schema(
     orgName: { type: String, required: true },
     bio: { type: String, required: true },
     photoUrl: { type: String, required: true },
-    dateOpened: { type: Date},
     targetMoney: { type: Number, required: true },
     moneyCollected: { type: Number, required: true },
     upiMobile: { type: Number, required: true },
+    active: { type: Boolean, required: true },
+    createdby: { type: String, required: true },
+    // createdby: { type: Schema.Types.ObjectId, required: true },
   },
   {
     timestamps: true,
@@ -34,4 +38,4 @@ const fundraiserSchema = new Schema(
 
 const Fundraiser = mongoose.model('Fundraiser', fundraiserSchema);
 
-module.exports = Fundraiser
+module.exports = Fundraiser;
