@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const Fundraiser = require('../models/fundraiser');
-const mongoose = require('mongoose');
 
 // Get all the active fundraisers (for the explore section)
 
@@ -20,9 +19,9 @@ router.route('/create').post((req, res) => {
   const moneyCollected = 0;
   const upiMobile = req.body.email;
   const active = true;
-  // const createdby = req.body.userId;
+  const createdby = req.body.userId;
 
-//   console.log(createdby)
+  //   console.log(createdby)
 
   const newFundraiser = new Fundraiser({
     orgName,
@@ -32,15 +31,20 @@ router.route('/create').post((req, res) => {
     moneyCollected,
     upiMobile,
     active,
+    createdby
   });
 
   newFundraiser
     .save()
-    .then(() => res.send({
-      status:200,
-      message:'New Fundraiser created successfully'}))
-    .catch((err) => res.status(401).json('Error: ' + err));
+    .then(() =>
+      res.send({
+        status: 200,
+        message: 'New Fundraiser created successfully',
+      })
+    )
+    .catch((err) => res.status(400).json('Error: ' + err));
 });
+
 // Get all the fundraiser for a given user (for the dashboard section)
 // We pass the userid through the url and query over this userid and return a json
 // that contains all the fundraisers created by a given user

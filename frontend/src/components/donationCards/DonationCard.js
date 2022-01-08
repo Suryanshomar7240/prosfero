@@ -4,7 +4,7 @@ import './donationCard.css';
 const DonationCard = (props) => {
   return (
     <React.Fragment>
-      <div className={'card_wrapper '+props.width}>
+      <div className={'card_wrapper ' + props.width}>
         <div className='img_container'>
           <img src={props.imgLink} alt='donation' />{' '}
         </div>
@@ -17,17 +17,20 @@ const DonationCard = (props) => {
           <span className='blue'>₹{props.progress}</span> raised out of{' '}
           <span className='blue'>₹{props.required}</span>
         </span>
-        <div class='progress'>
+        <div className='progress'>
           <div
-            class='progress-bar'
+            className='progress-bar'
             role='progressbar'
-            style={{ width: (props.progress / props.required) * 100 + '%' , backgroundColor: "#318CE7"}}
+            style={{
+              width: (props.progress / props.required) * 100 + '%',
+              backgroundColor: '#318CE7',
+            }}
             aria-valuenow='25'
             aria-valuemin='0'
             aria-valuemax='100'
           ></div>
         </div>
-        <button className="donate_button">Donate</button>
+        <button className='donate_button'>Donate</button>
       </div>
     </React.Fragment>
   );

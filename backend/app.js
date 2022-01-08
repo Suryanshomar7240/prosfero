@@ -1,15 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors=require('cors');
+const cors = require('cors');
 require('dotenv').config();
 
 const fundraiserRouter = require('./routes/fundraisers');
+const userRouter = require('./routes/users');
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// routes for queries over fundraisers
+// routes for queries over fundraisers and users
 app.use('/fundraiser', fundraiserRouter);
+app.use('/user', userRouter);
 
 const PORT = 5000;
 const MONGO_PWD = process.env.MONGO_PWD;

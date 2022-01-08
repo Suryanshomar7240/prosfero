@@ -28,7 +28,7 @@ const fundraiserSchema = new Schema(
     moneyCollected: { type: Number, required: true },
     upiMobile: { type: Number, required: true },
     active: { type: Boolean, required: true },
-    // createdby: { type: String, required: true },
+    createdby: { type: String, required: true },
     // createdby: { type: Schema.Types.ObjectId, required: true },
   },
   {

@@ -11,6 +11,10 @@ import {
   MdOutlineContactPage,
 } from "react-icons/md";
 
+import Logout from "../auth/logout";
+import Login from "../auth/login";
+
+
 const Nav = () => {
   const [ScrollDown, setIsScrollDown] = useState(false);
   const handleScrollDown = () => {
@@ -28,7 +32,6 @@ const Nav = () => {
   window.addEventListener("scroll", handleScrollDown);
 
   useEffect(() => {
-    // return () => {
       const nav=document.querySelector("nav");
       const navBar=document.querySelector(".nav-bar");
       const hamburger = document.querySelector(".hamburger-menu");
@@ -70,10 +73,14 @@ const Nav = () => {
               Contact Us
             </a>
           </li>
-          <li className="nav-item">
-            <a href="/user/ram">
-              Login/Signup <MdOutlineAccountCircle />
+          <li className="nav-item dpNone" id="dashboard">
+            <a href="/dashboard">
+              Dashboard <MdOutlineAccountCircle />
             </a>
+          </li>
+          <li className="nav-item">
+            <Login />
+            <Logout />
           </li>
         </ul>
         <div className="hamburger-menu">

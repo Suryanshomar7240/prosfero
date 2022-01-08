@@ -46,7 +46,7 @@ nav {
 }
 .nav-item:after {
   display: block;
-  content: "";
+  content: '';
   border-bottom: solid 3px #7ff5f5;
   transform: scaleX(0);
   transition: all 250ms ease-in-out;
@@ -68,6 +68,11 @@ nav {
   z-index: 1;
   background-color: rgb(255, 255, 255);
 }
+
+.dpNone {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
   .nav_org_logo img {
     width: 70px;
@@ -113,12 +118,13 @@ nav {
     justify-content: space-evenly;
     list-style-type: none;
     flex-direction: column;
-    min-height:100vh;
+    min-height: 100vh;
     font-size: 2em;
     font-weight: 500;
     color: white;
   }
-  .rec-arrow-left,.rec-arrow-right{
+  .rec-arrow-left,
+  .rec-arrow-right {
     display: none;
   }
 }
