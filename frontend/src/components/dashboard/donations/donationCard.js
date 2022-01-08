@@ -17,9 +17,9 @@ const Donation= (props) => {
           <span className='money'>₹{props.progress}</span> raised out of{' '}
           <span className='money'>₹{props.required}</span>
         </span>
-        <div class='progress'>
+        <div className='progress'>
           <div
-            class='progress-bar'
+            className='progress-bar'
             role='progressbar'
             style={{ width: (props.progress / props.required) * 100 + '%' , backgroundColor: "#318CE7"}}
             aria-valuenow='25'

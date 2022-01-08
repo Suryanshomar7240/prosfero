@@ -20,6 +20,7 @@ router.route('/create').post((req, res) => {
   const upiMobile = req.body.email;
   const active = true;
   const createdby = req.body.userId;
+  const type = req.body.type;
 
   //   console.log(createdby)
 
@@ -31,7 +32,8 @@ router.route('/create').post((req, res) => {
     moneyCollected,
     upiMobile,
     active,
-    createdby
+    createdby,
+    type
   });
 
   newFundraiser

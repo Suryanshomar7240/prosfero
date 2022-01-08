@@ -23,12 +23,13 @@ const fundraiserSchema = new Schema(
   {
     orgName: { type: String, required: true },
     bio: { type: String, required: true },
-    photoUrl: { type: String, required: false},
+    photoUrl: { type: String, required: false },
     targetMoney: { type: Number, required: true },
     moneyCollected: { type: Number, required: true },
     upiMobile: { type: Number, required: true },
     active: { type: Boolean, required: true },
     createdby: { type: String, required: true },
+    type: { type: String, required: true },
     // createdby: { type: Schema.Types.ObjectId, required: true },
   },
   {

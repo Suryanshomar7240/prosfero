@@ -16,9 +16,9 @@ const Fundraiser = (props) => {
           Target acheived : <span className="money">{props.progress}</span>
         </div>
         <div className="fund_progress">Percentage Progress:</div>
-        <div class="progress">
+        <div className="progress">
           <div
-            class="progress-bar bg-primary"
+            className="progress-bar bg-primary"
             role="progressbar"
             style={{
               width: (props.progress / props.required) * 100 + "%",

@@ -8,8 +8,8 @@ const clientid =
 const Login=(prop) => {
   const handleOnSuccess = (res) => {
 
-    const dashborad = document.querySelector("#dashboard")
-    dashborad.classList.remove("dpNone")
+    const dashboard = document.querySelector("#dashboard")
+    dashboard.classList.remove("dpNone")
 
     // console.log( "damn -> " + res.getAuthResponse().id_token);
     const profile = res.getBasicProfile();
@@ -30,6 +30,7 @@ const Login=(prop) => {
     };
     
     prop.SetAuth(true);
+    prop.Setuserid(userid)
     axios
       .post('http://localhost:5000/user/login', data)
       .then((res) => {console.log(res)

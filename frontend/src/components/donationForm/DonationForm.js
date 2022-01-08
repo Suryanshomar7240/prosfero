@@ -29,42 +29,42 @@ const DonationForm = () => {
   // console.log(data);
   return (
     <div>
-      <div class="page-wrapper bg-dark p-t-100 p-b-50">
-        <div class="wrapper wrapper--w900" style={{ marginBottom: "200px" }}>
-          <div class="card card-6">
-            <div class="card-heading">
-              <h2 class="title">Start a Fundraiser</h2>
+      <div className="page-wrapper bg-dark p-t-100 p-b-50">
+        <div className="wrapper wrapper--w900" style={{ marginBottom: "200px" }}>
+          <div className="card card-6">
+            <div className="card-heading">
+              <h2 className="title">Start a Fundraiser</h2>
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <form method="POST">
-                <div class="form-row">
-                  <div class="name">Full name</div>
-                  <div class="value">
+                <div className="form-row">
+                  <div className="name">Full name</div>
+                  <div className="value">
                     <input
-                      class="input--style-6"
+                      className="input--style-6"
                       type="text"
                       name="full_name"
                       onChange={handleInputs}
                     />
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="name">Name of Organization</div>
-                  <div class="value">
+                <div className="form-row">
+                  <div className="name">Name of Organization</div>
+                  <div className="value">
                     <input
-                      class="input--style-6"
+                      className="input--style-6"
                       type="text"
                       name="org_name"
                       onChange={handleInputs}
                     />
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="name">Mobile No.</div>
-                  <div class="value">
-                    <div class="input-group">
+                <div className="form-row">
+                  <div className="name">Mobile No.</div>
+                  <div className="value">
+                    <div className="input-group">
                       <input
-                        class="input--style-6"
+                        className="input--style-6"
                         type="number"
                         name="email"
                         placeholder="example@email.com"
@@ -73,12 +73,12 @@ const DonationForm = () => {
                     </div>
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="name">Motive</div>
-                  <div class="value">
-                    <div class="input-group">
+                <div className="form-row">
+                  <div className="name">Motive</div>
+                  <div className="value">
+                    <div className="input-group">
                       <textarea
-                        class="textarea--style-6"
+                        className="textarea--style-6"
                         name="motive"
                         placeholder="Brief about the purpose that this fundraiser serves"
                         onChange={handleInputs}
@@ -86,11 +86,11 @@ const DonationForm = () => {
                     </div>
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="name">Funds Required</div>
-                  <div class="value">
+                <div className="form-row">
+                  <div className="name">Funds Required</div>
+                  <div className="value">
                     <input
-                      class="input--style-6"
+                      className="input--style-6"
                       type="text"
                       name="required_money"
                       placeholder="Enter the amount of money you need in rupees"
@@ -98,22 +98,22 @@ const DonationForm = () => {
                     />
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="name">Upload an image</div>
-                  <div class="value">
-                    <div class="input-group js-input-file">
+                <div className="form-row">
+                  <div className="name">Upload an image</div>
+                  <div className="value">
+                    <div className="input-group js-input-file">
                       <input
-                        class="input-file"
+                        className="input-file"
                         type="file"
                         name="img_banner"
                         id="file"
                       />
-                      <label class="label--file" for="file">
+                      <label className="label--file" for="file">
                         Choose file
                       </label>
-                      <span class="input-file__info">No file chosen</span>
+                      <span className="input-file__info">No file chosen</span>
                     </div>
-                    <div class="label--desc">
+                    <div className="label--desc">
                       Upload an image that will serve as a banner to your fund
                       raiser. Max file size 50 MB
                     </div>
@@ -121,9 +121,9 @@ const DonationForm = () => {
                 </div>
               </form>
             </div>
-            <div class="card-footer">
+            <div className="card-footer">
               <button
-                class="btn btn--radius-2 btn--blue-2 bb"
+                className="btn btn--radius-2 btn--blue-2 bb"
                 type="submit"
                 onClick={handleSubmit}
               >

@@ -1,12 +1,13 @@
-import React,{useEffect} from "react";
-import { AiFillMoneyCollect, AiFillProfile } from "react-icons/ai";
-import { BiDonateHeart } from "react-icons/bi";
-import "./UserDashBoard.css";
-import Overview from "./overview/overview";
-import Fundraisers from "./fundraiser/fundraiser";
-import Donations from "./donations/donation";
-import { withRouter} from "react-router-dom";
-import axios from "axios";
+import React, { useEffect } from 'react';
+import { AiFillMoneyCollect, AiFillProfile } from 'react-icons/ai';
+import { BiDonateHeart } from 'react-icons/bi';
+import './UserDashBoard.css';
+import Overview from './overview/overview';
+import Fundraisers from './fundraiser/fundraiser';
+import Donations from './donations/donation';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 
 const UserDashBoard = (props) => {
   const userid = props.match.params.id;
@@ -45,18 +46,19 @@ const UserDashBoard = (props) => {
     });
 
     axios
-      .get('http://localhost:5000/user/dashboard', { userid: userid })
+      .get(`http://localhost:5000/user/dashboard/${userid}`)
       .then((res) => {
+        console.log(res)
         setParams({
-          username: res.firstname + ' ' + res.lastname,
-          email: res.email,
-          pfp_url: res.pfp_url,
-          fundraiserDids: res.fundraisersDonatedTo
+          username: res.data.firstname + ' ' + res.data.lastname,
+          email: res.data.email,
+          pfp_url: res.data.pfp_url,
+          fundraiserDids: res.data.fundraisersDonatedTo,
         });
       });
   }, []);
 
-  console.log(params);
+  // console.log(params);
 
   return (
     <div className='dashboard'>

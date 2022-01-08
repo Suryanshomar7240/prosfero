@@ -42,10 +42,12 @@ router.route('/login').post((req, res) => {
         .catch((err) => res.status(400).json('Error: ' + err));
     });
 });
-router.route('/dashboard').get((req, res) => {
-  const userid =  req.body.userid
+router.route('/dashboard/:id').get((req, res) => {
+  const userid =  req.params.id
+  console.log(userid)
   User.find({ googleid: userid })
     .then((user) => {
+      console.log(user[0].firstname)
       res.send({
         firstname : user[0].firstname,
         lastname : user[0].lastname,
