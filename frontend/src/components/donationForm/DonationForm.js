@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./donationForm.css";
+import axios from "axios";
 // import { useEffect } from 'react';
 
 const DonationForm = () => {
@@ -17,24 +18,13 @@ const DonationForm = () => {
     SetData({ ...data, [name]: value });
   };
   const handleSubmit = async () => {
-    // e.PreventDefault();
-    const res = await fetch("/fundraiser/active", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        orgName: data.org_name,
-        bio: data.motive,
-        photoUrl: null,
-        targetMoney: data.required_money,
-        moneyCollected: 0,
-        upiMobile: 0,
-        active: null,
-        createdby: null,
-      }),
-    });
-    console.log(res);
+    console.log(data);
+    axios
+      .post("http://localhost:5000/fundraiser/create", data)
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err + "error");
+      });
   };
   // console.log(data);
   return (
@@ -70,12 +60,12 @@ const DonationForm = () => {
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="name">Email address</div>
+                  <div class="name">Mobile No.</div>
                   <div class="value">
                     <div class="input-group">
                       <input
                         class="input--style-6"
-                        type="email"
+                        type="number"
                         name="email"
                         placeholder="example@email.com"
                         onChange={handleInputs}
