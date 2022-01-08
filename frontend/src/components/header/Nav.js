@@ -16,6 +16,7 @@ import Login from "../auth/login";
 
 
 const Nav = () => {
+  
   const [ScrollDown, setIsScrollDown] = useState(false);
   const handleScrollDown = () => {
     if (window.scrollY >= 60) {
@@ -29,6 +30,7 @@ const Nav = () => {
       document.querySelector(".navigation").classList.remove("nav_scroll");
     }
   };
+
   window.addEventListener("scroll", handleScrollDown);
 
   useEffect(() => {
@@ -42,6 +44,7 @@ const Nav = () => {
         navBar.classList.toggle("nav-bar_active");
       });
   }, []);
+
   return (
     <div className="navigation" id="nav_link">
       <nav>
