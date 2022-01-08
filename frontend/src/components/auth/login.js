@@ -19,6 +19,7 @@ const Login = () => {
     const lastname = profile.getFamilyName();
     const email = profile.getEmail();
     const userid = profile.getId();
+    const pfp_url = profile.getImageUrl()
     // console.log(firstname,lastname,email,userid)
 
     const data = {
@@ -27,6 +28,7 @@ const Login = () => {
       lastname: lastname,
       email: email,
       userid: userid,
+      pfp_url: pfp_url,
     };
 
     axios
