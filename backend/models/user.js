@@ -15,7 +15,6 @@ const userSchema = new Schema({
   email: { type: String, required: true },
   googleid: { type: String, required: true },
   id_token: { type: String, required: true },
-  pfp_url: { type: String, required: true },
   fundraisersDonatedTo: [{ fundId: String, donatedAmount: Number }],
 });
 

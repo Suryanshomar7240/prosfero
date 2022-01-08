@@ -42,7 +42,6 @@ router.route('/login').post((req, res) => {
         .catch((err) => res.status(400).json('Error: ' + err));
     });
 });
-
 router.route('/dashboard').get((req, res) => {
   const userid =  req.body.userid
   User.find({ googleid: userid })
@@ -59,7 +58,4 @@ router.route('/dashboard').get((req, res) => {
       res.status(400).json('Error: ' + err)
     })
 });
-
-
-
 module.exports = router;

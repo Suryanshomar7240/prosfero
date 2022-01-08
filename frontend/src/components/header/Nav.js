@@ -18,6 +18,8 @@ import Login from "../auth/login";
 const Nav = () => {
   
   const [ScrollDown, setIsScrollDown] = useState(false);
+  const [isAuthnticated,SetisAuthicated]=useState(false);
+  const [userid,Setuserid]=useState(null);
   const handleScrollDown = () => {
     if (window.scrollY >= 60) {
       setIsScrollDown(true);
@@ -77,13 +79,14 @@ const Nav = () => {
             </a>
           </li>
           <li className="nav-item dpNone" id="dashboard">
-            <a href="/dashboard">
-              Dashboard <MdOutlineAccountCircle />
+            <a href={"/dashboard/"+userid}>
+             <MdOutlineAccountCircle /> Dashboard 
             </a>
           </li>
           <li className="nav-item">
-            <Login />
-            <Logout />
+            {isAuthnticated?<Logout SetAuth={SetisAuthicated}/>:<Login SetAuth={SetisAuthicated}
+            Setuserid={Setuserid}
+            />}
           </li>
         </ul>
         <div className="hamburger-menu">

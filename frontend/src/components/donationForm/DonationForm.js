@@ -59,7 +59,6 @@ const DonationForm = () => {
                     />
                   </div>
                 </div>
-                {/* service_4nhy15e */}
                 <div class="form-row">
                   <div class="name">Mobile No.</div>
                   <div class="value">
