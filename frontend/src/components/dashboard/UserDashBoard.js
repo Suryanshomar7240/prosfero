@@ -6,6 +6,7 @@ import Overview from "./overview/overview";
 import Fundraisers from "./fundraiser/fundraiser";
 import Donations from "./donations/donation";
 import { withRouter} from "react-router-dom";
+import axios from "axios";
 const UserDashBoard = (props) => {
   useEffect(() => {
     const overview = document.querySelector(".nav-overview");
@@ -30,9 +31,12 @@ const UserDashBoard = (props) => {
       donationpage.classList.remove("display_none");
     });
   }, []);
-  console.log(props);
+  const dataRender=()=>{
+       const res=axios.get('http://localhost:5000/user/find');
+       console.log(res);
+  }
   return (
-    <div className="dashboard">
+    <div className="dashboard" onLoad={dataRender}>
       <div className="User_name">Hello,{props.match.params.username} 👋🏻</div>
       <div className="User-fundraiser">
         <div className="Dashboard-navigation">

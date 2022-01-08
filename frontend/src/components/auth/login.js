@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const clientid =
   '164103917734-69vt13rut8unj21kf48ledmfs28dop7r.apps.googleusercontent.com';
-
-const Login = () => {
+  
+const Login=(prop) => {
   const handleOnSuccess = (res) => {
 
     const dashborad = document.querySelector("#dashboard")
@@ -19,7 +19,6 @@ const Login = () => {
     const lastname = profile.getFamilyName();
     const email = profile.getEmail();
     const userid = profile.getId();
-    const pfp_url = profile.getImageUrl()
     // console.log(firstname,lastname,email,userid)
 
     const data = {
@@ -28,12 +27,13 @@ const Login = () => {
       lastname: lastname,
       email: email,
       userid: userid,
-      pfp_url: pfp_url,
     };
-
+    
+    prop.SetAuth(true);
     axios
       .post('http://localhost:5000/user/login', data)
-      .then((res) => console.log(res))
+      .then((res) => {console.log(res)
+      })
       .catch((err) => console.log(err));
   };
 
