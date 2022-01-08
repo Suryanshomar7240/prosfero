@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const clientid =
   '164103917734-69vt13rut8unj21kf48ledmfs28dop7r.apps.googleusercontent.com';
-
-const Login = () => {
+  
+const Login=(prop) => {
   const handleOnSuccess = (res) => {
 
     const dashborad = document.querySelector("#dashboard")
@@ -28,10 +28,12 @@ const Login = () => {
       email: email,
       userid: userid,
     };
-
+    
+    prop.SetAuth(true);
     axios
       .post('http://localhost:5000/user/login', data)
-      .then((res) => console.log(res))
+      .then((res) => {console.log(res)
+      })
       .catch((err) => console.log(err));
   };
 
