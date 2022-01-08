@@ -13,14 +13,14 @@ router.route('/active').get((req, res) => {
 // Create a new fundraiser (for the create fundraiser section)
 
 router.route('/create').post((req, res) => {
-  const orgName = req.body.orgName;
-  const bio = req.body.bio;
-  const photoUrl = req.body.photoUrl;
-  const targetMoney = req.body.targetMoney;
-  const moneyCollected = req.body.moneyCollected;
-  const upiMobile = req.body.upiMobile;
+  const orgName = req.body.org_name;
+  const bio = req.body.motive;
+  const photoUrl = null;
+  const targetMoney = req.body.required_money;
+  const moneyCollected = 0;
+  const upiMobile = req.body.email;
   const active = true;
-  const createdby = req.body.userId;
+  // const createdby = req.body.userId;
 
 //   console.log(createdby)
 
@@ -32,15 +32,15 @@ router.route('/create').post((req, res) => {
     moneyCollected,
     upiMobile,
     active,
-    createdby,
   });
 
   newFundraiser
     .save()
-    .then(() => res.send('New Fundraiser created successfully'))
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .then(() => res.send({
+      status:200,
+      message:'New Fundraiser created successfully'}))
+    .catch((err) => res.status(401).json('Error: ' + err));
 });
-
 // Get all the fundraiser for a given user (for the dashboard section)
 // We pass the userid through the url and query over this userid and return a json
 // that contains all the fundraisers created by a given user

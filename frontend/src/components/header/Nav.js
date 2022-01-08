@@ -71,7 +71,7 @@ const Nav = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/user">
+            <a href="/user/ram">
               Login/Signup <MdOutlineAccountCircle />
             </a>
           </li>
