@@ -48,7 +48,7 @@ const UserDashBoard = (props) => {
     axios
       .get(`http://localhost:5000/user/dashboard/${userid}`)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         setParams({
           username: res.data.firstname + ' ' + res.data.lastname,
           email: res.data.email,

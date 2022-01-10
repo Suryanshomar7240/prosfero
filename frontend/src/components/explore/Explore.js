@@ -2,15 +2,63 @@ import React from 'react';
 import './explore.css';
 import eq from '../../assets/farmer3.jpg';
 import DonationCard from '../donationCards/DonationCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+// https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg
+
+/*     {
+      orgName: '',
+      bio: '',
+      photoUrl: '',
+      targetMoney: '',
+      moneyCollected: '',
+      upiMobile: '',
+      active: false,
+      createdby: '',
+      type: '',
+      creator_pfp: '',
+      username: '',
+    },*/
 
 const Explore = () => {
   const [options, setOptions] = useState('all');
+  const [fundraisers, setFundraisers] = useState([]);
+
+  const onload = (() => {
+    axios.get('http://localhost:5000/fundraiser/active').then(async (res) => {
+      res.data.map((frs) => {
+        // console.log(frs)
+        const data = {
+          orgName: frs.orgName,
+          bio: frs.bio,
+          photoUrl: frs.photoUrl,
+          targetMoney: frs.targetMoney,
+          moneyCollected: frs.moneyCollected,
+          upiMobile: frs.upiMobile,
+          active: frs.active,
+          createdby: frs.createdby,
+          type: frs.type,
+          creator_pfp: '',
+          username: '',
+        };
+        axios
+          .get(`http://localhost:5000/user/dashboard/${frs.createdby}`)
+          .then((res) => {
+            data.creator_pfp = res.data.pfp_url;
+            data.username = res.data.firstname + ' ' + res.data.lastname;
+            setFundraisers(fundraisers.push(data));
+            // console.log(fundraisers);
+          });
+
+      });
+    });
+  });
 
   const handleChange = (e) => {
     setOptions(e.target.value);
   };
-  console.log(options);
+  // console.log(options);
 
   return (
     <div>
@@ -44,61 +92,8 @@ const Explore = () => {
             <button className='leftNavbarElement'>Other Causes</button>
           </div>
         </div>
-        <div className='exploreCardsContainer'>
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
+        <div className='exploreCardsContainer' onLoad={onload}>
+          {console.log(fundraisers)}
         </div>
       </div>
     </div>
