@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './homepage.css';
+import axios from 'axios';
 import donate_image from '../../assets/donate.png';
 import DonationCard from '../donationCards/DonationCard';
 import Options from './options/Options';
@@ -14,6 +15,31 @@ const breakPoints = [
 ];
 
 const Homepage = () => {
+
+
+  const [fundraisers, setFundraisers] = useState([]);
+  const [userName,setUserName]=useState('');
+
+    const getActiveFundraiser=()=>{
+      return axios.get('http://localhost:5000/fundraiser/active');
+    }
+
+    const getDashboardData=(data)=>{
+      return Promise.all(data.map((fr)=>{
+        return fr
+      }))
+    }
+
+    useEffect(() => {
+   getActiveFundraiser()
+    .then(active=>getDashboardData(active.data))
+   .then((dash=>setFundraisers(dash)))
+    }, [])
+
+    const getUserData=(id)=>{
+        return axios.get(`http://localhost:5000/user/dashboard/${id}`);
+    }
+
   return (
     <div id='home'>
       <section className='intro'>
@@ -45,51 +71,21 @@ const Homepage = () => {
         </h4>
         {/* <div className='trendingDonationContainer'> */}
         <Carousel breakPoints={breakPoints}>
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
-          <DonationCard
-            imgLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userImg='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-            userName='yash'
-            orgName='Gareeb Foundation'
-            progress='90000'
-            required='100000'
-            width='primary'
-          />
+        {fundraisers.map((data,value)=>{
+          getUserData(data.createdby).then((res)=>{
+            setUserName(res.data.firstname)});
+            return(
+              <DonationCard 
+              key={value} 
+              orgName={data.orgName}
+              imgLink={data.photoUrl}
+              userImg={data.photoUrl}
+              userName={userName}
+              progress={data.moneyCollected}
+              required={data.targetMoney}
+               />
+            )
+          })}
         </Carousel>
         <div className='btn_container'>
           <button className='to_donate_page' onClick={()=>{window.location='/explore'}}> &nbsp; Explore More &nbsp;</button>
