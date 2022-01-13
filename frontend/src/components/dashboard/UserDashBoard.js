@@ -56,7 +56,7 @@ const UserDashBoard = (props) => {
           fundraiserDids: res.data.fundraisersDonatedTo,
         });
       });
-  }, []);
+  }, [userid]);
 
   // console.log(params);
 

@@ -1,8 +1,7 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import './explore.css';
 import eq from '../../assets/farmer3.jpg';
 import DonationCard from '../donationCards/DonationCard';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg
@@ -98,6 +97,9 @@ const Explore = () => {
                 required={data.targetMoney}
                 />
             )}
+            else{
+              return null
+            }
           })}
         </div>
       </div>
