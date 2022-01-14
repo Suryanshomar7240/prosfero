@@ -6,9 +6,11 @@ const clientid =
 
 const Logout = (prop) => {
   const handleOnSuccess = () => {
-    const dashborad = document.querySelector('#dashboard');;
+    const dashborad = document.querySelector('#dashboard');
     dashborad.classList.add('dpNone');
     prop.SetAuth(false);
+    localStorage.clear();
+    window.location.reload(false);
     alert('User logged out successfully');
   };
 
