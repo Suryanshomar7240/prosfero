@@ -24,31 +24,33 @@ import axios from 'axios';
 const Explore = () => {
   const [options, setOptions] = useState('all');
   const [fundraisers, setFundraisers] = useState([]);
-  const [userName,setUserName]=useState('');
+  const [userName, setUserName] = useState('');
 
-    const getActiveFundraiser=()=>{
-      return axios.get('http://localhost:5000/fundraiser/active');
-    }
+  const getActiveFundraiser = () => {
+    return axios.get('http://localhost:5000/fundraiser/active');
+  };
 
-    const getDashboardData=(data)=>{
-      return Promise.all(data.map((fr)=>{
-        return fr
-      }))
-    }
+  const getDashboardData = (data) => {
+    return Promise.all(
+      data.map((fr) => {
+        return fr;
+      })
+    );
+  };
 
-    useEffect(() => {
-   getActiveFundraiser()
-    .then(active=>getDashboardData(active.data))
-   .then((dash=>setFundraisers(dash)))
-    }, [])
+  useEffect(() => {
+    getActiveFundraiser()
+      .then((active) => getDashboardData(active.data))
+      .then((dash) => setFundraisers(dash));
+  }, []);
 
-    const getUserData=(id)=>{
-        return axios.get(`http://localhost:5000/user/dashboard/${id}`);
-    }
+  const getUserData = (id) => {
+    return axios.get(`http://localhost:5000/user/dashboard/${id}`);
+  };
 
-    const handleChange=(e)=>{
-       setOptions(e.target.value)
-    }
+  const handleChange = (e) => {
+    setOptions(e.target.value);
+  };
 
   return (
     <div>
@@ -75,29 +77,61 @@ const Explore = () => {
         <div className='leftNavbar'>
           <div className='categoriesHeading'>Categories</div>
           <div className='categoriesContainer'>
-            <button className='leftNavbarElement'  value='education' onClick={handleChange}>Education</button>
-            <button className='leftNavbarElement' value='medical' onClick={handleChange}>Medical</button>
-            <button className='leftNavbarElement'value='disaster' onClick={handleChange}>Disaster Relief</button>
-            <button className='leftNavbarElement'value='animal' onClick={handleChange}>Animal Welfare</button>
-            <button className='leftNavbarElement'value='other' onClick={handleChange}>Other Causes</button>
+            <button
+              className='leftNavbarElement'
+              value='education'
+              onClick={handleChange}
+            >
+              Education
+            </button>
+            <button
+              className='leftNavbarElement'
+              value='medical'
+              onClick={handleChange}
+            >
+              Medical
+            </button>
+            <button
+              className='leftNavbarElement'
+              value='disaster'
+              onClick={handleChange}
+            >
+              Disaster Relief
+            </button>
+            <button
+              className='leftNavbarElement'
+              value='animal'
+              onClick={handleChange}
+            >
+              Animal Welfare
+            </button>
+            <button
+              className='leftNavbarElement'
+              value='other'
+              onClick={handleChange}
+            >
+              Other Causes
+            </button>
           </div>
         </div>
         <div className='exploreCardsContainer'>
-          {fundraisers.map((data,value)=>{
-          getUserData(data.createdby).then((res)=>{
-            setUserName(res.data.firstname)});
-            if(options==='all'||options===data.type)
-              {return(
-                <DonationCard 
-                key={value} 
-                orgName={data.orgName}
-                imgLink={data.photoUrl}
-                userImg={data.photoUrl}
-                userName={userName}
-                progress={data.moneyCollected}
-                required={data.targetMoney}
+          {fundraisers.map((data, value) => {
+            getUserData(data.createdby).then((res) => {
+              setUserName(res.data.firstname);
+            });
+            if (options === 'all' || options === data.type) {
+              return (
+                <DonationCard
+                  key={value}
+                  orgName={data.orgName}
+                  imgLink={data.photoUrl}
+                  userImg={data.photoUrl}
+                  userName={userName}
+                  progress={data.moneyCollected}
+                  required={data.targetMoney}
                 />
-            )}
+              );
+            }
           })}
         </div>
       </div>

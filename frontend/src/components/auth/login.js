@@ -4,12 +4,19 @@ import axios from 'axios';
 
 const clientid =
   '164103917734-69vt13rut8unj21kf48ledmfs28dop7r.apps.googleusercontent.com';
-  
-const Login=(prop) => {
-  const handleOnSuccess = (res) => {
 
-    const dashboard = document.querySelector("#dashboard")
-    dashboard.classList.remove("dpNone")
+class Login extends React.Component {
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      uId : ''
+    }
+  }
+
+  handleOnSuccess = (res) => {
+    const dashboard = document.querySelector('#dashboard');
+    dashboard.classList.remove('dpNone');
 
     // console.log( "damn -> " + res.getAuthResponse().id_token);
     const profile = res.getBasicProfile();
@@ -20,6 +27,7 @@ const Login=(prop) => {
     const email = profile.getEmail();
     const userid = profile.getId();
     // console.log(firstname,lastname,email,userid)
+    this.setState(this.uId = userid)
 
     const data = {
       id_token: id_token,
@@ -28,32 +36,37 @@ const Login=(prop) => {
       email: email,
       userid: userid,
     };
-    
-    prop.SetAuth(true);
-    prop.Setuserid(userid)
+
+    this.props.SetAuth(true);
+    this.props.Setuserid(userid);
     axios
       .post('http://localhost:5000/user/login', data)
-      .then((res) => {console.log(res)
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => console.log(err));
   };
 
-  const handleOnFailure = (res) => {
+  handleOnFailure = (res) => {
     console.log(`[Login failed] response: ${res}`);
   };
 
-  return (
+  getUserId = () => {
+    return this.state.uId;
+  };
+
+  reder() {
     <div>
       <GoogleLogin
         clientId={clientid}
         buttonText='Login'
-        onSuccess={handleOnSuccess}
-        onFailure={handleOnFailure}
+        onSuccess={this.handleOnSuccess}
+        onFailure={this.handleOnFailure}
         cookiePolicy='single_host_origin'
         isSignedIn={true}
       />
     </div>
-  );
+  };
 };
 
 export default Login;
