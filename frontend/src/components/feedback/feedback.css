@@ -1,0 +1,8 @@
+.feedback_form{
+    width:60%;
+    height:60%;
+    margin:auto;
+    z-index: 100;
+    background-color: white;
+    border-radius:20%;
+}

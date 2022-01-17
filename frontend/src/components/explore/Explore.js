@@ -4,6 +4,8 @@ import eq from '../../assets/farmer3.jpg';
 import DonationCard from '../donationCards/DonationCard';
 import axios from 'axios';
 
+import { withRouter } from 'react-router-dom';
+
 // https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg
 
 /*     {
@@ -20,7 +22,7 @@ import axios from 'axios';
       username: '',
     },*/
 
-const Explore = () => {
+const Explore = (prop) => {
   const [options, setOptions] = useState('all');
   const [fundraisers, setFundraisers] = useState([]);
   const [userName, setUserName] = useState('');
@@ -41,7 +43,12 @@ const Explore = () => {
     getActiveFundraiser()
       .then((active) => getDashboardData(active.data))
       .then((dash) => setFundraisers(dash));
-  }, []);
+
+      if(prop.match.params.tag)
+      {
+        setOptions(prop.match.params.tag)
+      }
+  }, [prop]);
 
   const getUserData = (id) => {
     return axios.get(`http://localhost:5000/user/dashboard/${id}`);
@@ -140,4 +147,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default withRouter(Explore);

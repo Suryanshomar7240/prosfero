@@ -58,10 +58,20 @@ const UserDashBoard = (props) => {
       });
   }, [userid]);
 
+  const test=()=>{
+    const data = {
+      Team_name:"ram",
+    };
+    axios
+      .post('http://127.0.0.1:8000/team/register/', data)
+      .then((res) => {console.log(res)
+      })
+      .catch((err) => console.log(err));
+  }
   // console.log(params);
 
   return (
-    <div className='dashboard'>
+    <div className='dashboard' onLoad={test}>
       <div className='User_name'>Hello,{params.username} 👋🏻</div>
       <div className='User-fundraiser'>
         <div className='Dashboard-navigation'>
