@@ -17,6 +17,7 @@ function App() {
       <Route path='/contact' exact component={Contact} />
       <Route path='/dashboard/:id' exact component={UserDashBoard} />
       <Route path='/explore' exact component={Explore} />
+      <Route path='/explore/:tag' exact component={Explore} />
       <Route path='/donate' exact component={DonationForm} />
       <Footer />
     </BrowserRouter>

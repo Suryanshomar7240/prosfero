@@ -10,11 +10,11 @@ const Options = () => {
     return (
         <div>
             <div className="optionsContainer">
-            <div className="imageContainer"><img src={medical} alt="medical" /><br />Medical</div>
-            <div className="imageContainer"><img src={education} alt="education" id='iw' /><br />Education</div>
-            <div className="imageContainer"><img src={naturalDisaster} alt="naturalDisaster" /><br />Natural Disaster</div>
-            <div className="imageContainer"><img src={animals} alt="animals" /><br />Animals</div>
-            <div className="imageContainer"><img src={donateHand} alt="donateHand" /><br />Other Causes</div>
+            <div className="imageContainer"><img src={medical} alt="medical" onClick={()=>{window.location='/explore/medical'}}/><br />Medical</div>
+            <div className="imageContainer"><img src={education} alt="education" id='iw' onClick={()=>{window.location='/explore/education'}}/><br />Education</div>
+            <div className="imageContainer"><img src={naturalDisaster} alt="naturalDisaster" onClick={()=>{window.location='/explore/disaster'}}/><br />Natural Disaster</div>
+            <div className="imageContainer"><img src={animals} alt="animals" onClick={()=>{window.location='/explore/animal'}}/><br />Animals</div>
+            <div className="imageContainer"><img src={donateHand} alt="donateHand" onClick={()=>{window.location='/explore/other'}}/><br />Other Causes</div>
           </div>
         </div>
     )
