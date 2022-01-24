@@ -1,5 +1,9 @@
 const router = require('express').Router();
 const Fundraiser = require('../models/fundraiser');
+const { OAuth2Client } = require('google-auth-library');
+const axios = require('axios');
+require('dotenv').config();
+process.env.CLIENT_ID;
 
 // Get all the active fundraisers (for the explore section)
 
@@ -11,7 +15,7 @@ router.route('/active').get((req, res) => {
 
 // Create a new fundraiser (for the create fundraiser section)
 
-router.route('/create').post((req, res) => {
+router.route('/create').post(async (req, res) => {
   const orgName = req.body.org_name;
   const bio = req.body.motive;
   const photoUrl = req.body.photoUrl;
@@ -33,7 +37,7 @@ router.route('/create').post((req, res) => {
     upiMobile,
     active,
     createdby,
-    type
+    type,
   });
 
   newFundraiser
