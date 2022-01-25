@@ -92,7 +92,7 @@ const UserDashBoard = (props) => {
           </ul>
         </div>
         <div className='overview_page'>
-          <Overview />
+          <Overview userid={userid}/>
         </div>
         <div className='fundraiser_page display_none'>
           <Fundraisers />
