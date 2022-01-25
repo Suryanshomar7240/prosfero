@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const Fundraiser = require('../models/fundraiser');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const JWTSICKRET = process.env.JWTSICKRET;
@@ -52,17 +53,30 @@ router.route('/login').post(async (req, res) => {
           res
             .status(201)
             .json({ user: admin._id, message: 'Admin logged in succesfully' });
-        }
-        else {
-            throw Error("Incorrect Username or Password")
+        } else {
+          throw Error('Incorrect Username or Password');
         }
       })
-      .catch((err) => {
-          res.send("Incorrect username or password");
+      .catch(() => {
+        res.send('Incorrect username or password');
       });
   } catch (err) {
     console.log(err);
     res.send(err);
+  }
+});
+
+router.route('/delete/:id').delete((req, res) => {
+  const jwtToken = req.body.jwttoken;
+  try {
+    const decode = jwt.verify(jwtToken, JWTSICKRET);
+    console.log('Delete request created by ' + decode.userid);
+    const delId = req.params.id;
+    Fundraiser.deleteOne({ _id: delId })
+      .then(() => res.status(200).json('Deleted item successfully'))
+      .catch((err) => res.status(400).json(err));
+  } catch {
+    res.send('User not verified');
   }
 });
 

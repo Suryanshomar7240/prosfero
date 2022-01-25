@@ -67,7 +67,7 @@ const Nav = () => {
           <li className='nav-item'>
             <a href='/donate'>
               <MdOutlineCreateNewFolder />
-              Create Donation
+              Start Fundraiser
             </a>
           </li>
           <li className='nav-item'>

@@ -1,19 +1,62 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Card from '../card/Card';
-import "./home.css"
+import './home.css';
 
 const Home = () => {
-  return (<div>
-      <div className="card_container">
-          <Card key={1}
-            orgName = {"gareeb foundation"}
-            imgLink = {"https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"}
-            userImg = {"https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"} 
-            userName = {"Yashraj"}
-            progress = {5000}
-            required = {7000}/>
+  const [fundraisers, setFundraisers] = useState([]);
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+
+  const getActiveFundraiser = () => {
+    return axios.get('http://localhost:5000/fundraiser/active');
+  };
+
+  const getDashboardData = (data) => {
+    return Promise.all(
+      data.map((fr) => {
+        return fr;
+      })
+    );
+  };
+
+  const getUserData = (id) => {
+    return axios.get(`http://localhost:5000/user/dashboard/${id}`);
+  };
+
+  useEffect(() => {
+    getActiveFundraiser()
+      .then((active) => getDashboardData(active.data))
+      .then((dash) => setFundraisers(dash));
+  }, []);
+
+  return (
+    <div>
+      <div className='container'>
+        {fundraisers.map((data, value) => {
+          getUserData(data.createdby).then((res) => {
+            setUserName(res.data.firstname);
+            setUserEmail(res.data.email)
+          });
+
+          return (
+            <Card
+              key={value}
+              orgName={data.orgName}
+              imgLink={data.photoUrl}
+              userImg={data.photoUrl}
+              userName={userName}
+              progress={data.moneyCollected}
+              required={data.targetMoney}
+              userid = {data._id}
+              useremail = {userEmail}
+            />
+          );
+        })}
       </div>
-  </div>);
+    </div>
+  );
 };
 
 export default Home;

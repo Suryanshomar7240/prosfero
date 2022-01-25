@@ -5,6 +5,9 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin: 20px 0;
   /* margin-bottom:20px; */
+  max-width: 30vw !important;
+  min-width: 300px;
+  margin: 30px;
 }
 
 .primary {
@@ -75,9 +78,15 @@
   transition: all 0.3s ease 0s;
 }
 
+
 .donate_button:hover {
   background-color: #2ee59d;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
   transform: translateY(-5px);
+}
+
+.red:hover {
+  background-color: #DD0004 !important;
+  box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
 }

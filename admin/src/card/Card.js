@@ -1,7 +1,45 @@
+import axios from 'axios';
 import React from 'react';
+import Cookies from 'js-cookie';
+import { send, init } from 'emailjs-com';
 import './card.css';
 
 const Card = (props) => {
+  const handleDelete = () => {
+    const jwttoken = Cookies.get('jwt') || 'invalid';
+
+    const url = 'http://localhost:5000/admin/delete/' + props.userid;
+    axios
+      .delete(url, {
+        data: {
+          jwttoken: jwttoken,
+        },
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReport = () => {
+    const data =
+      'Your Fundraiser was deleted as it was reported as not appropriate by the Prosfero Team.';
+    console.log('click ');
+    send(
+      'service_4nhy15e',
+      'template_dnrtv93',
+      data,
+      'user_36SNYbq8KaIwjEzuiv63F'
+    )
+      .then(() => {
+        // window.alert('Message sent successfully to Prosfero Team');
+        console.log('User reported successfully');
+      })
+      .catch((err) => {
+        console.log('Error Occured: ', err);
+      });
+  };
+
   return (
     <div>
       <React.Fragment>
@@ -31,7 +69,12 @@ const Card = (props) => {
               aria-valuemax='100'
             ></div>
           </div>
-          <button className='donate_button'>Donate</button>
+          <button className='donate_button red' onClick={handleReport}>
+            Report User
+          </button>
+          <button className='donate_button red' onClick={handleDelete}>
+            Delete
+          </button>
         </div>
       </React.Fragment>
     </div>
