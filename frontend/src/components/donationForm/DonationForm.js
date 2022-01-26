@@ -4,23 +4,23 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 const DonationForm = () => {
-  const [options, setOptions] = useState('all');
+  // const [options, setOptions] = useState('all');
   const [verified, setVerified] = useState(false);
 
   const handleChange = (e) => {
-    setOptions(e.target.value);
+    // setOptions(e.target.value);
     SetData({ ...data, type: e.target.value });
   };
 
   const [data, SetData] = useState({
     org_name: '',
-    email: 'yashrajsingh977@gmail.com',
+    email: '',
     motive: '',
     required_money: 0,
-    upiMobile: 1111111111,
+    upiMobile:null,
     type: '',
     photoUrl: '',
-    userId: '12345484845431',
+    userId: '',
     id_token: '',
   });
 
@@ -41,9 +41,8 @@ const DonationForm = () => {
       .then((res) => console.log(res))
       .catch((err) => {
         console.log(err + 'error');
-      });
+      }); 
   };
-  console.log(options);
 
   useEffect(() => {
     const id_token = localStorage.getItem('id_token');
