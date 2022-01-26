@@ -6,8 +6,8 @@ import './home.css';
 
 const Home = () => {
   const [fundraisers, setFundraisers] = useState([]);
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
+  // const [userName, setUserName] = useState('');
+  // const [userEmail, setUserEmail] = useState('');
 
   const getActiveFundraiser = () => {
     return axios.get('http://localhost:5000/fundraiser/active');
@@ -21,9 +21,9 @@ const Home = () => {
     );
   };
 
-  const getUserData = (id) => {
-    return axios.get(`http://localhost:5000/user/dashboard/${id}`);
-  };
+  // const getUserData = (id) => {
+  //   return axios.get(`http://localhost:5000/user/dashboard/${id}`);
+  // };
 
   useEffect(() => {
     getActiveFundraiser()
@@ -34,11 +34,9 @@ const Home = () => {
   return (
     <div>
       <div className='container'>
-        {fundraisers.map((data, value) => {
-          getUserData(data.createdby).then((res) => {
-            setUserName(res.data.firstname);
-            setUserEmail(res.data.email)
-          });
+        {
+        
+        fundraisers.map((data, value) => {
 
           return (
             <Card
@@ -46,11 +44,11 @@ const Home = () => {
               orgName={data.orgName}
               imgLink={data.photoUrl}
               userImg={data.photoUrl}
-              userName={userName}
+              // userName={data.createdby}
               progress={data.moneyCollected}
               required={data.targetMoney}
-              userid = {data._id}
-              useremail = {userEmail}
+              userid = {data.createdby}
+              // useremail = {email}
             />
           );
         })}
