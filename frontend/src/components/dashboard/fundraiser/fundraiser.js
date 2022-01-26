@@ -1,46 +1,42 @@
-import React from 'react';
-import Fundraiser from './FundraiserCard';
-const Fundraisers = () => {
-    return (
-        <div className='fundraiser-grid Dashboard-content'>
-            <Fundraiser imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userName="yash"
-                orgName="Gareeb Foundation"
-                progress="90000"
-                required="100000"
-                FundName="For Medical Camp"
-            /><Fundraiser imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userName="yash"
-                orgName="Gareeb Foundation"
-                progress="90000"
-                required="100000"
-                FundName="For Medical Camp"
-            /><Fundraiser imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userName="yash"
-                orgName="Gareeb Foundation"
-                progress="90000"
-                required="100000"
-                FundName="For Medical Camp"
-            /><Fundraiser imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userName="yash"
-                orgName="Gareeb Foundation"
-                progress="90000"
-                required="100000"
-                FundName="For Medical Camp"
-            /><Fundraiser imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-                userName="yash"
-                orgName="Gareeb Foundation"
-                progress="90000"
-                required="100000"
-                FundName="For Medical Camp"
-            />
-        </div>
+import React, { useEffect, useState } from "react";
+import Fundraiser from "./FundraiserCard";
+import axios from "axios";
+const Fundraisers = (prop) => {
+
+  const [fundraisers, setFundraisers] = useState([]);
+
+  const getDashboardData = (data) => {
+    return Promise.all(
+      data.map((fr) => {
+        return fr;
+      })
     );
-}
+  };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/fundraiser/${prop.userid}`)
+      .then((active) => getDashboardData(active.data))
+      .then((dash) => setFundraisers(dash));
+  }, [prop]);
+
+  return (
+    <div className="fundraiser-grid Dashboard-content">
+      {fundraisers.map((data, id) => {
+        return (
+          <Fundraiser
+            imgLink={data.photoUrl}
+            userImg={data.photoUrl}
+            userName={data._id}
+            orgName={data.orgName}
+            progress={data.moneyCollected}
+            required={data.targetMoney}
+            FundName="For Medical Camp"
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 export default Fundraisers;
