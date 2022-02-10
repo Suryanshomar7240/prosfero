@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from '../card/Card';
 import './home.css';
+import Cookies from 'js-cookie';
 
 const Home = () => {
   const [fundraisers, setFundraisers] = useState([]);
@@ -26,6 +27,20 @@ const Home = () => {
   // };
 
   useEffect(() => {
+    // const token = Cookies.get('jwt');
+    // console.log(token)
+    // axios
+    //   .post('http://localhost:5000/admin/validate', token)
+    //   .then((res) => {
+    //     if (res.status === 400) {
+    //       window.location.assign('/login');
+    //       console.log("here")
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
     getActiveFundraiser()
       .then((active) => getDashboardData(active.data))
       .then((dash) => setFundraisers(dash));
