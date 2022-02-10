@@ -124,6 +124,7 @@ const Explore = (prop) => {
           {fundraisers.map((data, value) => {
             getUserData(data.createdby).then((res) => {
               setUserName(res.data.firstname);
+              console.log(res.data)
             });
             if (options === 'all' || options === data.type) {
               return (

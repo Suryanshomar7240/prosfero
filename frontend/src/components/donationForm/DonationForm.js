@@ -43,7 +43,7 @@ const DonationForm = () => {
         console.log(err + 'error');
       });
   };
-  console.log(options);
+  // console.log(options);
 
   useEffect(() => {
     const id_token = localStorage.getItem('id_token');

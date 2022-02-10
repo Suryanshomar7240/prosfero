@@ -44,6 +44,8 @@ router.route('/login').post(async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    console.log(username, password);
+
     Admin.findOne({ username: username })
       .then(async (admin) => {
         const auth = await bcrypt.compare(password, admin.password);
@@ -57,7 +59,8 @@ router.route('/login').post(async (req, res) => {
           throw Error('Incorrect Username or Password');
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         res.send('Incorrect username or password');
       });
   } catch (err) {
@@ -69,14 +72,26 @@ router.route('/login').post(async (req, res) => {
 router.route('/delete/:id').delete((req, res) => {
   const jwtToken = req.body.jwttoken;
   try {
-    const decode = jwt.verify(jwtToken, JWTSICKRET);
-    console.log('Delete request created by ' + decode.userid);
+    // const decode = jwt.verify(jwtToken, JWTSICKRET);
+    // console.log('Delete request created by ' + decode.userid);
     const delId = req.params.id;
     Fundraiser.deleteOne({ _id: delId })
       .then(() => res.status(200).json('Deleted item successfully'))
       .catch((err) => res.status(400).json(err));
   } catch {
     res.send('User not verified');
+  }
+});
+
+router.route('/validate').post((req, res) => {
+  const jwtToken = req.body.jwt;
+  console.log(jwtToken)
+  try {
+    const decode = jwt.verify(jwtToken, JWTSICKRET);
+    console.log('Delete request created by ' + decode.userid);
+    res.send(200).json('User is verified');
+  } catch {
+    res.status(400).json('User is invalid');
   }
 });
 
