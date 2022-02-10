@@ -1,6 +1,7 @@
 const express = require('express');
-const User = require('../models/user');
 const router = express.Router();
+const User = require('../models/user');
+const Fundraiser = require('../models/fundraiser');
 
 // Route to handle login
 
@@ -47,6 +48,7 @@ router.route('/dashboard/:id').get((req, res) => {
   const userid =  req.params.id
   User.find({ googleid: userid })
     .then((user) => {
+
       res.send({
         firstname : user[0].firstname,
         lastname : user[0].lastname,
@@ -54,9 +56,37 @@ router.route('/dashboard/:id').get((req, res) => {
         pfp_url : user[0].pfp_url,
         fundraisersDonatedTo : user[0].fundraisersDonatedTo
       });
+
     })
     .catch((err) => {
       res.status(400).json('Error: ' + err)
     })
 });
+
+router.route('/donations/:id').get((req,res)=>{
+  const userid=req.params.id
+  const fundlist=[]
+  User.find({googleid:userid})
+    .then((user)=>{
+    
+      const fundraisers=user[0].fundraisersDonatedTo    //list of all fundraiser where the user donated contains fundId and amount donated by user
+    
+      fundraisers.map((data,id)=>{
+     
+        Fundraiser.findOne({_id:data.fundId})
+        .then((result)=>
+          fundlist.append({fund:result,amount:data.donatedAmount})
+        )
+        .catch((err)=>{
+          console.log(err+id)
+        })
+    })
+    res.send(fundlist)
+  })
+    .catch((err)=>{
+    res.status(400).json('Error'+err)
+    console.log(err)
+  })
+  
+})
 module.exports = router;

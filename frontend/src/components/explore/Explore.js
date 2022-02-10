@@ -123,8 +123,7 @@ const Explore = (prop) => {
         <div className='exploreCardsContainer'>
           {fundraisers.map((data, value) => {
             getUserData(data.createdby).then((res) => {
-              setUserName(res.data.firstname);
-              console.log(res.data)
+              setUserName(res.data.firstname+' '+res.data.lastname);
             });
             if (options === 'all' || options === data.type) {
               return (

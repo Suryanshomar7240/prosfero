@@ -57,21 +57,8 @@ const UserDashBoard = (props) => {
         });
       });
   }, [userid]);
-
-  const test=()=>{
-    const data = {
-      Team_name:"ram",
-    };
-    axios
-      .post('http://127.0.0.1:8000/team/register/', data)
-      .then((res) => {console.log(res)
-      })
-      .catch((err) => console.log(err));
-  }
-  // console.log(params);
-
   return (
-    <div className='dashboard' onLoad={test}>
+    <div className='dashboard'>
       <div className='User_name'>Hello,{params.username} 👋🏻</div>
       <div className='User-fundraiser'>
         <div className='Dashboard-navigation'>
@@ -95,7 +82,7 @@ const UserDashBoard = (props) => {
           <Overview userid={userid}/>
         </div>
         <div className='fundraiser_page display_none'>
-          <Fundraisers />
+          <Fundraisers userid={userid} />
         </div>
         <div className='donation_page display_none'>
           <Donations />
