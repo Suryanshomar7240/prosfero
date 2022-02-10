@@ -1,18 +1,19 @@
-import React from 'react';
-import Home from './home/Home';
-import Login from '../src/login/Login';
-import { BrowserRouter, Redirect, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
-import axios from 'axios';
+import React from "react";
+import Home from "./home/Home";
+import Login from "../src/login/Login";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const App = () => {
+  const isAuth = localStorage.getItem("isAuthenticated");
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const token = Cookies.get('jwt');
+    const token = Cookies.get("jwt");
     axios
-      .post('http://localhost:5000/admin/validate', token)
+      .post("http://localhost:5000/admin/validate", token)
       .then((res) => {
         if (res.status === 200) {
           setLoggedIn(true);
@@ -27,12 +28,12 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Route exact path='/'>
-        {loggedIn ? <Redirect to='/admin/home' /> : <Redirect to='/login' />}
+      <Route exact path="/">
+        {isAuth ? <Redirect to="/admin/home" /> : <Redirect to="/login" />}
       </Route>
-      <Route path='/login' exact component={Login} />
+      <Route path="/login" exact component={Login} />
 
-      <Route path='/admin/home' exact component={Home} />
+      <Route path="/admin/home" exact component={isAuth ? Home : Login} />
     </BrowserRouter>
   );
 };
