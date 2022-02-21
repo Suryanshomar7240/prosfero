@@ -11,6 +11,7 @@ const Logout = (prop) => {
     prop.SetAuth(false);
     localStorage.clear();
     window.location.reload(false);
+    window.location="/";
     alert('User logged out successfully');
   };
 
