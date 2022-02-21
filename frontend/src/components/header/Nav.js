@@ -44,7 +44,7 @@ const Nav = () => {
       navBar.classList.toggle('nav-bar_active');
     });
   }, []);
-
+  localStorage.setItem("userId",userid);
   return (
     <div className='navigation' id='nav_link'>
       <nav>

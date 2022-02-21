@@ -13,7 +13,6 @@ const breakPoints = [
 ];
 
 const Overview = (prop) => {
-
   const [fundraiser, setFundraiser] = useState({
     imgLink: "",
     userImg: "",
@@ -22,31 +21,30 @@ const Overview = (prop) => {
     moneyCollected: 0,
     bio: "",
   });
-
+  const [nofund, setnoFund] = useState(true);
   useEffect(() => {
-    
     axios.get(`http://localhost:5000/fundraiser/${prop.userid}`).then((res) => {
-      setFundraiser({
-        imgLink: res.data[0].photoUrl,
-        targetMoney: res.data[0].targetMoney,
-        moneyCollected: res.data[0].moneyCollected,
-        bio: res.data[0].bio,
-        orgName: res.data.orgName,
-      });
-    });
+      if (res.data.length === 0);
 
-    // axios
-    // .get(`http://localhost:5000/user/donations/${prop.userid}`)
-    // .then((res) => {
-    //   console.log(res);
-    // })
+      else {
+        setnoFund(false);
+        setFundraiser({
+          imgLink: res.data[0].photoUrl,
+          targetMoney: res.data[0].targetMoney,
+          moneyCollected: res.data[0].moneyCollected,
+          bio: res.data[0].bio,
+          orgName: res.data.orgName,
+        });
+      }
+    });
 
   }, [prop]);
 
   return (
     <div className="Dashboard-content">
       <div className="User_funds_head">Yours Recent Running Fundraisers</div>
-      
+
+    {nofund?
       <Fundraiser
         imgLink={fundraiser.imgLink}
         userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jp"
@@ -54,8 +52,9 @@ const Overview = (prop) => {
         orgName={fundraiser.orgName}
         progress={fundraiser.moneyCollected}
         required={fundraiser.targetMoney}
-        FundName="Snicker" 
-      />
+        FundName="Snicker"
+      />:<></>
+    }
 
       <div className="User_donations">
         <div className="User_funds_head">Your Top Donations</div>
