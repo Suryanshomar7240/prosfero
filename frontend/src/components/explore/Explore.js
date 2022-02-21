@@ -135,6 +135,8 @@ const Explore = (prop) => {
                   userName={userName}
                   progress={data.moneyCollected}
                   required={data.targetMoney}
+                  fundId={data._id}
+                  
                 />
             )}
             else{
