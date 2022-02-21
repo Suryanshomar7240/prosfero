@@ -7,7 +7,8 @@ const jwt = require('jsonwebtoken')
 
 const fundraiserRouter = require('./routes/fundraisers');
 const userRouter = require('./routes/users');
-const adminRouter = require('./routes/admin')
+const adminRouter = require('./routes/admin');
+const donate=require('./routes/donation');
 
 const app = express();
 app.use(express.json());
@@ -16,7 +17,8 @@ app.use(cors());
 // routes for queries over fundraisers and users
 app.use('/fundraiser', fundraiserRouter);
 app.use('/user', userRouter);
-app.use('/admin',adminRouter)
+app.use('/admin',adminRouter);
+app.use('/donation',donate)
 
 
 const PORT = 5000;
