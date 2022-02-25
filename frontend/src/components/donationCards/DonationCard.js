@@ -14,7 +14,7 @@ const DonationCard = (props) => {
       const donate_data = {
         userId: userid,
         fundId: props.fundId,
-        money: 10,
+        money: 0,
       };
       axios
         .post("http://localhost:5000/donation/", donate_data)
