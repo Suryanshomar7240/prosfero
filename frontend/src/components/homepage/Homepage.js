@@ -6,6 +6,7 @@ import DonationCard from "../donationCards/DonationCard";
 import Options from "./options/Options";
 import Carousel from "react-elastic-carousel";
 import Review from "./reviews/Review";
+import Feedback from "../feedback/Feedback";
 // import Feedback from "../feedback/Feedback";
 
 const breakPoints = [
@@ -18,6 +19,7 @@ const breakPoints = [
 const Homepage = () => {
   const [fundraisers, setFundraisers] = useState([]);
   const [userName, setUserName] = useState("");
+  const [feedback,Setfeedback]=useState(false);
 
   const getActiveFundraiser = () => {
     return axios.get("http://localhost:5000/fundraiser/active");
@@ -45,8 +47,10 @@ const Homepage = () => {
     const homepage = document.querySelector("#home");
     homepage.classList.add("blury");
     homepage.children[0].classList.add('display_none');
+    Setfeedback(true);
   };
-  return (
+
+  if(!feedback){  return (
     <div id="home">
       {/* <Feedback className='display_none'/> */}
       <div className="Homepage">
@@ -113,7 +117,7 @@ const Homepage = () => {
               }}
             >
               {" "}
-              &nbsp; Explore More &nbsp;
+              &nbsp; Explore More &nbsp; 
             </button>
           </div>
         </section>
@@ -186,7 +190,10 @@ const Homepage = () => {
         <br />
       </div>
     </div>
-  );
+  );}
+  else{
+    <Feedback />
+  }
 };
 
 export default Homepage;

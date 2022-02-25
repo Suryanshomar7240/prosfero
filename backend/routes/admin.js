@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const path = require('path');
-const Fundraiser = require('../models/fundraiser');
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const path = require("path");
+const Fundraiser = require("../models/fundraiser");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const JWTSICKRET = process.env.JWTSICKRET;
-const Admin = require('../models/admin');
+const Admin = require("../models/admin");
 
 const maxAge = 3 * 24 * 60 * 60;
 
@@ -39,29 +39,30 @@ const createJWTtoken = (userid) => {
 //   }
 // });
 
-router.route('/login').post(async (req, res) => {
+router.route("/login").post(async (req, res) => {
   try {
     const username = req.body.username;
     const password = req.body.password;
-
-    console.log(username, password);
-
     Admin.findOne({ username: username })
       .then(async (admin) => {
-        const auth = await bcrypt.compare(password, admin.password);
-        if (auth) {
-          const token = createJWTtoken(admin._id);
-          res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-          res
-            .status(201)
-            .json({ user: admin._id, message: 'Admin logged in succesfully' });
+        if (admin) {
+          const auth = await bcrypt.compare(password, admin.password);
+          if (auth) {
+            const token = createJWTtoken(admin._id);
+            res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+            res.status(201).json({
+              user: admin._id,
+              message: "Admin logged in succesfully",
+            });
+          } else {
+            res.status(400).json({ msg: "Incorrect username or password" });
+          }
         } else {
-          throw Error('Incorrect Username or Password');
+          res.status(400).json({ msg: "Incorrect username or password" });
         }
       })
       .catch((err) => {
-        console.log(err);
-        res.send('Incorrect username or password');
+        res.status(400).json({ msg: "Incorrect username or password" });
       });
   } catch (err) {
     console.log(err);
@@ -69,29 +70,29 @@ router.route('/login').post(async (req, res) => {
   }
 });
 
-router.route('/delete/:id').delete((req, res) => {
+router.route("/delete/:id").delete((req, res) => {
   const jwtToken = req.body.jwttoken;
   try {
     // const decode = jwt.verify(jwtToken, JWTSICKRET);
     // console.log('Delete request created by ' + decode.userid);
     const delId = req.params.id;
     Fundraiser.deleteOne({ _id: delId })
-      .then(() => res.status(200).json('Deleted item successfully'))
+      .then(() => res.status(200).json("Deleted item successfully"))
       .catch((err) => res.status(400).json(err));
   } catch {
-    res.send('User not verified');
+    res.send("User not verified");
   }
 });
 
-router.route('/validate').post((req, res) => {
+router.route("/validate").post((req, res) => {
   const jwtToken = req.body.jwt;
-  console.log(jwtToken)
+  console.log(jwtToken);
   try {
     const decode = jwt.verify(jwtToken, JWTSICKRET);
-    console.log('Delete request created by ' + decode.userid);
-    res.send(200).json('User is verified');
+    console.log("Delete request created by " + decode.userid);
+    res.send(200).json("User is verified");
   } catch {
-    res.status(400).json('User is invalid');
+    res.status(400).json("User is invalid");
   }
 });
 
