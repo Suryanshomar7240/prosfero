@@ -7,7 +7,6 @@ import Options from "./options/Options";
 import Carousel from "react-elastic-carousel";
 import Review from "./reviews/Review";
 import Feedback from "../feedback/Feedback";
-// import Feedback from "../feedback/Feedback";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -19,7 +18,6 @@ const breakPoints = [
 const Homepage = () => {
   const [fundraisers, setFundraisers] = useState([]);
   const [userName, setUserName] = useState("");
-  const [feedback,Setfeedback]=useState(false);
 
   const getActiveFundraiser = () => {
     return axios.get("http://localhost:5000/fundraiser/active");
@@ -33,26 +31,36 @@ const Homepage = () => {
     );
   };
 
+  const getUserData = (id) => {
+    return axios.get(`http://localhost:5000/user/dashboard/${id}`);
+  };
   useEffect(() => {
     getActiveFundraiser()
       .then((active) => getDashboardData(active.data))
       .then((dash) => setFundraisers(dash));
+
   }, []);
 
-  const getUserData = (id) => {
-    return axios.get(`http://localhost:5000/user/dashboard/${id}`);
-  };
+  const removefeedback=()=>{
+    const homepage = document.querySelector(".Homepage");
+    homepage.classList.remove("blury");
+    document.querySelector(".feedback").classList.add("display_none");
+    document.querySelector(".footer").classList.remove("display_none");
+    document.querySelector(".Homepage").classList.remove("Homepage_off");
+  }
 
-  const feedbackButton = (e) => {
-    const homepage = document.querySelector("#home");
-    homepage.classList.add("blury");
-    homepage.children[0].classList.add('display_none');
-    Setfeedback(true);
+  const feedbackButton = () => {
+    const homepage = document.querySelector(".Homepage");
+      homepage.classList.add("blury");
+      document.querySelector(".feedback").classList.remove("display_none");
+      document.querySelector(".footer").classList.add("display_none");
+      document.querySelector(".Homepage").classList.add("Homepage_off");
   };
-
-  if(!feedback){  return (
+  return (
     <div id="home">
-      {/* <Feedback className='display_none'/> */}
+      <div className="feedback display_none">
+        <Feedback removefeedback={removefeedback}/>
+      </div>
       <div className="Homepage">
         <section className="intro">
           <div className="intro_left">
@@ -90,7 +98,6 @@ const Homepage = () => {
           <h4 className="sub_head_one">
             Contribute today to someone who is in a dire need of your help
           </h4>
-          {/* <div className='trendingDonationContainer'> */}
           <Carousel breakPoints={breakPoints}>
             {fundraisers.map((data, value) => {
               getUserData(data.createdby).then((res) => {
@@ -117,7 +124,7 @@ const Homepage = () => {
               }}
             >
               {" "}
-              &nbsp; Explore More &nbsp; 
+              &nbsp; Explore More &nbsp;
             </button>
           </div>
         </section>
@@ -174,12 +181,7 @@ const Homepage = () => {
             />
           </Carousel>
           <div className="btn_container">
-            <button
-              className="to_donate_page"
-              onClick={() => {
-                feedbackButton();
-              }}
-            >
+            <button className="to_donate_page" onClick={feedbackButton}>
               {" "}
               &nbsp; Your opinion ? &nbsp;
             </button>
@@ -190,10 +192,7 @@ const Homepage = () => {
         <br />
       </div>
     </div>
-  );}
-  else{
-    <Feedback />
-  }
+  );
 };
 
 export default Homepage;
