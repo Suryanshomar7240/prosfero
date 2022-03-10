@@ -46,19 +46,20 @@ router.route('/login').post((req, res) => {
 
 router.route('/dashboard/:id').get((req, res) => {
   const userid =  req.params.id
-  User.find({ googleid: userid })
+  console.log(userid);
+  User.findOne({ googleid: userid })
     .then((user) => {
-
       res.send({
-        firstname : user[0].firstname,
-        lastname : user[0].lastname,
-        email : user[0].email,
-        pfp_url : user[0].pfp_url,
-        fundraisersDonatedTo : user[0].fundraisersDonatedTo
+        firstname : user.firstname,
+        lastname : user.lastname,
+        email : user.email,
+        pfp_url : user.pfp_url,
+        fundraisersDonatedTo : user.fundraisersDonatedTo
       });
 
     })
     .catch((err) => {
+      // console.log(err);
       res.status(400).json('Error: ' + err)
     })
 });

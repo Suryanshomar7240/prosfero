@@ -17,21 +17,18 @@ class Login extends React.Component {
   handleOnSuccess = (res) => {
     const dashboard = document.querySelector('#dashboard');
     dashboard.classList.remove('dpNone');
-
-    // console.log( "damn -> " + res.getAuthResponse().id_token);
     const profile = res.getBasicProfile();
     const id_token = res.getAuthResponse().id_token;
-    // console.log(profile);
     const firstname = profile.getGivenName();
     const lastname = profile.getFamilyName();
     const email = profile.getEmail();
     const userid = profile.getId();
-    // console.log(firstname,lastname,email,userid)
-    // this.setState({uId : userid});
 
     localStorage.setItem('token', userid);
     localStorage.setItem('id_token', id_token);
-
+    
+    localStorage.setItem('isAuthenticated',true);
+    
     const data = {
       id_token: id_token,
       firstname: firstname,

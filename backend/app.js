@@ -9,6 +9,7 @@ const fundraiserRouter = require('./routes/fundraisers');
 const userRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const donate=require('./routes/donation');
+const feedback=require('./routes/feedback');
 
 const app = express();
 app.use(express.json());
@@ -18,7 +19,8 @@ app.use(cors());
 app.use('/fundraiser', fundraiserRouter);
 app.use('/user', userRouter);
 app.use('/admin',adminRouter);
-app.use('/donation',donate)
+app.use('/donation',donate);
+app.use('/feedback',feedback);
 
 
 const PORT = 5000;

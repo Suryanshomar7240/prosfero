@@ -48,7 +48,7 @@ const Explore = (prop) => {
       {
         setOptions(prop.match.params.tag)
       }
-  }, [prop]);
+  }, [prop.match.params.tag]);
 
   const getUserData = (id) => {
     return axios.get(`http://localhost:5000/user/dashboard/${id}`);
