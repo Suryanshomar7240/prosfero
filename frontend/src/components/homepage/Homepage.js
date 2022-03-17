@@ -106,12 +106,13 @@ const Homepage = () => {
               return (
                 <DonationCard
                   key={value}
-                  orgName={data.orgName}
-                  imgLink={data.photoUrl}
-                  userImg={data.photoUrl}
-                  userName={userName}
-                  progress={data.moneyCollected}
-                  required={data.targetMoney}
+                  orgName={data.fundraisers.orgName}
+                  imgLink={data.user.userpfp}
+                  userImg={data.user.userpfp}
+                  userName={data.user.username}
+                  progress={data.fundraisers.moneyCollected}
+                  required={data.fundraisers.targetMoney}
+                  fundId={data.fundraisers._id}
                 />
               );
             })}

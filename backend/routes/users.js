@@ -45,8 +45,7 @@ router.route('/login').post((req, res) => {
 });
 
 router.route('/dashboard/:id').get((req, res) => {
-  const userid =  req.params.id
-  console.log(userid);
+  const userid =  req.params.id;
   User.findOne({ googleid: userid })
     .then((user) => {
       res.send({

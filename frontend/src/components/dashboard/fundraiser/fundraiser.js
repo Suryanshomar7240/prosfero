@@ -18,8 +18,8 @@ const Fundraisers = (prop) => {
       .get(`http://localhost:5000/fundraiser/${prop.userid}`)
       .then((active) => getDashboardData(active.data))
       .then((dash) => setFundraisers(dash));
-  }, [prop]);
 
+  }, [prop]);
   return (
     <div className="fundraiser-grid Dashboard-content">
       {fundraisers.map((data, id) => {

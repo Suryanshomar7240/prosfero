@@ -9,47 +9,48 @@ const Feedback = (prop) => {
     caption: "",
     userid: "",
   });
-  
+
   const handleInputs = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     SetData({ ...data, [name]: value });
   };
-  
+
   const handleSkip = () => {
-    const name = "stars";
-    const value = 0;
-    SetData({ userid: "", stars: 0, caption: "" });
-    
+    SetData({ stars: 0, caption: "", userid: "" });
+    document.querySelector("#exp").value = "";
+
     const imgs = document.querySelectorAll(".staricon");
     for (let i = 0; i < data.stars; i++) {
       imgs[i].classList.remove("active");
     }
+
     prop.removefeedback();
   };
-  
+
   const handleSend = () => {
-    SetData({...data,userid:localStorage.getItem("token").toString()
-     });
-     const to_send={
-       userid:localStorage.getItem("token"),
-       stars:data.stars,
-       caption:data.caption
-     }
+    
     if (localStorage.getItem("isAuthenticated")) {
-      console.log(data);
+      
+      const to_send = {
+        userid: localStorage.getItem("token"),
+        stars: data.stars,
+        caption: data.caption,
+      };
+      
       axios
         .post("http://localhost:5000/feedback/post", to_send)
-        .then((res) => {
-          console.log(res);
-        })
+        .then((res) => {})
+
         .catch((err) => console.log(err));
-    } else {
+    
+      } else {
       window.alert("Please login to give your feedback");
     }
 
     handleSkip();
   };
+
   useEffect(() => {
     const imgs = document.querySelectorAll(".staricon");
     imgs.forEach((item, key) => {
@@ -69,8 +70,7 @@ const Feedback = (prop) => {
     });
   }, [data, SetData]);
 
-  const load=()=>{
-  }
+  const load = () => {};
 
   return (
     <div className="content" onLoad={load}>
@@ -79,7 +79,7 @@ const Feedback = (prop) => {
           <div className="heading">
             <h1>Share your experience</h1>
           </div>
-          <div className="close" onClick={handleSkip}>
+          <div className="close" type="reset" onClick={handleSkip}>
             <div className="s s1"></div>
             <div className="s s2"></div>
           </div>

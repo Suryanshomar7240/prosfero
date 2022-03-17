@@ -9,8 +9,8 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 
-const UserDashBoard = (props) => {
-  const userid = props.match.params.id;
+const UserDashBoard = () => {
+  const userid = localStorage.getItem("token");
 
   const [params, setParams] = useState({
     username: '',

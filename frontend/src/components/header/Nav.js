@@ -59,7 +59,7 @@ const Nav = () => {
             </a>
           </li>
           <li className='nav-item'>
-            <a href='/explore'>
+            <a href='/explore/all'>
               <MdTravelExplore />
               Explore
             </a>
