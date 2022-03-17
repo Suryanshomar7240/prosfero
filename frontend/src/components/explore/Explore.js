@@ -25,7 +25,6 @@ import { withRouter } from 'react-router-dom';
 const Explore = (prop) => {
   const [options, setOptions] = useState('all');
   const [fundraisers, setFundraisers] = useState([]);
-  const [userName, setUserName] = useState('');
 
   const getActiveFundraiser = () => {
     return axios.get('http://localhost:5000/fundraiser/active');
@@ -41,9 +40,13 @@ const Explore = (prop) => {
 
   useEffect(() => {
     getActiveFundraiser()
-      .then((active) => getDashboardData(active.data))
-      .then((dash) => setFundraisers(dash));
+      .then(async (active) => {
+        // console.log(active);
+        setFundraisers(await getDashboardData(active.data));
+      })
+      // .then((dash) => setFundraisers(dash));
 
+      // console.log();
       if(prop.match.params.tag)
       {
         setOptions(prop.match.params.tag)
@@ -122,21 +125,18 @@ const Explore = (prop) => {
         </div>
         <div className='exploreCardsContainer'>
           {fundraisers.map((data, value) => {
-            getUserData(data.createdby).then((res) => {
-              setUserName(res.data.firstname+' '+res.data.lastname);
-            });
+          console.log(data.user.userpfp)
             if (options === 'all' || options === data.type) {
               return (
                 <DonationCard
                   key={value}
-                  orgName={data.orgName}
-                  imgLink={data.photoUrl}
-                  userImg={data.photoUrl}
-                  userName={userName}
-                  progress={data.moneyCollected}
-                  required={data.targetMoney}
-                  fundId={data._id}
-                  
+                  orgName={data.fundraisers.orgName}
+                  imgLink={data.user.userpfp}
+                  userImg={data.user.userpfp}
+                  userName={data.user.username}
+                  progress={data.fundraisers.moneyCollected}
+                  required={data.fundraisers.targetMoney}
+                  fundId={data.fundraisers._id}
                 />
             )}
             else{

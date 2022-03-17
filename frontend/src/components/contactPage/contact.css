@@ -144,6 +144,8 @@ textarea:valid + label {
 }
 
 .submit-btn {
+  width: 20%;
+  text-align: center;
   background-color: #fd917e;
   filter: drop-shadow(2px 2px 3px #0003);
   color: #fff;

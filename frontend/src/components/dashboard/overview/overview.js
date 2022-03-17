@@ -29,11 +29,11 @@ const Overview = (prop) => {
       else {
         setnoFund(false);
         setFundraiser({
-          imgLink: res.data[0].photoUrl,
+          imgLink:"fd",
           targetMoney: res.data[0].targetMoney,
           moneyCollected: res.data[0].moneyCollected,
           bio: res.data[0].bio,
-          orgName: res.data.orgName,
+          orgName: res.data[0].orgName,
         });
       }
     });
@@ -44,7 +44,7 @@ const Overview = (prop) => {
     <div className="Dashboard-content">
       <div className="User_funds_head">Yours Recent Running Fundraisers</div>
 
-    {nofund?
+    {!nofund?
       <Fundraiser
         imgLink={fundraiser.imgLink}
         userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jp"
@@ -52,7 +52,7 @@ const Overview = (prop) => {
         orgName={fundraiser.orgName}
         progress={fundraiser.moneyCollected}
         required={fundraiser.targetMoney}
-        FundName="Snicker"
+        FundName={fundraiser.orgName}
       />:<></>
     }
 

@@ -23,6 +23,7 @@ class Login extends React.Component {
     const lastname = profile.getFamilyName();
     const email = profile.getEmail();
     const userid = profile.getId();
+    const pfp_url=profile.getImageUrl();
 
     localStorage.setItem('token', userid);
     localStorage.setItem('id_token', id_token);
@@ -35,13 +36,15 @@ class Login extends React.Component {
       lastname: lastname,
       email: email,
       userid: userid,
+      pfp_url: pfp_url,
     };
 
     this.props.SetAuth(true);
     this.props.Setuserid(userid);
+    
     axios
       .post('http://localhost:5000/user/login', data)
-      .then((res) => {
+      .then((response) => {
         console.log('Login successful');
       })
       .catch((err) => console.log(err));
