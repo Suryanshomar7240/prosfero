@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./donationForm.css";
 import axios from "axios";
 import { useEffect } from "react";
-
+import FileBase64 from "react-file-base64";
 const DonationForm = () => {
   const [verified, setVerified] = useState(false);
   const [file, setfile] = useState(null);
@@ -35,6 +35,7 @@ const DonationForm = () => {
       alert("You have to login to start a fundraiser");
     }
 
+    console.log(data);
     axios
       .post("http://localhost:5000/fundraiser/create", data)
       .then((res) => console.log(res))
@@ -44,20 +45,16 @@ const DonationForm = () => {
   };
   // On file select (from the pop up)
   const onFileChange = (event) => {
-    // Update the state
     setfile(event.target.files[0]);
   };
 
   const onFileUpload = () => {
     // Create an object of formData
     // const formData = new FormData();
-
     // Update the formData object
     // formData.append("myFile", file, file.name);
-
     // Details of the uploaded file
     // console.log(file);
-
     // Request made to the backend api
     // Send formData object
     // axios.post("api/uploadfile", formData);
@@ -162,6 +159,13 @@ const DonationForm = () => {
                   </div>
                   <div className="form-row">
                     <div className="name">Upload an image</div>
+                    <FileBase64
+                      multiple={false}
+                      onDone={({ base64 }) => {
+                        SetData({ ...data, photoUrl: base64 });
+                      }}
+                    />
+
                     {/* <div className="value">
                       <div className="input-group js-input-file">
                         <input
@@ -180,7 +184,8 @@ const DonationForm = () => {
                       </div>
                     </div> */}
                     {/* <div className="name">Banner Image</div> */}
-                    <div className="value">
+
+                    {/* <div className="value">
                       <input
                         className="input--style-6"
                         type="text"
@@ -188,7 +193,7 @@ const DonationForm = () => {
                         placeholder="Upload an image online to serve as a banner and paste the link"
                         onChange={handleInputs}
                       />
-                    </div>
+                    </div> */}
                   </div>
                   <div className="form-row">
                     <div className="name">Type</div>

@@ -107,7 +107,7 @@ const Explore = (prop) => {
                 <DonationCard
                   key={value}
                   orgName={data[0].fundraisers.orgName}
-                  imgLink={data[0].user.userpfp}
+                  imgLink={data[0].fundraisers.photoUrl}
                   userImg={data[0].user.userpfp}
                   userName={data[0].user.username}
                   progress={data[0].fundraisers.moneyCollected}
