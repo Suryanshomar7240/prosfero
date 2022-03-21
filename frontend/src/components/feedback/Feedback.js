@@ -106,7 +106,7 @@ const Feedback = (prop) => {
           <textarea
             name="caption"
             id="exp"
-            placeholder="Let we know..."
+            placeholder="Enter your feedback here"
             onChange={handleInputs}
           ></textarea>
         </div>

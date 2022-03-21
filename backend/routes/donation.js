@@ -5,7 +5,9 @@ require("dotenv").config();
 process.env.CLIENT_ID;
 
 // route to to add fund money in database
-router.route("/").post(async (req, res) => {
+
+
+router.route("/makedonation").post(async (req, res) => {
   const userId = req.body.userId;
   console.log(userId);
   const fundId = req.body.fundId;

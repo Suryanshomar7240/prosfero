@@ -9,7 +9,7 @@ const DonationCard = (props) => {
     console.log(userid);
     
     if (id_token == null || userid == null) {
-      alert("You have to login first to create fundraisers");
+      alert("You have to login first to donate fundraisers");
     } else {
       const donate_data = {
         userId: userid,
