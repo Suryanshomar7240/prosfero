@@ -6,22 +6,6 @@ import axios from 'axios';
 
 import { withRouter } from 'react-router-dom';
 
-// https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg
-
-/*     {
-      orgName: '',
-      bio: '',
-      photoUrl: '',
-      targetMoney: '',
-      moneyCollected: '',
-      upiMobile: '',
-      active: false,
-      createdby: '',
-      type: '',
-      creator_pfp: '',
-      username: '',
-    },*/
-
 const Explore = (prop) => {
   const [options, setOptions] = useState('all');
   const [fundraisers, setFundraisers] = useState([]);
@@ -41,21 +25,14 @@ const Explore = (prop) => {
   useEffect(() => {
     getActiveFundraiser()
       .then(async (active) => {
-        // console.log(active);
         setFundraisers(await getDashboardData(active.data));
       })
-      // .then((dash) => setFundraisers(dash));
 
-      // console.log();
       if(prop.match.params.tag)
       {
         setOptions(prop.match.params.tag)
       }
   }, [prop.match.params.tag]);
-
-  const getUserData = (id) => {
-    return axios.get(`http://localhost:5000/user/dashboard/${id}`);
-  };
 
   const handleChange = (e) => {
     setOptions(e.target.value);
@@ -125,18 +102,17 @@ const Explore = (prop) => {
         </div>
         <div className='exploreCardsContainer'>
           {fundraisers.map((data, value) => {
-          console.log(data.user.userpfp)
-            if (options === 'all' || options === data.type) {
+            if (options === 'all' || options === data[0].fundraisers.type) {
               return (
                 <DonationCard
                   key={value}
-                  orgName={data.fundraisers.orgName}
-                  imgLink={data.user.userpfp}
-                  userImg={data.user.userpfp}
-                  userName={data.user.username}
-                  progress={data.fundraisers.moneyCollected}
-                  required={data.fundraisers.targetMoney}
-                  fundId={data.fundraisers._id}
+                  orgName={data[0].fundraisers.orgName}
+                  imgLink={data[0].user.userpfp}
+                  userImg={data[0].user.userpfp}
+                  userName={data[0].user.username}
+                  progress={data[0].fundraisers.moneyCollected}
+                  required={data[0].fundraisers.targetMoney}
+                  fundId={data[0].fundraisers._id}
                 />
             )}
             else{
