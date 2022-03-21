@@ -3,19 +3,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 const jwt = require('jsonwebtoken')
-
-
 const fundraiserRouter = require('./routes/fundraisers');
 const userRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const donate=require('./routes/donation');
 const feedback=require('./routes/feedback');
-// const upload = require('./middleware/upload');
 
 const app = express();
 app.use(express.json());  
 app.use(cors());
-// app.use("file",upload);
 // routes for queries over fundraisers and users
 app.use('/fundraiser', fundraiserRouter);
 app.use('/user', userRouter);
