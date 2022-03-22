@@ -15,6 +15,7 @@ const razorpay = new Razorpay({
 router.route('/pay').post(async (req, res) => {
   const payment_capture = 1;
   const amount = req.body.amount; //  Amount entered by the user in Rs
+  const user = req.body.user;
   // const currency = req.body.currency;
   const currency = 'INR';
 
@@ -22,6 +23,9 @@ router.route('/pay').post(async (req, res) => {
     amount: amount * 100, // Razorpay takes in amount in Paise
     currency,
     receipt: nanoid.nanoid(),
+    notes: {
+      created_by: user,
+    },
     payment_capture,
   };
 
