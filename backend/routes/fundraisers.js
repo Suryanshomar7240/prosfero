@@ -73,7 +73,7 @@ router.post("/create", async (req, res) => {
 // that contains all the fundraisers created by a given user
 
 router.route("/:userId").get((req, res) => {
-  userId = req.params.userId;
+  const userId = req.params.userId;
   Fundraiser.find({ createdby: userId })
     .then((fundraisers) => {
       res.json(fundraisers);

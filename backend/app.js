@@ -8,6 +8,7 @@ const userRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const donate=require('./routes/donation');
 const feedback=require('./routes/feedback');
+const payment = require('./routes/payment')
 
 const app = express();
 app.use(express.json());  
@@ -18,6 +19,7 @@ app.use('/user', userRouter);
 app.use('/admin',adminRouter);
 app.use('/donation',donate);
 app.use('/feedback',feedback);
+app.use('/payment',payment)
 
 
 const PORT = 5000;
