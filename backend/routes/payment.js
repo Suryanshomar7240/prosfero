@@ -3,6 +3,7 @@ const nanoid = require('nanoid');
 const Razorpay = require('razorpay');
 const path = require('path');
 const crypto = require('crypto');
+const Payment = require('../models/payments');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const RAZORPAY_TOKEN = process.env.RAZORPAYSICKRET;
@@ -57,6 +58,32 @@ router.route('/verify').post((req, res) => {
     console.log('Invalid request');
   }
   req.json({ status: 'ok' });
+});
+
+router.route('/add').post((req, res) => {
+  const userId = req.body.created_by;
+  const payment_id = req.body.r_payment_id;
+  const order_id = req.body.r_order_id;
+  const signature = req.body.r_signature;
+  const fundId = req.body.fundraiser_id;
+
+  const newPayment = new Payment({
+    userId: userId,
+    payment_id: payment_id,
+    order_id: order_id,
+    signature: signature,
+    fundId: fundId,
+  });
+
+  newPayment
+    .save()
+    .then(() =>
+      res.send({
+        status: 200,
+        message: 'New Payment added successfully',
+      })
+    )
+    .catch((err) => res.status(400).json('Error: ' + err));
 });
 
 module.exports = router;
