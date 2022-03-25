@@ -49,24 +49,25 @@ const DonationCard = (props) => {
       description: 'Thank you for your donation',
       image: 'https://i.postimg.cc/mZzc6ydX/logo.png',
       handler: function (response) {
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-        // alert(response.razorpay_signature);
         const data = {
           created_by: donor_id,
           r_payment_id: response.razorpay_payment_id,
           r_order_id: response.razorpay_order_id,
           r_signature: response.razorpay_signature,
-          fundraiser_id: fundId
+          fundraiser_id: fundId,
         };
         const update_data = {
-          amount:  this.amount,
+          amount: payment_data.amount / 100,
           donated_by: donor_id,
-          fund_id: fundId
-        }
-
-        axios.post("http://localhost:5000/payment/add",data)
-        axios.post("http://localhost:5000/donation/updatedonation",update_data)
+          fund_id: fundId,
+        };
+        axios.post('http://localhost:5000/payment/add', data);
+        axios.post(
+          'http://localhost:5000/donation/updatedonation',
+          update_data
+        );
+        alert("Donated successfully")
+        window.location.reload()
       },
       prefill: {
         name: 'Yash',

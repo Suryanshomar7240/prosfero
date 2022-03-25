@@ -11,6 +11,8 @@ router.route('/updatedonation').post(async (req, res) => {
   const fundId = req.body.fund_id;
   const amount = parseInt(req.body.amount);
 
+  // console.log(userId,fundId,req.body.amount)
+
   const fundDataForUser = {
     fundId: fundId,
     donatedAmount: amount,

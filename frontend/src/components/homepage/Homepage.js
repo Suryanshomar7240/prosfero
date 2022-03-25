@@ -32,9 +32,9 @@ const Homepage = () => {
 
   useEffect(() => {
     getActiveFundraiser()
-      .then((active) => getDashboardData(active.data))
-      .then((dash) => setFundraisers(dash));
-
+      .then(async (active) => {
+        setFundraisers(await getDashboardData(active.data));
+      })
   }, []);
 
   const removefeedback = () => {
@@ -96,12 +96,12 @@ const Homepage = () => {
           </h4>
           <Carousel breakPoints={breakPoints}>
             {fundraisers.map((data, value) => {
-              console.log(data)
+              console.log(data);
               return (
                 <DonationCard
                   key={value}
                   orgName={data[0].fundraisers.orgName}
-                  // imgLink={data[0].fundraiser.photoUrl}
+                  imgLink={data[0].fundraisers.photoUrl}
                   userImg={data[0].user.userpfp}
                   userName={data[0].user.username}
                   progress={data[0].fundraisers.moneyCollected}

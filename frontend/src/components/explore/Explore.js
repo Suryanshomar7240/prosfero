@@ -102,7 +102,6 @@ const Explore = (prop) => {
         </div>
         <div className='exploreCardsContainer'>
           {fundraisers.map((data, value) => {
-            console.log(data)
             if (options === 'all' || options === data[0].fundraisers.type) {
               return (
                 <DonationCard
