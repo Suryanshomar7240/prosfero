@@ -1,43 +1,60 @@
-const router = require("express").Router();
-const Fundraiser = require("../models/fundraiser");
-const User = require("../models/user");
-require("dotenv").config();
+const router = require('express').Router();
+const Fundraiser = require('../models/fundraiser');
+const User = require('../models/user');
+require('dotenv').config();
 process.env.CLIENT_ID;
 
 // route to to add fund money in database
 
+router.route('/updatedonation').post(async (req, res) => {
+  const userId = req.body.donated_by;
+  const fundId = req.body.fund_id;
+  const amount = parseInt(req.body.amount);
 
-router.route("/makedonation").post(async (req, res) => {
-  const userId = req.body.userId;
-  console.log(userId);
-  const fundId = req.body.fundId;
-  const money = req.body.money;
-  Fundraiser.findOne({ _id: fundId })
-    .then((fund) => {
-      User.findOne({ googleid: userId }).then((user) => {
-        data = {
-          fundId: fundId,
-          donatedAmount: money,
-        };
-        flag = false;
-        for (let i = 0; i < user.__v; i++) {
-          if (user.fundraisersDonatedTo[i].fundId == fundId) {
-            flag = true;
-            user.fundraisersDonatedTo[i].donatedAmount += money;
-            user.save();
+  const fundDataForUser = {
+    fundId: fundId,
+    donatedAmount: amount,
+  };
+
+  const user_res = await User.findOne({ googleid: userId })
+    .then(async (user) => {
+      if (user === null) {
+        res.status(401).json('User Not Found');
+      } else {
+        var flag = false;
+        var valid_fundraiser = false;
+
+        const fund_details = await Fundraiser.findOne({_id : fundId}).then((fund) => {
+          if (fund === null) {
+            console.log("fundraiser not found")
+            valid_fundraiser = false;
+            res.status(401).json('Fundraiser Not Found');
+          } else {
+            valid_fundraiser = true;
+            fund.moneyCollected += amount;
+            fund.save()
           }
-        }
-        if (!flag) {
-          user.fundraisersDonatedTo.push(data);
+        });
+
+        if (valid_fundraiser) {
+          for (let i = 0; i < user.fundraisersDonatedTo.length; i++) {
+            if (user.fundraisersDonatedTo[i].fundId === fundId) {
+              flag = true;
+              user.fundraisersDonatedTo[i].donatedAmount += amount;
+              console.log(user.fundraisersDonatedTo[i].donatedAmount);
+              break;
+            }
+          }
+          if (!flag) {
+            user.fundraisersDonatedTo.push(fundDataForUser);
+          }
           user.save();
+          res.status(200).json('Data updated successfully to the database');
         }
-        res.status(200).json({ message: "Donated sucessfully" });
-      });
-      fund.moneyCollected += money;
-      fund.save();
+      }
     })
     .catch((err) => {
-      res.status(400).json({ error: err });
+      res.status(401).json({ msg: 'Something went wrong', error: err });
     });
 });
 module.exports = router;

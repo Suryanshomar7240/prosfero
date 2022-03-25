@@ -2,27 +2,6 @@ import React from 'react';
 import './donationCard.css';
 import axios from 'axios';
 const DonationCard = (props) => {
-  // const [verifed, setverify] = useState(false);
-  // const donate = () => {
-  //   const id_token = localStorage.getItem("id_token");
-  //   const userid = localStorage.getItem("userId");
-  //   console.log(userid);
-
-  //   if (id_token == null || userid == null) {
-  //     alert("You have to login first to donate fundraisers");
-  //   } else {
-  //     const donate_data = {
-  //       userId: userid,
-  //       fundId: props.fundId,
-  //       money: 0,
-  //     };
-  //     axios
-  //       .post("http://localhost:5000/donation/", donate_data)
-  //       .then((res) => window.alert(res.data.message))
-  //       .catch((err) => console.log(err));
-  //   }
-  // };
-
   function loadScript(src) {
     return new Promise((resolve) => {
       const script = document.createElement('script');
@@ -37,7 +16,7 @@ const DonationCard = (props) => {
     });
   }
 
-  const displayRazorpay = async () => {
+  const displayRazorpay = async (fundId) => {
     const donor_id = localStorage.getItem('token');
 
     const sdk_status = await loadScript(
@@ -54,12 +33,12 @@ const DonationCard = (props) => {
       user: donor_id,
       amount: 500,
     };
-
+    console.log(post_data);
     const payment_data = await axios
       .post('http://localhost:5000/payment/pay', post_data) // Initiate an order in the backend and get the details of the order
       .then((r) => r.data);
 
-    console.log(payment_data)
+    console.log(payment_data);
 
     const payment_options = {
       key: 'rzp_test_xfRpOzB2d3bt4z',
@@ -67,21 +46,36 @@ const DonationCard = (props) => {
       amount: payment_data.amount.toString(),
       order_id: payment_data.id,
       name: 'Donation',
-      description: 'Thank you for nothing. Please give us some money',
+      description: 'Thank you for your donation',
       image: 'https://i.postimg.cc/mZzc6ydX/logo.png',
       handler: function (response) {
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        const data = {
+          created_by: donor_id,
+          r_payment_id: response.razorpay_payment_id,
+          r_order_id: response.razorpay_order_id,
+          r_signature: response.razorpay_signature,
+          fundraiser_id: fundId
+        };
+        const update_data = {
+          amount:  this.amount,
+          donated_by: donor_id,
+          fund_id: fundId
+        }
+
+        axios.post("http://localhost:5000/payment/add",data)
+        axios.post("http://localhost:5000/donation/updatedonation",update_data)
       },
       prefill: {
-        name: "Yash",
-        email: 'sdfdsjfh2@ndsfdf.com',
+        name: 'Yash',
+        email: 'daddy_cool@gmail.com',
         phone_number: '9899999999',
-      }
+      },
     };
-    const paymentObject = new window.Razorpay(payment_options)
-    paymentObject.open()
+    const paymentObject = new window.Razorpay(payment_options);
+    paymentObject.open();
   };
 
   return (
@@ -112,7 +106,12 @@ const DonationCard = (props) => {
             aria-valuemax='100'
           ></div>
         </div>
-        <button className='donate_button' onClick={displayRazorpay}>
+        <button
+          className='donate_button'
+          onClick={() => {
+            displayRazorpay(props.fundId);
+          }}
+        >
           Donate
         </button>
       </div>

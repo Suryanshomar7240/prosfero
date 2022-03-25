@@ -17,7 +17,6 @@ const breakPoints = [
 
 const Homepage = () => {
   const [fundraisers, setFundraisers] = useState([]);
-  const [userName, setUserName] = useState('');
 
   const getActiveFundraiser = () => {
     return axios.get('http://localhost:5000/fundraiser/active');
@@ -31,9 +30,6 @@ const Homepage = () => {
     );
   };
 
-  const getUserData = (id) => {
-    return axios.get(`http://localhost:5000/user/dashboard/${id}`);
-  };
   useEffect(() => {
     getActiveFundraiser()
       .then((active) => getDashboardData(active.data))
