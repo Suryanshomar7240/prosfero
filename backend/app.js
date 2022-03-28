@@ -4,11 +4,11 @@ const cors = require('cors');
 require('dotenv').config();
 const jwt = require('jsonwebtoken')
 const fundraiserRouter = require('./routes/fundraiser');
-const userRouter = require('./routes/users');
+const userRouter = require('./routes/user');
 const adminRouter = require('./routes/admin');
-const donate=require('./routes/donation');
-const feedback=require('./routes/feedback');
-const payment = require('./routes/payment')
+const donateRouter =require('./routes/donation');
+const feedbackRouter =require('./routes/feedback');
+const paymentRouter = require('./routes/payment')
 
 const app = express();
 app.use(express.json());  
@@ -17,9 +17,9 @@ app.use(cors());
 app.use('/fundraiser', fundraiserRouter);
 app.use('/user', userRouter);
 app.use('/admin',adminRouter);
-app.use('/donation',donate);
-app.use('/feedback',feedback);
-app.use('/payment',payment)
+app.use('/donation',donateRouter);
+app.use('/feedback',feedbackRouter);
+app.use('/payment',paymentRouter)
 
 
 const PORT = 5000;
