@@ -1,19 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const path = require('path');
-const Fundraiser = require('../models/fundraiser');
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-
-const JWTSICKRET = process.env.JWTSICKRET;
-const Admin = require('../models/admin');
-
-const maxAge = 3 * 24 * 60 * 60;
-
-const createJWTtoken = (userid) => {
-  return jwt.sign({ userid }, JWTSICKRET, { expiresIn: maxAge });
-};
+const adminController = require('../controllers/admin')
 
 // uncomment when working on the admin route to create an admin account
 
@@ -38,62 +25,10 @@ const createJWTtoken = (userid) => {
 //   }
 // });
 
-router.route('/login').post(async (req, res) => {
-  try {
-    const username = req.body.username;
-    const password = req.body.password;
+router.route('/login').post(adminController.loginHandler);
 
-    Admin.findOne({ username: username })
-      .then(async (admin) => {
-        if (admin) {
-          const auth = await bcrypt.compare(password, admin.password);
-          if (auth) {
-            const token = createJWTtoken(admin._id);
-            res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-            res.status(201).json({
-              user: admin._id,
-              message: 'Admin logged in succesfully',
-            });
-          } else {
-            res.status(400).json({ msg: 'Incorrect username or password' });
-          }
-        } else {
-          res.status(400).json({ msg: 'Incorrect username or password' });
-        }
-      })
-      .catch((err) => {
-        res.status(400).json({ msg: 'Incorrect username or password' });
-      });
-  } catch (err) {
-    console.log(err);
-    res.send(err);
-  }
-});
+router.route('/delete/:id').delete(adminController.deleteHandler);
 
-router.route('/delete/:id').delete((req, res) => {
-  const jwtToken = req.body.jwttoken;
-  try {
-    // const decode = jwt.verify(jwtToken, JWTSICKRET);
-    // console.log('Delete request created by ' + decode.userid);
-    const delId = req.params.id;
-    Fundraiser.deleteOne({ _id: delId })
-      .then(() => res.status(200).json('Deleted item successfully'))
-      .catch((err) => res.status(400).json(err));
-  } catch {
-    res.send('User not verified');
-  }
-});
-
-router.route('/validate').post((req, res) => {
-  const jwtToken = req.body.jwt;
-  console.log(jwtToken);
-  try {
-    const decode = jwt.verify(jwtToken, JWTSICKRET);
-    console.log('Delete request created by ' + decode.userid);
-    res.send(200).json('User is verified');
-  } catch {
-    res.status(400).json('User is invalid');
-  }
-});
+router.route('/validate').post(adminController.validationHandler);
 
 module.exports = router;

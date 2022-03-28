@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 const jwt = require('jsonwebtoken')
-const fundraiserRouter = require('./routes/fundraisers');
+const fundraiserRouter = require('./routes/fundraiser');
 const userRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const donate=require('./routes/donation');
