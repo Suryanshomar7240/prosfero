@@ -31,15 +31,15 @@ const Feedback = (prop) => {
   const handleSend = () => {
     
     if (localStorage.getItem("isAuthenticated")) {
-      
-      const to_send = {
+      console.log(localStorage.getItem("token"))
+      const feedback_post = {
         userid: localStorage.getItem("token"),
         stars: data.stars,
         caption: data.caption,
       };
       
       axios
-        .post("http://localhost:5000/feedback/post", to_send)
+        .post("http://localhost:5000/feedback/post", feedback_post)
         .then((res) => {})
 
         .catch((err) => console.log(err));

@@ -17,12 +17,17 @@ const breakPoints = [
 
 const Homepage = () => {
   const [fundraisers, setFundraisers] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   const getActiveFundraiser = () => {
     return axios.get('http://localhost:5000/fundraiser/active');
   };
 
-  const getDashboardData = (data) => {
+  const getAllReviews = () => {
+    return axios.get('http://localhost:5000/feedback/get');
+  };
+
+  const resolvePromises = (data) => {
     return Promise.all(
       data.map((fr) => {
         return fr;
@@ -31,10 +36,12 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    getActiveFundraiser()
-      .then(async (active) => {
-        setFundraisers(await getDashboardData(active.data));
-      })
+    getActiveFundraiser().then(async (active) => {
+      setFundraisers(await resolvePromises(active.data));
+    });
+    getAllReviews().then(async (active) => {
+      setReviews(await resolvePromises(active.data));
+    });
   }, []);
 
   const removefeedback = () => {
@@ -96,7 +103,6 @@ const Homepage = () => {
           </h4>
           <Carousel breakPoints={breakPoints}>
             {fundraisers.map((data, value) => {
-              console.log(data);
               return (
                 <DonationCard
                   key={value}
@@ -150,30 +156,17 @@ const Homepage = () => {
             </div>
           </div>
           <Carousel breakPoints={breakPoints}>
-            <Review
-              pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-              username='Yash'
-              reviewHead='Top 10 qoutes by Yash'
-              reviewText='Nothing beats the vibe of an afternoon nap'
-            />
-            <Review
-              pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-              username='Yash'
-              reviewHead='Top 10 qoutes by Yash'
-              reviewText='Nothing beats the vibe of an afternoon nap'
-            />
-            <Review
-              pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-              username='Yash'
-              reviewHead='Top 10 qoutes by Yash'
-              reviewText='Nothing beats the vibe of an afternoon nap'
-            />
-            <Review
-              pfpLink='https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'
-              username='Yash'
-              reviewHead='Top 10 qoutes by Yash'
-              reviewText='Nothing beats the vibe of an afternoon nap'
-            />
+            {reviews.map((data, value) => {
+              return (
+                <Review
+                  key={value}
+                  pfpLink={data.pfplink}
+                  username={data.username}
+                  reviewText={data.message}
+                  rating={data.rating}
+                />
+              );
+            })}
           </Carousel>
           <div className='btn_container'>
             <button className='to_donate_page' onClick={feedbackButton}>
