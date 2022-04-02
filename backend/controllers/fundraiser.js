@@ -6,7 +6,7 @@ const getUsers = async (obj) => {
     username: '',
     userpfp: '',
   };
-  const temp = await User.findOne({ googleId: obj['createdby'] })
+  const temp = await User.findOne({ googleid: obj['createdby'] })
     .then(async (user) => {
       obj2['userpfp'] = user['pfp_url'];
       obj2['username'] = user['firstname'] + ' ' + user['lastname'];
