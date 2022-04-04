@@ -1,40 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React,{useEffect, useState} from "react";
 import Fundraiser from "./FundraiserCard";
-import axios from "axios";
+
 const Fundraisers = (prop) => {
+  const fundraisers = prop.fundraiser;
 
-  const [fundraisers, setFundraisers] = useState([]);
-
-  const getDashboardData = (data) => {
-    return Promise.all(
-      data.map((fr) => {
-        return fr;
-      })
-    );
-  };
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/fundraiser/${prop.userid}`)
-      .then((active) => getDashboardData(active.data))
-      .then((dash) => setFundraisers(dash));
-
-  }, [prop]);
+  const [nofund, setnoFund] = useState(true);
+    useEffect(() => {
+      
+    if (fundraisers.length > 0) setnoFund(false);
+    }, [fundraisers])
   return (
-    <div className="fundraiser-grid Dashboard-content">
-      {fundraisers.map((data, id) => {
-        return (
-          <Fundraiser
-            imgLink={data.photoUrl}
-            userImg={data.photoUrl}
-            userName={data._id}
-            orgName={data.orgName}
-            progress={data.moneyCollected}
-            required={data.targetMoney}
-            FundName="For Medical Camp"
-          />
-        );
-      })}
+    <div className="fundraiser-grid Dashboard-content" >
+      {!nofund ? (
+        fundraisers.map((fund, value) => {
+          return (
+            <Fundraiser
+            key={value}
+              imgLink={fund.photoUrl}
+              userName={prop.userid}
+              orgName={fund.orgName}
+              progress={fund.moneyCollected}
+              required={fund.targetMoney}
+              FundName={fund.orgName}
+            />
+          );
+        })
+      ) : (
+        <>
+          <h1 className="Nofund">You didn't raise any fundraiser :(</h1>
+        </>
+      )}
     </div>
   );
 };

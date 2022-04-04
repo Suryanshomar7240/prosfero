@@ -12,7 +12,7 @@ const Donation= (props) => {
           <span className='userName'>By {props.userName}</span>
         </div>
         <div className="amt_user_donated">Your Donation : <span className='money'>{props.AmtDonated}₹</span></div>
-        <div className="percentage_user_donated">Your Percentage Donation : <span className='money'> {(props.AmtDonated / props.required) * 100}%</span></div>
+        <div className="percentage_user_donated">Your Percentage Donation : <span className='money'> {parseInt((props.AmtDonated / props.required) * 100)}%</span></div>
         <span className='collection'>
           <span className='money'>₹{props.progress}</span> raised out of{' '}
           <span className='money'>₹{props.required}</span>
@@ -25,7 +25,7 @@ const Donation= (props) => {
             aria-valuenow='25'
             aria-valuemin='0'
             aria-valuemax='100'
-          >{(props.progress / props.required) * 100 }%</div>
+          >{parseInt((props.progress / props.required) * 100 )}%</div>
         </div>
         <button className="donate_button">Donate More</button>
       </div>

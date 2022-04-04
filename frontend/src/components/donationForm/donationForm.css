@@ -600,4 +600,7 @@
       padding: 50px 30px;
     }
   }
+  input[type="file"]{
+    width:fit-content;
+  }
   

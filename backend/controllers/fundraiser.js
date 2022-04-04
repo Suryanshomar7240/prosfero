@@ -22,6 +22,7 @@ const getUsers = async (obj) => {
 exports.getAllFundraisers = async (req, res) => {
   Fundraiser.find()
     .then(async (fundraisers) => {
+      
       const data = fundraisers.map(async (obj) => {
         const collectedData = [];
         const temp = await getUsers(obj);

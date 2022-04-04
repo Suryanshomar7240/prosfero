@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import FileBase64 from "react-file-base64";
 const DonationForm = () => {
   const [verified, setVerified] = useState(false);
-  const [file, setfile] = useState(null);
 
   const handleChange = (e) => {
     SetData({ ...data, type: e.target.value });
@@ -42,22 +41,6 @@ const DonationForm = () => {
       .catch((err) => {
         console.log(err + "error");
       });
-  };
-  // On file select (from the pop up)
-  const onFileChange = (event) => {
-    setfile(event.target.files[0]);
-  };
-
-  const onFileUpload = () => {
-    // Create an object of formData
-    // const formData = new FormData();
-    // Update the formData object
-    // formData.append("myFile", file, file.name);
-    // Details of the uploaded file
-    // console.log(file);
-    // Request made to the backend api
-    // Send formData object
-    // axios.post("api/uploadfile", formData);
   };
 
   useEffect(() => {
@@ -165,35 +148,6 @@ const DonationForm = () => {
                         SetData({ ...data, photoUrl: base64 });
                       }}
                     />
-
-                    {/* <div className="value">
-                      <div className="input-group js-input-file">
-                        <input
-                          // className="input-file"
-                          type="file"
-                          // name="img_banner"
-                          // id="file"
-                          onChange={onFileChange}
-                        />
-                        <span className="input-file__info">No file chosen</span>
-                        <button onClick={onFileUpload}>Upload!</button>
-                      </div>
-                      <div className="label--desc">
-                        Upload an image that will serve as a banner to your fund
-                        raiser. Max file size 50 MB
-                      </div>
-                    </div> */}
-                    {/* <div className="name">Banner Image</div> */}
-
-                    {/* <div className="value">
-                      <input
-                        className="input--style-6"
-                        type="text"
-                        name="photoUrl"
-                        placeholder="Upload an image online to serve as a banner and paste the link"
-                        onChange={handleInputs}
-                      />
-                    </div> */}
                   </div>
                   <div className="form-row">
                     <div className="name">Type</div>

@@ -1,5 +1,35 @@
-const Fundraiser = require('../models/fundraiser');
-const User = require('../models/user');
+const Fundraiser = require("../models/fundraiser");
+const User = require("../models/user");
+
+const getFundraiser = async (fundId) => {
+  const temp = await Fundraiser.findOne({ _id: fundId })
+    .then(async (result) => {
+      return result;
+    })
+    .catch((err) => {
+      throw err;
+    });
+  return temp;
+};
+
+const getUsers = async (fundid, amt) => {
+  const obj2 = {
+    username: "",
+    userpfp: "",
+  };
+  const obj = await getFundraiser(fundid);
+  const temp = await User.findOne({ googleid: obj["createdby"] })
+    .then(async (user) => {
+      obj2["userpfp"] = user["pfp_url"];
+      obj2["username"] = user["firstname"] + " " + user["lastname"];
+      object = { fund: obj, user: obj2, amount: amt };
+      return object;
+    })
+    .catch((err) => {
+      throw err;
+    });
+  return temp;
+};
 
 exports.handleUserLogin = (req, res) => {
   const id_token = req.body.id_token;
@@ -26,21 +56,21 @@ exports.handleUserLogin = (req, res) => {
           .then(() => {
             res.send({
               status: 200,
-              message: `User ${firstname + ' ' + lastname} added successfully`,
+              message: `User ${firstname + " " + lastname} added successfully`,
             });
           })
-          .catch((err) => res.status(400).json('Error: ' + err));
+          .catch((err) => res.status(400).json("Error: " + err));
       } else {
         res.send({
           status: 200,
           message: `User ${
-            user.firstname + ' ' + user.lastname
+            user.firstname + " " + user.lastname
           } logged in successfully`,
         });
       }
     })
     .catch((err) => {
-      res.status(400).json('Error: ' + err);
+      res.status(400).json("Error: " + err);
     });
 };
 
@@ -57,30 +87,27 @@ exports.getUserDetails = (req, res) => {
       });
     })
     .catch((err) => {
-      res.status(400).json('Error: ' + err);
+      res.status(400).json("Error: " + err);
     });
 };
 
-exports.getAllFundraisersUserDonatedTo = (req, res) => {
+exports.getAllFundraisersUserDonatedTo = async (req, res) => {
   const userid = req.params.id;
-  const fundlist = [];
   User.find({ googleid: userid })
-    .then((user) => {
+    .then(async (user) => {
       const fundraisers = user[0].fundraisersDonatedTo; //list of all fundraiser where the user donated contains fundId and amount donated by user
 
-      fundraisers.map((data, id) => {
-        Fundraiser.findOne({ _id: data.fundId })
-          .then((result) =>
-            fundlist.append({ fund: result, amount: data.donatedAmount })
-          )
-          .catch((err) => {
-            console.log(err + id);
-          });
+      const data = fundraisers.map(async (data, id) => {
+        const fundlist = [];
+        const temp = await getUsers(data.fundId, data.donatedAmount);
+        fundlist.push(temp);
+        return fundlist;
       });
-      res.send(fundlist);
+      const to_return = await Promise.all(data);
+      res.status(200).json(to_return);
     })
     .catch((err) => {
-      res.status(400).json('Error' + err);
+      res.status(400).json("Error" + err);
       console.log(err);
     });
 };
