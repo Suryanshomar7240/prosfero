@@ -27,6 +27,7 @@ const Overview = (prop) => {
         <Fundraiser
           imgLink={fundraiser[0].photoUrl}
           userName={prop.userid}
+          FundId={fundraiser[0]._id}
           orgName={fundraiser[0].orgName}
           progress={fundraiser[0].moneyCollected}
           required={fundraiser[0].targetMoney}

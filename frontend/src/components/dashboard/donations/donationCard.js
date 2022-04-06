@@ -1,4 +1,5 @@
 import React from 'react';
+import {displayRazorpay} from '../../donationCards/DonationCard';
 const Donation= (props) => {
   return (
     <>
@@ -27,7 +28,10 @@ const Donation= (props) => {
             aria-valuemax='100'
           >{parseInt((props.progress / props.required) * 100 )}%</div>
         </div>
-        <button className="donate_button">Donate More</button>
+        <button className="donate_button"
+         onClick={() => {
+          displayRazorpay(props.fundId);
+        }}>Donate More</button>
       </div>
     </>
   );

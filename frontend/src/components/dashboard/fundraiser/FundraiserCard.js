@@ -22,7 +22,6 @@ const Fundraiser = (props) => {
             role="progressbar"
             style={{
               width: (props.progress / props.required) * 100 + "%",
-              // backgroundColor: "#68bf36",
             }}
             aria-valuenow="25"
             aria-valuemin="0"
@@ -31,7 +30,9 @@ const Fundraiser = (props) => {
             <span></span>
           </div>
         </div>
-        <button className="donate_button">Update Details</button>
+        <button className="donate_button" onClick={()=>{
+          window.location=('/update/'+ props.FundId);
+        }}>Update Details</button>
       </div>
     </div>
   );

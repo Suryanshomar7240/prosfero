@@ -14,4 +14,6 @@ router.route("/create").post(fundraiserController.createNewFundraiser);
 // that contains all the fundraisers created by a given user
 router.route("/:userId").get(fundraiserController.getFundraisersCreatedByUser);
 
+router.route("/active/:fundId").get(fundraiserController.getFundraiserByID);
+router.route("/update").post(fundraiserController.updateFundraiser);
 module.exports = router;

@@ -3,7 +3,6 @@ import './explore.css';
 import eq from '../../assets/farmer3.jpg';
 import DonationCard from '../donationCards/DonationCard';
 import axios from 'axios';
-
 import { withRouter } from 'react-router-dom';
 
 const Explore = (prop) => {

@@ -16,6 +16,7 @@ const Fundraisers = (prop) => {
           return (
             <Fundraiser
             key={value}
+            FundId={fund._id}
               imgLink={fund.photoUrl}
               userName={prop.userid}
               orgName={fund.orgName}

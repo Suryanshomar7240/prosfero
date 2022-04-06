@@ -68,3 +68,32 @@ exports.getFundraisersCreatedByUser = (req, res) => {
     })
     .catch((err) => res.status(400).json('Error: ' + err));
 };
+
+exports.getFundraiserByID=(req,res)=>{
+  const fundId=req.params.fundId;
+  Fundraiser.findOne({_id:fundId}).then((fund)=>{
+    res.status(200).json(fund);
+  }).catch((err)=>res.status(400).json('Error :'+err))
+};
+
+exports.updateFundraiser=(req,res)=>{
+  const data={
+    orgName: req.body.org_name,
+    bio: req.body.motive,
+    photoUrl: req.body.photoUrl,
+    targetMoney: req.body.required_money,
+    upiMobile: req.body.upiMobile,
+    type: req.body.type,
+  };
+  
+  Fundraiser.findOneAndUpdate({ _id: req.body.fundId }, data,(err,doc)=>{
+    if(!err){
+      res.status(200).json("Fundraiser updated successfully");
+    }
+    else
+    {
+      res.status(400).json('Error: ');
+      console.log(err);
+    }
+  });
+};
