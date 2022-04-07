@@ -1,15 +1,15 @@
-const Fundraiser = require('../models/fundraiser');
-const User = require('../models/user');
+const Fundraiser = require("../models/fundraiser");
+const User = require("../models/user");
 
 const getUsers = async (obj) => {
   const obj2 = {
-    username: '',
-    userpfp: '',
+    username: "",
+    userpfp: "",
   };
-  const temp = await User.findOne({ googleid: obj['createdby'] })
+  const temp = await User.findOne({ googleid: obj["createdby"] })
     .then(async (user) => {
-      obj2['userpfp'] = user['pfp_url'];
-      obj2['username'] = user['firstname'] + ' ' + user['lastname'];
+      obj2["userpfp"] = user["pfp_url"];
+      obj2["username"] = user["firstname"] + " " + user["lastname"];
       object = { fundraisers: obj, user: obj2 };
       return object;
     })
@@ -22,7 +22,6 @@ const getUsers = async (obj) => {
 exports.getAllFundraisers = async (req, res) => {
   Fundraiser.find()
     .then(async (fundraisers) => {
-      
       const data = fundraisers.map(async (obj) => {
         const collectedData = [];
         const temp = await getUsers(obj);
@@ -33,7 +32,7 @@ exports.getAllFundraisers = async (req, res) => {
       const final_data = await Promise.all(data);
       res.status(200).json(final_data);
     })
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => res.status(400).json("Error: " + err));
 };
 
 exports.createNewFundraiser = async (req, res) => {
@@ -54,10 +53,10 @@ exports.createNewFundraiser = async (req, res) => {
     .then(() =>
       res.send({
         status: 200,
-        message: 'New Fundraiser created successfully',
+        message: "New Fundraiser created successfully",
       })
     )
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => res.status(400).json("Error: " + err));
 };
 
 exports.getFundraisersCreatedByUser = (req, res) => {
@@ -66,18 +65,20 @@ exports.getFundraisersCreatedByUser = (req, res) => {
     .then((fundraisers) => {
       res.json(fundraisers);
     })
-    .catch((err) => res.status(400).json('Error: ' + err));
+    .catch((err) => res.status(400).json("Error: " + err));
 };
 
-exports.getFundraiserByID=(req,res)=>{
-  const fundId=req.params.fundId;
-  Fundraiser.findOne({_id:fundId}).then((fund)=>{
-    res.status(200).json(fund);
-  }).catch((err)=>res.status(400).json('Error :'+err))
+exports.getFundraiserByID = (req, res) => {
+  const fundId = req.params.fundId;
+  Fundraiser.findOne({ _id: fundId })
+    .then((fund) => {
+      res.status(200).json(fund);
+    })
+    .catch((err) => res.status(400).json("Error :" + err));
 };
 
-exports.updateFundraiser=(req,res)=>{
-  const data={
+exports.updateFundraiser = (req, res) => {
+  const data = {
     orgName: req.body.org_name,
     bio: req.body.motive,
     photoUrl: req.body.photoUrl,
@@ -85,15 +86,20 @@ exports.updateFundraiser=(req,res)=>{
     upiMobile: req.body.upiMobile,
     type: req.body.type,
   };
-  
-  Fundraiser.findOneAndUpdate({ _id: req.body.fundId }, data,(err,doc)=>{
-    if(!err){
+
+  Fundraiser.findOneAndUpdate({ _id: req.body.fundId }, data, (err, doc) => {
+    if (!err) {
       res.status(200).json("Fundraiser updated successfully");
-    }
-    else
-    {
-      res.status(400).json('Error: ');
+    } else {
+      res.status(400).json("Error: ");
       console.log(err);
     }
   });
+};
+
+exports.deleteFundraiser = (req, res) => {
+  const fundid = req.params.fundid;
+  Fundraiser.deleteOne({ _id: fundid })
+      .then(() => res.status(200).json('Deleted item successfully'))
+      .catch((err) => res.status(400).json(err));
 };
