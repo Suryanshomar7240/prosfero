@@ -5,11 +5,13 @@ import './UserDashBoard.css';
 import Overview from './overview/overview';
 import Fundraisers from './fundraiser/fundraiser';
 import Donations from './donations/donation';
+// import { Update } from './fundraiser/update';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 
 const UserDashBoard = () => {
+
   const userid = localStorage.getItem("token");
 
   const [params, setParams] = useState({
@@ -19,7 +21,8 @@ const UserDashBoard = () => {
     fundraiserDids: [],
   });
 
-  useEffect(() => {
+
+  const cssfunctions=()=>{
     const overview = document.querySelector('.nav-overview');
     const fundraiser = document.querySelector('.nav-fundraiser');
     const donation = document.querySelector('.nav-Donations');
@@ -44,6 +47,51 @@ const UserDashBoard = () => {
       overviewpage.classList.add('display_none');
       donationpage.classList.remove('display_none');
     });
+  }
+
+  const [fundraiser, setFundraiser] = useState([]);
+
+  const [donation, Setdonations] = useState([]);
+
+  const getDonations = (userid) => {
+    return axios.get(`http://localhost:5000/user/donations/${userid}`);
+  };
+
+  
+  const getFundraiser = (userId) => {
+    return axios.get(`http://localhost:5000/fundraiser/${userId}`);
+  };
+
+  const resolvePromises = (data) => {
+    return Promise.all(
+      data.map((fr) => {
+        return fr;
+      })
+    );
+  };
+
+
+  useEffect(() => {
+    cssfunctions();
+
+    getFundraiser(userid)
+    .then(async (res) => {
+      if (res.data.length === 0);
+      else {
+        setFundraiser(await resolvePromises(res.data));
+      }
+    })
+    .catch((err) => {
+      throw err;
+    });
+
+  getDonations(userid)
+    .then(async (active) => {
+      Setdonations(await resolvePromises(active.data));
+    })
+    .catch((err) => {
+      throw err;
+    });
 
     axios
       .get(`http://localhost:5000/user/dashboard/${userid}`)
@@ -55,6 +103,8 @@ const UserDashBoard = () => {
           fundraiserDids: res.data.fundraisersDonatedTo,
         });
       });
+
+
   }, [userid]);
   return (
     <div className='dashboard'>
@@ -78,13 +128,13 @@ const UserDashBoard = () => {
           </ul>
         </div>
         <div className='overview_page'>
-          <Overview userid={userid}/>
+          <Overview userid={userid} fundraiser={fundraiser} donation={donation}/>
         </div>
         <div className='fundraiser_page display_none'>
-          <Fundraisers userid={userid} />
+          <Fundraisers userid={userid} fundraiser={fundraiser}/>
         </div>
         <div className='donation_page display_none'>
-          <Donations />
+          <Donations donation={donation} />
         </div>
       </div>
     </div>

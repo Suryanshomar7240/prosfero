@@ -15,23 +15,24 @@ const Fundraiser = (props) => {
         <div className="fund_amount">
           Target acheived : <span className="money">{props.progress}</span>
         </div>
-        <div className="fund_progress">Percentage Progress:</div>
+        <div className="fund_progress">Percentage Progress: {parseInt((props.progress / props.required) * 100)}%</div>
         <div className="progress">
           <div
             className="progress-bar bg-primary"
             role="progressbar"
             style={{
               width: (props.progress / props.required) * 100 + "%",
-              // backgroundColor: "#68bf36",
             }}
             aria-valuenow="25"
             aria-valuemin="0"
             aria-valuemax="100"
           >
-            <span>{(props.progress / props.required) * 100}%</span>
+            <span></span>
           </div>
         </div>
-        <button className="donate_button">Update Details</button>
+        <button className="donate_button" onClick={()=>{
+          window.location=('/update/'+ props.FundId);
+        }}>Update Details</button>
       </div>
     </div>
   );

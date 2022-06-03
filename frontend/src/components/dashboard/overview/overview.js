@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-elastic-carousel";
 import Fundraiser from "../fundraiser/FundraiserCard";
 import Donation from "../donations/donationCard";
 import "./overview.css";
-import axios from "axios";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -13,126 +12,51 @@ const breakPoints = [
 ];
 
 const Overview = (prop) => {
-  const [fundraiser, setFundraiser] = useState({
-    imgLink: "",
-    userImg: "",
-    orgName: "",
-    targetMoney: 0,
-    moneyCollected: 0,
-    bio: "",
-  });
+  const donation = prop.donation;
+  const fundraiser = prop.fundraiser;
+
   const [nofund, setnoFund] = useState(true);
   useEffect(() => {
-    axios.get(`http://localhost:5000/fundraiser/${prop.userid}`).then((res) => {
-      if (res.data.length === 0);
-
-      else {
-        setnoFund(false);
-        setFundraiser({
-          imgLink:"fd",
-          targetMoney: res.data[0].targetMoney,
-          moneyCollected: res.data[0].moneyCollected,
-          bio: res.data[0].bio,
-          orgName: res.data[0].orgName,
-        });
-      }
-    });
-
-  }, [prop]);
-
+    if (fundraiser.length > 0) setnoFund(false);
+  }, [fundraiser]);
   return (
     <div className="Dashboard-content">
       <div className="User_funds_head">Yours Recent Running Fundraisers</div>
 
-    {!nofund?
-      <Fundraiser
-        imgLink={fundraiser.imgLink}
-        userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jp"
-        userName={prop.userid}
-        orgName={fundraiser.orgName}
-        progress={fundraiser.moneyCollected}
-        required={fundraiser.targetMoney}
-        FundName={fundraiser.orgName}
-      />:<></>
-    }
+      {!nofund ? (
+        <Fundraiser
+          imgLink={fundraiser[0].photoUrl}
+          userName={prop.userid}
+          FundId={fundraiser[0]._id}
+          orgName={fundraiser[0].orgName}
+          progress={fundraiser[0].moneyCollected}
+          required={fundraiser[0].targetMoney}
+          FundName={fundraiser[0].orgName}
+        />
+      ) : (
+        <h2 className="Nofund Nofund-padding">
+          You didn't raise any fundraiser :(
+        </h2>
+      )}
 
       <div className="User_donations">
         <div className="User_funds_head">Your Top Donations</div>
         <Carousel breakPoints={breakPoints}>
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            required="100000"
-            AmtDonated="100"
-            width="primary"
-          />
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            required="100000"
-            AmtDonated="100"
-            width="primary"
-          />
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            AmtDonated="100"
-            required="100000"
-          />
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            required="100000"
-            AmtDonated="100"
-          />
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            required="100000"
-            AmtDonated="100"
-          />
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            required="100000"
-            AmtDonated="100"
-          />
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            required="100000"
-            AmtDonated="100"
-          />
-          <Donation
-            imgLink="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userImg="https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
-            userName="yash"
-            orgName="Gareeb Foundation"
-            progress="90000"
-            required="100000"
-            AmtDonated="100"
-          />
+          {donation.map((data, value) => {
+            return (
+              <Donation
+                key={value}
+                orgName={data[0].fund.orgName}
+                imgLink={data[0].fund.photoUrl}
+                userImg={data[0].user.userpfp}
+                userName={data[0].user.username}
+                progress={data[0].fund.moneyCollected}
+                required={data[0].fund.targetMoney}
+                fundId={data[0].fund._id}
+                AmtDonated={data[0].amount}
+              />
+            );
+          })}
         </Carousel>
       </div>
     </div>

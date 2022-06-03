@@ -582,6 +582,21 @@
     border-width: 10px;
   }
   
+  .form-img
+  {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  input[type='file']
+  {
+    height:100%;
+  }
+  .form-img img{
+    width:30%;
+    height:30%;
+
+  }
   .card-6 .card-footer {
     background: #fff;
     border: 1px solid #e5e5e5;
@@ -594,10 +609,21 @@
     border-bottom-right-radius: 3px;
     padding: 50px 55px;
   }
+  .card-footer{
+    display:flex;
+    width:100%;
+    justify-content:space-around ;
+  }
+  .crossSign{
+    margin-bottom: 1px;
+  }
   
   @media (max-width: 767px) {
     .card-6 .card-footer {
       padding: 50px 30px;
     }
+  }
+  input[type="file"]{
+    width:fit-content;
   }
   

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import "./donationForm.css";
+import "../../donationForm/donationForm.css";
 import axios from "axios";
 import { useEffect } from "react";
 import FileBase64 from "react-file-base64";
-const DonationForm = () => {
+import { ImCross } from "react-icons/im";
+// import { withRouter } from "react-router-dom";
+
+const DonationForm = (prop) => {
+  const fundId = prop.match.params.id;
   const [verified, setVerified] = useState(false);
 
   const handleChange = (e) => {
@@ -11,6 +15,7 @@ const DonationForm = () => {
   };
 
   const [data, SetData] = useState({
+    fundId: fundId,
     org_name: "",
     email: "",
     motive: "",
@@ -20,6 +25,7 @@ const DonationForm = () => {
     photoUrl: "",
     userId: "",
     id_token: "",
+    collected_money: 0,
   });
 
   let name, value;
@@ -29,15 +35,18 @@ const DonationForm = () => {
     SetData({ ...data, [name]: value });
   };
 
+  const getFundraiser = () => {
+    return axios.get(`http://localhost:5000/fundraiser/active/${fundId}`);
+  };
   const handleSubmit = async () => {
     if (verified === false) {
       alert("You have to login to start a fundraiser");
     }
     axios
-      .post("http://localhost:5000/fundraiser/create", data)
+      .post("http://localhost:5000/fundraiser/update", data)
       .then((res) => {
-        window.alert("Fundraiser Created Successfully");
-        window.location = `/dashboard/${localStorage.getItem("token")}`;
+        window.alert("Fundraiser Updated Successfully");
+        window.location=`/dashboard/${localStorage.getItem('token')}`;
       })
       .catch((err) => {
         console.log(err + "error");
@@ -61,7 +70,21 @@ const DonationForm = () => {
           alert("Id token is invalid please login again");
         });
 
-      SetData({ userId: userid });
+      getFundraiser()
+        .then((res) => {
+          //  console.log(res);
+          SetData({
+            fundId:fundId,
+            org_name: res.data.orgName,
+            motive: res.data.bio,
+            required_money: res.data.targetMoney,
+            upiMobile: 7755046170,
+            type: res.data.type,
+            photoUrl: res.data.photoUrl,
+            collected_money: res.data.moneyCollected,
+          });
+        })
+        .catch((err) => console.log(err));
     }
   }, []);
 
@@ -75,18 +98,19 @@ const DonationForm = () => {
           >
             <div className="card card-6">
               <div className="card-heading">
-                <h2 className="title">Start a Fundraiser</h2>
+                <h2 className="title">Update your Fundraiser</h2>
               </div>
               <div className="card-body">
                 <form method="POST">
-                  <div className="form-row">
-                    <div className="name">Full name</div>
-                    <div className="value">
-                      <input
-                        className="input--style-6"
-                        type="text"
-                        name="full_name"
-                        onChange={handleInputs}
+                  <div className="form-row form-img">
+                    <img src={data.photoUrl}></img>
+                    <div>
+                      <h2>Change Image</h2>
+                      <FileBase64
+                        multiple={false}
+                        onDone={({ base64 }) => {
+                          SetData({ ...data, photoUrl: base64 });
+                        }}
                       />
                     </div>
                   </div>
@@ -97,6 +121,7 @@ const DonationForm = () => {
                         className="input--style-6"
                         type="text"
                         name="org_name"
+                        value={data.org_name}
                         onChange={handleInputs}
                         required
                       />
@@ -110,6 +135,7 @@ const DonationForm = () => {
                           className="input--style-6"
                           type="text"
                           name="upiMobile"
+                          value={data.upiMobile}
                           placeholder="Your 10 digit mobile number for upi payments"
                           onChange={handleInputs}
                         />
@@ -123,6 +149,7 @@ const DonationForm = () => {
                         <textarea
                           className="textarea--style-6"
                           name="motive"
+                          value={data.motive}
                           placeholder="Brief about the purpose that this fundraiser serves"
                           onChange={handleInputs}
                         ></textarea>
@@ -136,19 +163,15 @@ const DonationForm = () => {
                         className="input--style-6"
                         type="number"
                         name="required_money"
+                        value={data.required_money}
                         placeholder="Enter the amount of money you need in rupees"
                         onChange={handleInputs}
                       />
                     </div>
-                  </div>
-                  <div className="form-row">
-                    <div className="name">Upload an image</div>
-                    <FileBase64
-                      multiple={false}
-                      onDone={({ base64 }) => {
-                        SetData({ ...data, photoUrl: base64 });
-                      }}
-                    />
+                    <div style={{ color: "grey" }}>
+                      *this fundraiser already collected {data.collected_money}{" "}
+                      ₹
+                    </div>
                   </div>
                   <div className="form-row">
                     <div className="name">Type</div>
@@ -157,6 +180,7 @@ const DonationForm = () => {
                         className="selectOptions"
                         onChange={handleChange}
                         style={{ color: "#999999", fontSize: "16px" }}
+                        value={data.type}
                       >
                         <option value="all">Select Category</option>
                         <option value="education">Education</option>
@@ -172,10 +196,18 @@ const DonationForm = () => {
               <div className="card-footer">
                 <button
                   className="btn btn--radius-2 btn--blue-2 bb"
-                  type="submit"
+                  //   type="submit"
                   onClick={handleSubmit}
                 >
-                  Start Fundraiser
+                  Update Fundraiser
+                </button>
+                <button
+                  className="btn btn--radius-2 btn--blue-2 bb bg-danger"
+                  //   type="submit"
+                  //   onClick={handleSubmit}
+                >
+                  <ImCross className="crossSign" />
+                  &ensp;CLOSE
                 </button>
               </div>
             </div>
@@ -187,7 +219,7 @@ const DonationForm = () => {
     return (
       <div>
         <h1 style={{ textAlign: "center", margin: "100px" }}>
-          Please login to start a Fundraiser
+          Please login to update your Fundraiser
         </h1>
       </div>
     );
