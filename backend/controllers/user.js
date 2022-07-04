@@ -7,7 +7,7 @@ const getFundraiser = async (fundId) => {
       return result;
     })
     .catch((err) => {
-      throw err;
+      throw err;  
     });
   return temp;
 };

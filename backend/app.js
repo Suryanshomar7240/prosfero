@@ -19,7 +19,8 @@ app.use('/user', userRouter);
 app.use('/admin',adminRouter);
 app.use('/donation',donateRouter);
 app.use('/feedback',feedbackRouter);
-app.use('/payment',paymentRouter)
+app.use('/payment',paymentRouter);
+app.use('/')
 
 
 const PORT =process.env.PORT || 5000;
