@@ -20,7 +20,9 @@ app.use('/admin',adminRouter);
 app.use('/donation',donateRouter);
 app.use('/feedback',feedbackRouter);
 app.use('/payment',paymentRouter);
-app.use('/')
+app.use('/',(req,res)=>{
+  res.send("welcome to prosfero api ");
+});
 
 
 const PORT =process.env.PORT || 5000;
