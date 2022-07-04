@@ -22,7 +22,7 @@ app.use('/feedback',feedbackRouter);
 app.use('/payment',paymentRouter)
 
 
-const PORT = 5000;
+const PORT =process.env.PORT || 5000;
 const MONGO_PWD = process.env.MONGO_PWD;
 
 // Connect to the mongodb atlas DB
