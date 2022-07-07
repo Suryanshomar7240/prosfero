@@ -36,14 +36,14 @@ const DonationForm = (prop) => {
   };
 
   const getFundraiser = () => {
-    return axios.get(`http://localhost:5000/fundraiser/active/${fundId}`);
+    return axios.get(`https://prosfero-backend.herokuapp.com/fundraiser/active/${fundId}`);
   };
   const handleSubmit = async () => {
     if (verified === false) {
       alert("You have to login to start a fundraiser");
     }
     axios
-      .post("http://localhost:5000/fundraiser/update", data)
+      .post("https://prosfero-backend.herokuapp.com/fundraiser/update", data)
       .then((res) => {
         window.alert("Fundraiser Updated Successfully");
         window.location=`/dashboard/${localStorage.getItem('token')}`;

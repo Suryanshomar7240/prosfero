@@ -34,7 +34,7 @@ const DonationForm = () => {
       alert("You have to login to start a fundraiser");
     }
     axios
-      .post("http://localhost:5000/fundraiser/create", data)
+      .post("https://prosfero-backend.herokuapp.com/fundraiser/create", data)
       .then((res) => {
         window.alert("Fundraiser Created Successfully");
         window.location = `/dashboard/${localStorage.getItem("token")}`;

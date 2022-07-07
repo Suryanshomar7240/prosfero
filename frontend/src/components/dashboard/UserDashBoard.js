@@ -54,12 +54,12 @@ const UserDashBoard = () => {
   const [donation, Setdonations] = useState([]);
 
   const getDonations = (userid) => {
-    return axios.get(`http://localhost:5000/user/donations/${userid}`);
+    return axios.get(`https://prosfero-backend.herokuapp.com/user/donations/${userid}`);
   };
 
   
   const getFundraiser = (userId) => {
-    return axios.get(`http://localhost:5000/fundraiser/${userId}`);
+    return axios.get(`https://prosfero-backend.herokuapp.com/fundraiser/${userId}`);
   };
 
   const resolvePromises = (data) => {
@@ -94,7 +94,7 @@ const UserDashBoard = () => {
     });
 
     axios
-      .get(`http://localhost:5000/user/dashboard/${userid}`)
+      .get(`https://prosfero-backend.herokuapp.com/user/dashboard/${userid}`)
       .then((res) => {
         setParams({
           username: res.data.firstname + ' ' + res.data.lastname,

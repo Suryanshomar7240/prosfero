@@ -39,7 +39,7 @@ const Feedback = (prop) => {
       };
       
       axios
-        .post("http://localhost:5000/feedback/post", feedback_post)
+        .post("https://prosfero-backend.herokuapp.com/feedback/post", feedback_post)
         .then((res) => {})
 
         .catch((err) => console.log(err));
