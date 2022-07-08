@@ -35,15 +35,13 @@ const DonationForm = (prop) => {
     SetData({ ...data, [name]: value });
   };
 
-  const getFundraiser = () => {
-    return axios.get(`https://prosfero-backend.herokuapp.com/fundraiser/active/${fundId}`);
-  };
+  
   const handleSubmit = async () => {
     if (verified === false) {
       alert("You have to login to start a fundraiser");
     }
     axios
-      .post("https://prosfero-backend.herokuapp.com/fundraiser/update", data)
+      .post(`${process.env.REACT_APP_apiUrl}/fundraiser/update`, data)
       .then((res) => {
         window.alert("Fundraiser Updated Successfully");
         window.location=`/dashboard/${localStorage.getItem('token')}`;
@@ -54,6 +52,9 @@ const DonationForm = (prop) => {
   };
 
   useEffect(() => {
+    const getFundraiser = () => {
+      return axios.get(`${process.env.REACT_APP_apiUrl}/fundraiser/active/${fundId}`);
+    };
     const id_token = localStorage.getItem("id_token");
     const userid = localStorage.getItem("token");
 
@@ -86,7 +87,7 @@ const DonationForm = (prop) => {
         })
         .catch((err) => console.log(err));
     }
-  }, []);
+  }, [fundId]);
 
   if (verified === true) {
     return (
@@ -103,7 +104,7 @@ const DonationForm = (prop) => {
               <div className="card-body">
                 <form method="POST">
                   <div className="form-row form-img">
-                    <img src={data.photoUrl}></img>
+                    <img src={data.photoUrl} alt="upload"></img>
                     <div>
                       <h2>Change Image</h2>
                       <FileBase64

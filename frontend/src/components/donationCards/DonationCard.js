@@ -34,7 +34,7 @@ const displayRazorpay = async (fundId) => {
   };
   console.log(post_data);
   const payment_data = await axios
-    .post('https://prosfero-backend.herokuapp.com/payment/pay', post_data) // Initiate an order in the backend and get the details of the order
+    .post(`${process.env.REACT_APP_apiUrl}/payment/pay`, post_data) // Initiate an order in the backend and get the details of the order
     .then((r) => r.data);
 
   console.log(payment_data);
@@ -60,9 +60,9 @@ const displayRazorpay = async (fundId) => {
         donated_by: donor_id,
         fund_id: fundId,
       };
-      axios.post('https://prosfero-backend.herokuapp.com/payment/add', data);
+      axios.post(`${process.env.REACT_APP_apiUrl}/payment/add`, data);
       axios.post(
-        'https://prosfero-backend.herokuapp.com/donation/updatedonation',
+        `${process.env.REACT_APP_apiUrl}/donation/updatedonation`,
         update_data
       );
       alert("Donated successfully")

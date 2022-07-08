@@ -10,7 +10,7 @@ const Explore = (prop) => {
   const [fundraisers, setFundraisers] = useState([]);
 
   const getActiveFundraiser = () => {
-    return axios.get('https://prosfero-backend.herokuapp.com/fundraiser/active');
+    return axios.get(`${process.env.REACT_APP_apiUrl}/fundraiser/active`);
   };
 
   const getDashboardData = (data) => {

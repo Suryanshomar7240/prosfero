@@ -20,11 +20,11 @@ const Homepage = () => {
   const [reviews, setReviews] = useState([]);
 
   const getActiveFundraiser = () => {
-    return axios.get('https://prosfero-backend.herokuapp.com/fundraiser/active');
+    return axios.get(`${process.env.REACT_APP_apiUrl}/fundraiser/active`);
   };
 
   const getAllReviews = () => {
-    return axios.get('https://prosfero-backend.herokuapp.com/feedback/get');
+    return axios.get(`${process.env.REACT_APP_apiUrl}/feedback/get`);
   };
 
   const resolvePromises = (data) => {
