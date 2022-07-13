@@ -1,10 +1,47 @@
-# <b>Prosfero</b>
-# About us
+# <center><b>Prosfero</b></h1> </center>
+<div align="center">
 
-Prosfero is an open source crowd funding platform developed by two college students with a dream to help people with monetary issues and ensure that money doesn't get in the way of people trying to make a change.
-Prosfro is a platform that allows people to donate money needies.
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/)
+</div>
+
+<div align="center">
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+</div>
+
+<div align="center">
+
+[About Us](#About) |
+[Getting Started](#Getting) |
+[Demonstration]() |
+[Contributers](#MongoDB)
+</div>
+
+
+<a name="About"></a>
+
+# About us
+<center>
+<img src="./assets/prosfero_home.jpg" width = "450" height = "200">
+</center>
+
+Prosfero is an Open Source Crowd Funding platform developed by two university students with one dream - 
+
+<center><b>
+To help people with monetary issues and ensure that money doesn't get in the way of people trying to make a change. 
+
+</b> </center>
+
+Prosfro is a platform that allows people to donate money, hassle-free, to those in need. 
+
 
 # Getting Started
+
+<a name="Getting"></a>
 
 ### Fork, Clone locally 
 <br>
@@ -64,4 +101,6 @@ Set up your environment variables
 <br><br>
 Create a file called .env and set up your keys (keys are confidential ask owner of the project for the keys).
 Commit your changes and create a pull request.
+
+
 
