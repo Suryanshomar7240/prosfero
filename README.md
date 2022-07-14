@@ -110,8 +110,8 @@ Commit your changes and create a pull request.
 
 <br>
 
-# Demonstration
 <a name="demo"></a>
+# Demonstration
 
 Contributing through Prosfero is easy. 
 
