@@ -1,7 +1,8 @@
-<center><h1><b>
+<div align="center"><h1><b>
 
-Prosfero</b></h1> 
-</center>
+Prosfero</b></h1>
+
+</div>
 
 <div align="center">
 
@@ -21,26 +22,26 @@ Prosfero</b></h1>
 
 [About Us](#About) |
 [Getting Started](#Getting) |
-[Demonstration]() |
-[Contributers](#MongoDB)
+[Demonstration](#demo) |
+[Contributers](#contributors)
 </div>
 
 
 <a name="About"></a>
 
 # About us
-<center>
+<div align="center">
 
 <img src="./assets/prosfero_home.jpg" width = "450" height = "200">
 
-</center>
+</div>
 
 Prosfero is an Open Source Crowd Funding platform developed by two university students with one dream - 
 
-<center><b>
+<div align="center"><b>
 To help people with monetary issues and ensure that money doesn't get in the way of people trying to make a change. 
 
-</b> </center>
+</b> </div>
 
 Prosfro is a platform that allows people to donate money, hassle-free, to those in need. 
 
@@ -110,21 +111,22 @@ Commit your changes and create a pull request.
 <br>
 
 # Demonstration
+<a name="demo"></a>
 
 Contributing through Prosfero is easy. 
 
-<center>
+<div align="center">
 
 <img src="./assets/prosfero_home.jpg" width = "450" height = "200">
-</center>
+</div>
 
 On the Home Screen one can find the "Contibute Today" Option.
 This will redirect you to the Contributions Page.
 
-<center>
+<div align="center">
 
 <img src="./assets/prosfero_contribute.jpg" width = "450" height = "200">
-</center>
+</div>
 
 You can now see all open donations under this section.
 You can also explore ongoing donations using the "Explore" option on the menu bar.
@@ -133,21 +135,40 @@ Prosfero allows you to filter out the open donations by clicking on the by selec
 <br>
 You can also select a cause from the home page to see the open donations for that specific cause.
 
-<center>
+<div align="center">
 
 <img src="./assets/prosfero_cause.jpg" width = "450" height = "200">
-</center>
+</div>
 
 Prosfero promises complete transpirancy in the donations. You can sumbit your experience and feedback to the prosfero team through the "Submit your Feedback" section. You can also head what others have to say about Prosfero.
 
-<center>
+<div align="center">
 
 <img src="./assets/prosfero_feedback.jpg" width = "450" height = "200">
-</center>
+</div>
+
+To start a fundraiser, you can click on the "Start a Fundraiser" option on the menu bar.
+Prosfero guides you through the process of starting a fundraiser. Starting a fundraiser is easy and is completely free.
+<div align="center">
+
+<img src="./assets/prosfero_start.jpg" width = "450" height = "200">
+</div>
 
 Have a grevance, issue or a query? Feel free to contact us through the "Contact Us" section.
 
-<center>
+<div align="center">
 
 <img src="./assets/prosfero_contact.jpg" width = "450" height = "200">
-</center>
+</div>
+
+
+# Contributors 
+
+<a name="contributors"></a>
+
+<div align="center">
+
+<a href="https://github.com/shrooot/prosfero/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=shrooot/prosfero" />
+</a>
+</a>
