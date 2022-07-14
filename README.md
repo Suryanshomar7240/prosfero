@@ -1,4 +1,8 @@
-# <center><b>Prosfero</b></h1> </center>
+<center><h1><b>
+
+Prosfero</b></h1> 
+</center>
+
 <div align="center">
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
@@ -26,7 +30,9 @@
 
 # About us
 <center>
+
 <img src="./assets/prosfero_home.jpg" width = "450" height = "200">
+
 </center>
 
 Prosfero is an Open Source Crowd Funding platform developed by two university students with one dream - 
@@ -38,10 +44,9 @@ To help people with monetary issues and ensure that money doesn't get in the way
 
 Prosfro is a platform that allows people to donate money, hassle-free, to those in need. 
 
+<a name="Getting"></a>
 
 # Getting Started
-
-<a name="Getting"></a>
 
 ### Fork, Clone locally 
 <br>
@@ -102,5 +107,47 @@ Set up your environment variables
 Create a file called .env and set up your keys (keys are confidential ask owner of the project for the keys).
 Commit your changes and create a pull request.
 
+<br>
 
+# Demonstration
 
+Contributing through Prosfero is easy. 
+
+<center>
+
+<img src="./assets/prosfero_home.jpg" width = "450" height = "200">
+</center>
+
+On the Home Screen one can find the "Contibute Today" Option.
+This will redirect you to the Contributions Page.
+
+<center>
+
+<img src="./assets/prosfero_contribute.jpg" width = "450" height = "200">
+</center>
+
+You can now see all open donations under this section.
+You can also explore ongoing donations using the "Explore" option on the menu bar.
+<br>
+Prosfero allows you to filter out the open donations by clicking on the by selecting the various "Categories" on the left pane.
+<br>
+You can also select a cause from the home page to see the open donations for that specific cause.
+
+<center>
+
+<img src="./assets/prosfero_cause.jpg" width = "450" height = "200">
+</center>
+
+Prosfero promises complete transpirancy in the donations. You can sumbit your experience and feedback to the prosfero team through the "Submit your Feedback" section. You can also head what others have to say about Prosfero.
+
+<center>
+
+<img src="./assets/prosfero_feedback.jpg" width = "450" height = "200">
+</center>
+
+Have a grevance, issue or a query? Feel free to contact us through the "Contact Us" section.
+
+<center>
+
+<img src="./assets/prosfero_contact.jpg" width = "450" height = "200">
+</center>
