@@ -33,12 +33,12 @@
   transition: 0.1s linear;
 }
 .media .staricon:hover {
-  color: #7ff5f5;
+  color: #4fbbe6;
   font-size: 60px !important;
   /* transform: scale(1.4); */
 }
 .active {
-  color: #7ff5f5;
+  color: #4fbbe6;
   font-size: 30px;
 }
 .staricon{
@@ -56,7 +56,7 @@
 }
 .heading h1 {
   font-size: 30px;
-  border-bottom: 3px solid #7ff5f5;
+  border-bottom: 3px solid #4fbbe6;
   font-weight: bolder;
 }
 .close {
@@ -103,7 +103,7 @@ textarea {
   align-items: center;
 }
 .form_btn {
-  background: #7ff5f5 !important;
+  background: #4fbbe6 !important;
   border: 1px solid transparent;
 }
 input{

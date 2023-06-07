@@ -1,27 +1,25 @@
-import React from 'react';
-import { GoogleLogout } from 'react-google-login';
-
-const clientid =
-  '164103917734-69vt13rut8unj21kf48ledmfs28dop7r.apps.googleusercontent.com';
+import React from "react";
 
 const Logout = (prop) => {
   const handleOnSuccess = () => {
-    const dashborad = document.querySelector('#dashboard');
-    dashborad.classList.add('dpNone');
+    const dashborad = document.querySelector("#dashboard");
+    dashborad.classList.add("dpNone");
     prop.SetAuth(false);
     localStorage.clear();
     window.location.reload(false);
-    window.location="/";
-    alert('User logged out successfully');
+    window.location = "/";
+    alert("User logged out successfully");
   };
 
   return (
     <div>
-      <GoogleLogout
-        clientId={clientid}
-        buttonText='Logout'
-        onLogoutSuccess={handleOnSuccess}
-      />
+      <button
+        type="button"
+        class="login-with-google-btn"
+        onClick={handleOnSuccess}
+      >
+        Logout
+      </button>
     </div>
   );
 };

@@ -1,35 +1,37 @@
-import React from 'react';
-import { GoogleLogin } from 'react-google-login';
-import axios from 'axios';
-require('dotenv').config();
-
-const clientid =
-  '494122328651-o69tn42mgbdgb5nqoa8gorvild1lt4u6.apps.googleusercontent.com';
+import React from "react";
+import axios from "axios";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import auth from "./firebase";
+import "./login.css";
+require("dotenv").config();
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uId: '',
+      uId: "",
     };
   }
 
-  handleOnSuccess = (res) => {
-    const dashboard = document.querySelector('#dashboard');
-    dashboard.classList.remove('dpNone');
-    const profile = res.getBasicProfile();
-    const id_token = res.getAuthResponse().id_token;
-    const firstname = profile.getGivenName();
-    const lastname = profile.getFamilyName();
-    const email = profile.getEmail();
-    const userid = profile.getId();
-    const pfp_url=profile.getImageUrl();
+  googleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    console.log(result);
 
-    localStorage.setItem('token', userid);
-    localStorage.setItem('id_token', id_token);
-    
-    localStorage.setItem('isAuthenticated',true);
-    
+    const response = result["_tokenResponse"];
+
+    const dashboard = document.querySelector("#dashboard");
+    dashboard.classList.remove("dpNone");
+    const id_token = response.idToken;
+    const firstname = response.firstName;
+    const lastname = response.lastName;
+    const email = response.email;
+    const userid = result["user"].providerData[0].uid;
+    const pfp_url = response.photoUrl;
+    localStorage.setItem("token", userid);
+    localStorage.setItem("id_token", id_token);
+    localStorage.setItem("isAuthenticated", true);
+
     const data = {
       id_token: id_token,
       firstname: firstname,
@@ -41,30 +43,23 @@ class Login extends React.Component {
 
     this.props.SetAuth(true);
     this.props.Setuserid(userid);
-    
+
+    console.log(data);
+
     axios
-      .post(`${process.env.apiUrl}/user/login`, data)
+      .post(`${process.env.REACT_APP_apiUrl}/user/login`, data)
       .then((response) => {
-        console.log('Login successful');
+        console.log("Login successful");
       })
       .catch((err) => console.log(err));
   };
 
-  handleOnFailure(res) {
-    console.log(`[Login failed] response: ${res}`);
-  }
-
   render() {
     return (
       <div>
-        <GoogleLogin
-          clientId={clientid}
-          buttonText='Login'
-          onSuccess={this.handleOnSuccess}
-          onFailure={this.handleOnFailure}
-          cookiePolicy='single_host_origin'
-          isSignedIn={true}
-        />
+        <button type="button" class="login-with-google-btn" onClick={this.googleSignIn} >
+          Sign in
+        </button>
       </div>
     );
   }

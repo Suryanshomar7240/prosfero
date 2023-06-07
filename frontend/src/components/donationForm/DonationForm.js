@@ -51,16 +51,7 @@ const DonationForm = () => {
     if (id_token == null || userid == null) {
       alert("You have to login first to create fundraisers");
     } else {
-      axios
-        .get(`https://oauth2.googleapis.com/tokeninfo?id_token=${id_token}`)
-        .then(() => {
-          setVerified(true);
-          console.log("verified");
-        })
-        .catch(() => {
-          alert("Id token is invalid please login again");
-        });
-
+      setVerified(true);
       SetData({ userId: userid });
     }
   }, []);

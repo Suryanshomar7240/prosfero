@@ -35,7 +35,7 @@ nav {
   justify-self: flex-end;
   list-style-type: none;
   padding: 3vh 2vw 0vh 2vw !important;
-  color: #7ff5f5;
+  color: #4fbbe6;
   font-size: 1.3em;
   font-weight: 500;
   align-items: center;
@@ -47,7 +47,7 @@ nav {
 .nav-item:after {
   display: block;
   content: '';
-  border-bottom: solid 3px #7ff5f5;
+  border-bottom: solid 3px #4fbbe6;
   transform: scaleX(0);
   transition: all 250ms ease-in-out;
 }
@@ -58,7 +58,7 @@ nav {
 /* .nav-item.fromLeft:after{  transform-origin:  0% 50%; } */
 .nav-bar a {
   text-decoration: none;
-  color: #7ff5f5;
+  color: #4fbbe6;
   white-space: nowrap;
 }
 .nav_scroll {
@@ -101,7 +101,7 @@ nav {
   }
   .nav_active {
     height: 100vh;
-    background-color: #7ff5f5;
+    background-color: #4fbbe6;
     width: 100vw;
     display: flex;
     align-items: flex-start;
