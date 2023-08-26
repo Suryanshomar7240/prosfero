@@ -43,6 +43,7 @@ class Login extends React.Component {
 
     this.props.SetAuth(true);
     this.props.Setuserid(userid);
+    window.location.reload();
 
     console.log(data);
 

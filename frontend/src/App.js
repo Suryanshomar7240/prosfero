@@ -9,6 +9,7 @@ import Explore from './components/explore/Explore';
 import DonationForm from './components/donationForm/DonationForm';
 import UpdateFundraiser from './components/dashboard/fundraiser/UpdateFundraiser';
 import { Route, BrowserRouter } from 'react-router-dom';
+
 function App() {
   return (
     <BrowserRouter>

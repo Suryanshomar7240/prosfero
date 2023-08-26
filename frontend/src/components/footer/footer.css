@@ -1,9 +1,9 @@
 .footer{
-    /* height:10vh; */
     margin:0% !important;
-    /* width:100% !important; */
     background-color: rgba(4, 133, 133, 0.822);
     padding: 2vh 10vw 0vh 10vw;
+    position:relative;
+    bottom: 0;
 }
 .footerWrapper{
     display: flex;

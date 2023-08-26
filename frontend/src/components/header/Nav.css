@@ -9,9 +9,6 @@ body {
 }
 nav {
   display: flex;
-  /* width: 80vw; */
-  /* max-width:80vw; */
-  /* padding:0% !important; */
   padding-left: 30px;
   margin: 0 auto;
   justify-content: space-between;

@@ -16,7 +16,6 @@ import Login from '../auth/login';
 
 const Nav = () => {
   const [ScrollDown, setIsScrollDown] = useState(false);
-  const [isAuthnticated, SetisAuthicated] = useState(false);
   const [userid, Setuserid] = useState(null);
   const handleScrollDown = () => {
     if (window.scrollY >= 60) {
@@ -81,10 +80,10 @@ const Nav = () => {
             </a>
           </li>
           <li className='nav-item'>
-            {isAuthnticated ? (
-              <Logout SetAuth={SetisAuthicated} />
+            {localStorage.getItem("isAuthenticated") ? (
+              <Logout />
             ) : (
-              <Login SetAuth={SetisAuthicated} Setuserid={Setuserid} />
+              <Login Setuserid={Setuserid} />
             )}
           </li>
         </ul>

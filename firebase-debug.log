@@ -1,0 +1,47 @@
+[debug] [2023-06-07T20:42:54.161Z] ----------------------------------------------------------------------
+[debug] [2023-06-07T20:42:54.163Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Suryansh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-06-07T20:42:54.163Z] CLI Version:   11.25.1
+[debug] [2023-06-07T20:42:54.164Z] Platform:      win32
+[debug] [2023-06-07T20:42:54.164Z] Node Version:  v16.13.2
+[debug] [2023-06-07T20:42:54.164Z] Time:          Thu Jun 08 2023 02:12:54 GMT+0530 (India Standard Time)
+[debug] [2023-06-07T20:42:54.165Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-07T20:42:54.168Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-06-07T20:42:54.189Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-07T20:42:54.189Z] > authorizing via signed-in user (suryansh20613@iiitkalyani.ac.in)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Suryansh\OneDrive\Desktop\prosfero
+
+[debug] [2023-06-07T20:42:54.847Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-06-07T20:42:54.848Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-06-07T20:43:03.511Z] > refreshing access token with scopes: []
+[debug] [2023-06-07T20:43:03.513Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-06-07T20:43:03.514Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-07T20:43:04.835Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-06-07T20:43:04.836Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-07T20:43:04.846Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-06-07T20:43:05.802Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-06-07T20:43:05.802Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project prosfero-1236781 (prosfero-1236781) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

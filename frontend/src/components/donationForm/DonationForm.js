@@ -34,7 +34,7 @@ const DonationForm = () => {
       alert("You have to login to start a fundraiser");
     }
     axios
-      .post(`${process.env.REACT_APP_apiUrl}m/fundraiser/create`, data)
+      .post(`${process.env.REACT_APP_apiUrl}/fundraiser/create`, data)
       .then((res) => {
         window.alert("Fundraiser Created Successfully");
         window.location = `/dashboard/${localStorage.getItem("token")}`;
@@ -47,7 +47,7 @@ const DonationForm = () => {
   useEffect(() => {
     const id_token = localStorage.getItem("id_token");
     const userid = localStorage.getItem("token");
-
+    console.log("Hi");
     if (id_token == null || userid == null) {
       alert("You have to login first to create fundraisers");
     } else {
@@ -56,7 +56,7 @@ const DonationForm = () => {
     }
   }, []);
 
-  if (verified === true) {
+  if (verified) {
     return (
       <div>
         <div className="page-wrapper bg-dark p-t-100 p-b-50">
@@ -176,8 +176,8 @@ const DonationForm = () => {
     );
   } else {
     return (
-      <div>
-        <h1 style={{ textAlign: "center", margin: "100px" }}>
+      <div style={{display:"flex",justifyContent:"center",alignItems:"center",margin: "auto" ,height:"51.6vh"}}>
+        <h1>
           Please login to start a Fundraiser
         </h1>
       </div>
