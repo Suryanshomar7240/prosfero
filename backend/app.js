@@ -20,7 +20,7 @@ app.use('/admin',adminRouter);
 app.use('/donation',donateRouter);
 app.use('/feedback',feedbackRouter);
 app.use('/payment',paymentRouter);
-app.use('/',(req,res)=>{
+app.use('/',(req,res)=>{ 
   res.send("welcome to prosfero api ");
 });
 

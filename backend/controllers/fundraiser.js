@@ -1,15 +1,18 @@
 const Fundraiser = require("../models/fundraiser");
 const User = require("../models/user");
 
-const getUsers = async (obj) => {
-  const obj2 = {
-    username: "",
-    userpfp: "",
-  };
-  const temp = await User.findOne({ googleid: obj["createdby"] })
-    .then(async (user) => {
-      obj2["userpfp"] = user["pfp_url"];
-      obj2["username"] = user["firstname"] + " " + user["lastname"];
+const getUsers = (obj) => {
+  const temp = User.findOne({ googleid: obj["createdby"] })
+    .then((user) => {
+      // console.log(user);
+      let obj2 = {
+        username: "",
+        userpfp: "",
+      };
+      if (user != null) {
+        obj2["userpfp"] = user["email"];
+        obj2["username"] = user["firstname"] + " " + user["lastname"];
+      }
       object = { fundraisers: obj, user: obj2 };
       return object;
     })
@@ -100,6 +103,6 @@ exports.updateFundraiser = (req, res) => {
 exports.deleteFundraiser = (req, res) => {
   const fundid = req.params.fundid;
   Fundraiser.deleteOne({ _id: fundid })
-      .then(() => res.status(200).json('Deleted item successfully'))
-      .catch((err) => res.status(400).json(err));
+    .then(() => res.status(200).json("Deleted item successfully"))
+    .catch((err) => res.status(400).json(err));
 };
