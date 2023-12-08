@@ -34,7 +34,7 @@ const DonationForm = () => {
       alert("You have to login to start a fundraiser");
     }
     axios
-      .post(`${process.env.REACT_APP_apiUrl}/fundraiser/create`, data)
+      .post(`${process.env.REACT_APP_apiUrl}fundraiser/create`, data)
       .then((res) => {
         window.alert("Fundraiser Created Successfully");
         window.location = `/dashboard/${localStorage.getItem("token")}`;

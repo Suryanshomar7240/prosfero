@@ -39,7 +39,7 @@ const Feedback = (prop) => {
       };
       
       axios
-        .post(`${process.env.REACT_APP_apiUrl}/feedback/post`, feedback_post)
+        .post(`${process.env.REACT_APP_apiUrl}feedback/post`, feedback_post)
         .then((res) => {})
 
         .catch((err) => console.log(err));
